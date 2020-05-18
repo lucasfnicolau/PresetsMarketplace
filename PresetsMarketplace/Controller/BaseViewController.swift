@@ -16,6 +16,7 @@ class BaseViewController: UIViewController {
     }
 
     func setupLayout() {
+        navigationController?.navigationBar.barTintColor = .white
         view.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .always
     }

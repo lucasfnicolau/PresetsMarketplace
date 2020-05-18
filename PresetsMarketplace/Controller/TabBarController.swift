@@ -17,7 +17,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         tabBar.tintColor = .black
-        tabBar.backgroundColor = .white
+        tabBar.barTintColor = .white
 
         let feedNavigationController = UINavigationController(rootViewController: feedViewController)
         feedNavigationController.tabBarItem = UITabBarItem(title: "Feed",
