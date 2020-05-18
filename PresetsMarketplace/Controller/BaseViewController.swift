@@ -1,5 +1,5 @@
 //
-//  FeedViewController.swift
+//  BaseViewController.swift
 //  PresetsMarketplace
 //
 //  Created by Lucas Fernandez Nicolau on 18/05/20.
@@ -8,11 +8,16 @@
 
 import UIKit
 
-class FeedViewController: BaseViewController {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Feed"
+        setupLayout()
+    }
+
+    func setupLayout() {
+        view.backgroundColor = .white
+        navigationItem.largeTitleDisplayMode = .always
     }
 
     /*

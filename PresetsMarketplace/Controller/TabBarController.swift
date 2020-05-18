@@ -16,6 +16,31 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: #imageLiteral(resourceName: "feed_outline"), selectedImage: #imageLiteral(resourceName: "feed_selected"))
+        tabBar.tintColor = .black
+        tabBar.backgroundColor = .white
+
+        let feedNavigationController = UINavigationController(rootViewController: feedViewController)
+        feedNavigationController.tabBarItem = UITabBarItem(title: "Feed",
+                                                           image: #imageLiteral(resourceName: "feed_outline"),
+                                                           selectedImage: #imageLiteral(resourceName: "feed_selected"))
+        feedNavigationController.tabBarItem.tag = 0
+
+        let discoverNavigationController = UINavigationController(rootViewController: discoverViewController)
+        discoverNavigationController.tabBarItem = UITabBarItem(title: "Explorar",
+                                                               image: #imageLiteral(resourceName: "discover_outline"),
+                                                               selectedImage: #imageLiteral(resourceName: "discover_selected"))
+        discoverNavigationController.tabBarItem.tag = 1
+
+        let profileNavigationController = UINavigationController(rootViewController: profileViewController)
+        profileNavigationController.tabBarItem = UITabBarItem(title: "Perfil",
+                                                              image: #imageLiteral(resourceName: "profile_outline"),
+                                                              selectedImage: #imageLiteral(resourceName: "profile_selected"))
+        profileNavigationController.tabBarItem.tag = 2
+
+        viewControllers = [
+            feedNavigationController,
+            discoverNavigationController,
+            profileNavigationController
+        ]
     }
 }
