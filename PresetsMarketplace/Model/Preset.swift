@@ -11,14 +11,14 @@ import Foundation
 class Preset {
     var name: String
     var artist: Artist
-    private(set) var price: Double
+    private(set) var price: Double = 0
     private(set) var viewsCount: Int = 0
     private(set) var soldCound: Int = 0
 
-    init(name: String, artist: Artist, price: Double) {
+    init(name: String, artist: Artist, price: Double = 0) {
         self.name = name
         self.artist = artist
-        self.price = price
+        setPrice(price)
     }
 
     func setPrice(_ price: Double) {

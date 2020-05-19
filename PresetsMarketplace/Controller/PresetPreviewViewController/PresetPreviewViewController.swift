@@ -23,12 +23,20 @@ class PresetPreviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     func setupFloatingSellingCard() {
+        guard let preset = preset else { return }
+        floatingPresetNameLabel.text = preset.name
+        floatingSoldLabel.text = "\(preset.soldCound)"
+        floatingViewsLabel.text = "\(preset.viewsCount)"
 
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        if let price = formatter.string(from: NSNumber(value: preset.price)) {
+            floatingBuyButton.setTitle(price, for: .normal)
+        }
     }
 
     @IBAction func floatingBuyButtonTouched(_ sender: Any) {
