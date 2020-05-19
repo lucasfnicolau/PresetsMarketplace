@@ -19,6 +19,7 @@
 		B659285A2474633200F4B4C8 /* InfoSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65928582474633200F4B4C8 /* InfoSecondViewController.swift */; };
 		B659285B2474633200F4B4C8 /* InfoSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65928592474633200F4B4C8 /* InfoSecondViewController.xib */; };
 		B659285D24746FC100F4B4C8 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659285C24746FC100F4B4C8 /* CircleImageView.swift */; };
+		B659285F2474770C00F4B4C8 /* PresetPreviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B659285E2474770C00F4B4C8 /* PresetPreviewViewController.storyboard */; };
 		B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F1024732674003B0EF5 /* TabBarController.swift */; };
 		B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F12247326B6003B0EF5 /* FeedViewController.swift */; };
 		B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */; };
@@ -43,6 +44,7 @@
 		B65928582474633200F4B4C8 /* InfoSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSecondViewController.swift; sourceTree = "<group>"; };
 		B65928592474633200F4B4C8 /* InfoSecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoSecondViewController.xib; sourceTree = "<group>"; };
 		B659285C24746FC100F4B4C8 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		B659285E2474770C00F4B4C8 /* PresetPreviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresetPreviewViewController.storyboard; sourceTree = "<group>"; };
 		B68A4F1024732674003B0EF5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B68A4F12247326B6003B0EF5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		B6592846247458D800F4B4C8 /* PresetPreviewViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B659285E2474770C00F4B4C8 /* PresetPreviewViewController.storyboard */,
 				B659284D247461C300F4B4C8 /* PageViewControllers */,
 				B6592842247458D200F4B4C8 /* PresetPreviewViewController.swift */,
 				B6592843247458D200F4B4C8 /* PresetPreviewViewController.xib */,
@@ -261,6 +264,7 @@
 				B659285B2474633200F4B4C8 /* InfoSecondViewController.xib in Resources */,
 				B65928572474632400F4B4C8 /* InfoFirstViewController.xib in Resources */,
 				B6A4E026246F2115009A78AC /* LaunchScreen.storyboard in Resources */,
+				B659285F2474770C00F4B4C8 /* PresetPreviewViewController.storyboard in Resources */,
 				B6592845247458D200F4B4C8 /* PresetPreviewViewController.xib in Resources */,
 				B6A4E023246F2115009A78AC /* Assets.xcassets in Resources */,
 				B65928512474621B00F4B4C8 /* InfoPageViewController.xib in Resources */,
