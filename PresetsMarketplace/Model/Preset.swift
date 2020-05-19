@@ -11,13 +11,15 @@ import Foundation
 class Preset {
     var name: String
     var artist: Artist
+    var imagesURLs: [URL?] = []
     private(set) var price: Double = 0
     private(set) var viewsCount: Int = 0
     private(set) var soldCound: Int = 0
 
-    init(name: String, artist: Artist, price: Double = 0) {
+    init(name: String, artist: Artist, price: Double = 0, imagesLinks: [String] = []) {
         self.name = name
         self.artist = artist
+        self.imagesURLs = URLManager.getURLArray(from: imagesLinks)
         setPrice(price)
     }
 

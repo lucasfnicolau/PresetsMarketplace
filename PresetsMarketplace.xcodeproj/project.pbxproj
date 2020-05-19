@@ -23,6 +23,7 @@
 		B659287424748D1500F4B4C8 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287324748D1500F4B4C8 /* Preset.swift */; };
 		B659287624748D3700F4B4C8 /* PresetParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287524748D3700F4B4C8 /* PresetParameters.swift */; };
 		B659287824748D8E00F4B4C8 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287724748D8E00F4B4C8 /* Artist.swift */; };
+		B659287A2474946800F4B4C8 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65928792474946800F4B4C8 /* URLManager.swift */; };
 		B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F1024732674003B0EF5 /* TabBarController.swift */; };
 		B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F12247326B6003B0EF5 /* FeedViewController.swift */; };
 		B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */; };
@@ -51,6 +52,7 @@
 		B659287324748D1500F4B4C8 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
 		B659287524748D3700F4B4C8 /* PresetParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetParameters.swift; sourceTree = "<group>"; };
 		B659287724748D8E00F4B4C8 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		B65928792474946800F4B4C8 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		B68A4F1024732674003B0EF5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B68A4F12247326B6003B0EF5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		B68A4F0C247325FF003B0EF5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B65928792474946800F4B4C8 /* URLManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */,
 				B659286624747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift in Sources */,
 				B659287824748D8E00F4B4C8 /* Artist.swift in Sources */,
+				B659287A2474946800F4B4C8 /* URLManager.swift in Sources */,
 				B68A4F17247327A4003B0EF5 /* ProfileViewController.swift in Sources */,
 				B659283F247335F100F4B4C8 /* BaseViewController.swift in Sources */,
 				B659286824747DB300F4B4C8 /* OthersPresetsTableViewCell.swift in Sources */,
