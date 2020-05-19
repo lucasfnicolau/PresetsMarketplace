@@ -15,21 +15,23 @@ class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var blurView: UIVisualEffectView!
 
     // MARK: - Floating Selling Card
-    
+    @IBOutlet weak var floatingPresetNameLabel: UILabel!
+    @IBOutlet weak var floatingSoldLabel: UILabel!
+    @IBOutlet weak var floatingViewsLabel: UILabel!
+    @IBOutlet weak var floatingBuyButton: UIButton!
     var preset: Preset?
-
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-//        super.init(nibName: "PresetPreviewViewController", bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        super.init(nibName: "PresetPreviewViewController", bundle: nil)
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         setupPageViewComtroller()
-//        setupFloatingSellingCard()
+        setupFloatingSellingCard()
+    }
+
+    func setupViews() {
+        guard let preset = preset else { return }
+        presetNameLabel.text = preset.name
+        presetArtistNameLabel.text = preset.artist.name
     }
 
     func setupPageViewComtroller() {
@@ -38,19 +40,19 @@ class PresetPreviewViewController: UIViewController {
         add(pageViewController, on: pageViewControllerView)
     }
 
-//    func setupFloatingSellingCard() {
-//        guard let preset = preset else { return }
-//        floatingPresetNameLabel.text = preset.name
-//        floatingSoldLabel.text = "\(preset.soldCount)"
-//        floatingViewsLabel.text = "\(preset.viewsCount)"
-//
-//        let formatter = NumberFormatter()
-//        formatter.locale = Locale.current
-//        formatter.numberStyle = .currency
-//        if let price = formatter.string(from: NSNumber(value: preset.price)) {
-//            floatingBuyButton.setTitle(price, for: .normal)
-//        }
-//    }
+    func setupFloatingSellingCard() {
+        guard let preset = preset else { return }
+        floatingPresetNameLabel.text = preset.name
+        floatingSoldLabel.text = "\(preset.soldCount)"
+        floatingViewsLabel.text = "\(preset.viewsCount)"
+
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        if let price = formatter.string(from: NSNumber(value: preset.price)) {
+            floatingBuyButton.setTitle(price, for: .normal)
+        }
+    }
 
     @IBAction func floatingBuyButtonTouched(_ sender: Any) {
     }

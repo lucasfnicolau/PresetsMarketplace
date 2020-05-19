@@ -199,6 +199,10 @@
                     </view>
                     <connections>
                         <outlet property="blurView" destination="feG-cQ-Tzm" id="GuK-bY-yzj"/>
+                        <outlet property="floatingBuyButton" destination="I8R-O2-hNc" id="rVy-vR-JvX"/>
+                        <outlet property="floatingPresetNameLabel" destination="4zX-pn-UWc" id="dUV-BA-eGk"/>
+                        <outlet property="floatingSoldLabel" destination="yKf-gv-bJ4" id="Oa2-ge-axf"/>
+                        <outlet property="floatingViewsLabel" destination="uFU-09-YUF" id="irl-bY-TPX"/>
                         <outlet property="pageViewControllerView" destination="ea7-du-UnW" id="XyM-H1-0l4"/>
                         <outlet property="presetArtistNameLabel" destination="7n8-GK-JQL" id="WX3-ig-IZx"/>
                         <outlet property="presetNameLabel" destination="znI-DV-GRk" id="n3i-VW-X6e"/>
