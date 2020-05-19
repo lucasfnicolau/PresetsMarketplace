@@ -20,10 +20,10 @@ class Preset {
         self.name = name
         self.artist = artist
         self.imagesURLs = URLManager.getURLArray(from: imagesLinks)
-        setPrice(price)
+        setPrice(to: price)
     }
 
-    func setPrice(_ price: Double) {
+    func setPrice(to price: Double) {
         guard price >= 0 else { return }
         self.price = price
     }
