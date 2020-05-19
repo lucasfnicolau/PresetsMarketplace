@@ -16,9 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lhb-53-ypW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ea7-du-UnW">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feG-cQ-Tzm">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="i5o-yQ-ZGC">
@@ -60,6 +62,9 @@
                                     <constraint firstAttribute="width" constant="40" id="uSG-St-urk"/>
                                 </constraints>
                                 <state key="normal" image="close_btn"/>
+                                <connections>
+                                    <action selector="closeButtonTouched:" destination="0w9-rQ-4pk" eventType="touchUpInside" id="wT1-Jl-UD8"/>
+                                </connections>
                             </button>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iov-tE-dPo" customClass="RoundedBluredView" customModule="PresetsMarketplace" customModuleProvider="target">
                                 <rect key="frame" x="10" y="756" width="394" height="62"/>
@@ -130,6 +135,9 @@
                                                         <state key="normal" title="$ 422.99">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="floatingBuyButtonTouched:" destination="0w9-rQ-4pk" eventType="touchUpInside" id="GJY-ko-g1z"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -170,12 +178,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Lhb-53-ypW" firstAttribute="top" secondItem="UJ2-oK-RYm" secondAttribute="top" id="3ix-NS-Zv5"/>
                             <constraint firstItem="hCc-j7-eso" firstAttribute="bottom" secondItem="iov-tE-dPo" secondAttribute="bottom" constant="44" id="4b6-0S-4mJ"/>
-                            <constraint firstItem="Lhb-53-ypW" firstAttribute="trailing" secondItem="hCc-j7-eso" secondAttribute="trailing" id="ELA-FO-wIK"/>
                             <constraint firstItem="feG-cQ-Tzm" firstAttribute="top" secondItem="UJ2-oK-RYm" secondAttribute="top" id="GBx-Ss-EMH"/>
                             <constraint firstAttribute="bottom" secondItem="feG-cQ-Tzm" secondAttribute="bottom" id="Gcd-wl-Upz"/>
-                            <constraint firstItem="Lhb-53-ypW" firstAttribute="leading" secondItem="hCc-j7-eso" secondAttribute="leading" id="IY4-bN-ZUV"/>
                             <constraint firstItem="feG-cQ-Tzm" firstAttribute="trailing" secondItem="hCc-j7-eso" secondAttribute="trailing" id="O10-8z-v9s"/>
                             <constraint firstItem="DAO-iL-mYz" firstAttribute="top" secondItem="hCc-j7-eso" secondAttribute="top" constant="20" id="ONV-hm-8MU"/>
                             <constraint firstItem="a7m-2l-pFw" firstAttribute="trailing" secondItem="hCc-j7-eso" secondAttribute="trailing" id="Qlh-I7-gsC"/>
@@ -189,10 +194,19 @@
                             <constraint firstItem="0Xk-2t-GTg" firstAttribute="top" secondItem="hCc-j7-eso" secondAttribute="top" constant="20" id="p5h-9Y-s2C"/>
                             <constraint firstItem="hCc-j7-eso" firstAttribute="trailing" secondItem="0Xk-2t-GTg" secondAttribute="trailing" constant="20" id="sWE-jb-Pbr"/>
                             <constraint firstItem="DAO-iL-mYz" firstAttribute="leading" secondItem="hCc-j7-eso" secondAttribute="leading" constant="20" id="uub-i8-L2z"/>
-                            <constraint firstAttribute="bottom" secondItem="Lhb-53-ypW" secondAttribute="bottom" id="vdl-Yr-LjZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hCc-j7-eso"/>
                     </view>
+                    <connections>
+                        <outlet property="blurView" destination="feG-cQ-Tzm" id="GuK-bY-yzj"/>
+                        <outlet property="floatingBuyButton" destination="I8R-O2-hNc" id="fLR-TM-beX"/>
+                        <outlet property="floatingPresetNameLabel" destination="4zX-pn-UWc" id="Lv2-6a-oQb"/>
+                        <outlet property="floatingSoldLabel" destination="yKf-gv-bJ4" id="rhF-13-9qK"/>
+                        <outlet property="floatingViewsLabel" destination="uFU-09-YUF" id="LaL-uM-3rB"/>
+                        <outlet property="pageViewControllerView" destination="ea7-du-UnW" id="XyM-H1-0l4"/>
+                        <outlet property="presetArtistNameLabel" destination="7n8-GK-JQL" id="WX3-ig-IZx"/>
+                        <outlet property="presetNameLabel" destination="znI-DV-GRk" id="n3i-VW-X6e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ld3-s0-lxM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -206,19 +220,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="760"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QVs-N0-1U8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QVs-N0-1U8">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="760"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PresetPhotosPreviewTableViewCell" rowHeight="53" id="zMR-np-IIR" customClass="PresetPhotosPreviewTableViewCell" customModule="PresetsMarketplace" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="53"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SlideToMoreDetailsTableViewCell" rowHeight="40" id="zMR-np-IIR" customClass="SlideToMoreDetailsTableViewCell" customModule="PresetsMarketplace" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zMR-np-IIR" id="TZo-A8-3wt">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GZt-jr-G06">
-                                                    <rect key="frame" x="20" y="7.5" width="374" height="34.5"/>
+                                                    <rect key="frame" x="20" y="-5.5" width="374" height="34.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deslize para todas as informações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bg1-pb-jJL">
                                                             <rect key="frame" x="90" y="0.0" width="194.5" height="14.5"/>
@@ -247,7 +261,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutPresetTableViewCell" rowHeight="147" id="sRJ-uR-ckM" customClass="AboutPresetTableViewCell" customModule="PresetsMarketplace" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="81" width="414" height="147"/>
+                                        <rect key="frame" x="0.0" y="68" width="414" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sRJ-uR-ckM" id="mWh-jS-bko">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="147"/>
@@ -289,7 +303,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArtistPresetTableViewCell" rowHeight="147" id="sY0-uk-CIz" customClass="ArtistPresetTableViewCell" customModule="PresetsMarketplace" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="228" width="414" height="147"/>
+                                        <rect key="frame" x="0.0" y="215" width="414" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sY0-uk-CIz" id="03h-oU-ovx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="147"/>
@@ -315,7 +329,7 @@
                                                                         <constraint firstAttribute="height" constant="80" id="agY-hw-eRc"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="E0M-HG-XIo">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="E0M-HG-XIo">
                                                                     <rect key="frame" x="90" y="30" width="284" height="57.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fotógrafo e designer entusiasta do vintage. São Paulo 🇧🇷." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HR6-qe-y7m">
@@ -354,7 +368,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OthersPresetsTableViewCell" rowHeight="179" id="Jc2-uv-wLf" customClass="OthersPresetsTableViewCell" customModule="PresetsMarketplace" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="375" width="414" height="179"/>
+                                        <rect key="frame" x="0.0" y="362" width="414" height="179"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jc2-uv-wLf" id="j4Z-Vn-lAM">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
@@ -406,7 +420,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmptyPresetsTableViewCell" rowHeight="179" id="gqs-M7-0Pi" customClass="EmptyPresetTableViewCell" customModule="PresetsMarketplace" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="554" width="414" height="179"/>
+                                        <rect key="frame" x="0.0" y="541" width="414" height="179"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gqs-M7-0Pi" id="ihy-bk-QMw">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
@@ -425,6 +439,7 @@
                             <constraint firstAttribute="bottom" secondItem="QVs-N0-1U8" secondAttribute="bottom" id="nSa-be-clu"/>
                             <constraint firstItem="QVs-N0-1U8" firstAttribute="leading" secondItem="7hO-rf-gUC" secondAttribute="leading" id="nW9-G2-TuC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bsp-9i-FZC"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alY-YR-fgg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

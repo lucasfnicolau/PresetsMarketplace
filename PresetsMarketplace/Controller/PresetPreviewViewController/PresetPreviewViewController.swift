@@ -9,22 +9,31 @@
 import UIKit
 
 class PresetPreviewViewController: UIViewController {
+    @IBOutlet weak var presetNameLabel: UILabel!
+    @IBOutlet weak var presetArtistNameLabel: UILabel!
+    @IBOutlet weak var pageViewControllerView: UIView!
+    @IBOutlet weak var blurView: UIVisualEffectView!
+
+    // MARK: - Floating Selling Card
+    @IBOutlet weak var floatingPresetNameLabel: UILabel!
+    @IBOutlet weak var floatingSoldLabel: UILabel!
+    @IBOutlet weak var floatingViewsLabel: UILabel!
+    @IBOutlet weak var floatingBuyButton: UIButton!
+    var preset: Preset?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
+    func setupFloatingSellingCard() {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
+    @IBAction func floatingBuyButtonTouched(_ sender: Any) {
+    }
+
+    @IBAction func closeButtonTouched(_ sender: Any) {
+    }
 }
