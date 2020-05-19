@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZJM-kY-31j">
-                                <rect key="frame" x="20" y="114" width="335" height="296"/>
+                                <rect key="frame" x="20" y="114" width="335" height="364"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="caQ-2x-Erz">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="156"/>
@@ -36,7 +36,7 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNb-4K-qbR">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNb-4K-qbR">
                                                 <rect key="frame" x="0.0" y="30" width="335" height="126"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">Inspiradas no verão, são praias de areia branca e deslumbrantes azuis do oceano. Imagens poderosas que tornam a sua pele ainda mais bronzeada e sedosa. Traga vibrações de verão às suas imagens com apenas alguns cliques!</string>
@@ -92,6 +92,18 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="kbs-wo-BFx">
+                                        <rect key="frame" x="0.0" y="326" width="335" height="38"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" text="Sobre" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ud5-bS-34S">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="38"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
