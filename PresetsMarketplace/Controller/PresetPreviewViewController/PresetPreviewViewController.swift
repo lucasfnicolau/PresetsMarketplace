@@ -23,6 +23,7 @@ class PresetPreviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupFloatingSellingCard()
     }
 
     func setupFloatingSellingCard() {
@@ -43,5 +44,6 @@ class PresetPreviewViewController: UIViewController {
     }
 
     @IBAction func closeButtonTouched(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
