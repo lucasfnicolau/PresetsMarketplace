@@ -1,24 +1,21 @@
 //
-//  FeedViewController.swift
+//  InfoSecondViewController.swift
 //  PresetsMarketplace
 //
-//  Created by Lucas Fernandez Nicolau on 18/05/20.
+//  Created by Lucas Fernandez Nicolau on 19/05/20.
 //  Copyright © 2020 Lucas Fernandez Nicolau. All rights reserved.
 //
 
 import UIKit
 
-class FeedViewController: BaseViewController {
+class InfoSecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Feed"
+
+        // Do any additional setup after loading the view.
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        let vc = PresetPreviewViewController()
-        navigationController?.present(vc, animated: true, completion: nil)
-    }
 
     /*
     // MARK: - Navigation
