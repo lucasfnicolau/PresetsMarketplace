@@ -14,7 +14,7 @@ class Preset {
     var imagesURLs: [URL?] = []
     private(set) var price: Double = 0
     private(set) var viewsCount: Int = 0
-    private(set) var soldCound: Int = 0
+    private(set) var soldCount: Int = 0
 
     init(name: String, artist: Artist, price: Double = 0, imagesLinks: [String] = []) {
         self.name = name
@@ -29,7 +29,7 @@ class Preset {
     }
 
     func incrementSoldCount() {
-        self.viewsCount += 1
+        self.soldCount += 1
     }
 
     func incrementViewsCount() {
