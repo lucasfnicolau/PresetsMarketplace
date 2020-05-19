@@ -26,6 +26,7 @@
 		B659287A2474946800F4B4C8 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65928792474946800F4B4C8 /* URLManager.swift */; };
 		B659287C2474986700F4B4C8 /* ImagesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287B2474986700F4B4C8 /* ImagesPageViewController.swift */; };
 		B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287D2474993E00F4B4C8 /* PresetImageViewController.swift */; };
+		B659288024749E0700F4B4C8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287F24749E0700F4B4C8 /* UIViewController.swift */; };
 		B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F1024732674003B0EF5 /* TabBarController.swift */; };
 		B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F12247326B6003B0EF5 /* FeedViewController.swift */; };
 		B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */; };
@@ -57,6 +58,7 @@
 		B65928792474946800F4B4C8 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		B659287B2474986700F4B4C8 /* ImagesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesPageViewController.swift; sourceTree = "<group>"; };
 		B659287D2474993E00F4B4C8 /* PresetImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetImageViewController.swift; sourceTree = "<group>"; };
+		B659287F24749E0700F4B4C8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B68A4F1024732674003B0EF5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B68A4F12247326B6003B0EF5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				B659286F2474844D00F4B4C8 /* UIImageView.swift */,
+				B659287F24749E0700F4B4C8 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				B65928702474844D00F4B4C8 /* UIImageView.swift in Sources */,
 				B659286A24747DEB00F4B4C8 /* SlideToMoreDetailsTableViewCell.swift in Sources */,
 				B659284A24745F7F00F4B4C8 /* RoundedBluredView.swift in Sources */,
+				B659288024749E0700F4B4C8 /* UIViewController.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
 				B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */,
 				B659286C2474808500F4B4C8 /* EmptyPresetTableViewCell.swift in Sources */,

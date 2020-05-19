@@ -10,22 +10,27 @@ import UIKit
 
 class ImagesPageViewController: UIPageViewController {
 
-//    lazy var pages: [PresetImageViewController] = {
-//        
-//    }()
+    let imagesURLs: [URL?]
+
+    lazy var pages: [UIViewController] = {
+        return self.imagesURLs.map { PresetImageViewController(withImageURL: $0) }
+    }()
+
+    init(withImagesURLs imagesURLs: [URL?]) {
+        self.imagesURLs = imagesURLs
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        self.imagesURLs = []
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    func setImages(for imagesURLs: [URL?]) {
-        imagesURLs.forEach { url in
-            let viewController = UIViewController()
 
+        if let firstVC = pages.first {
+            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
-    }
-
-    func setupConstraints(for viewController: UIViewController) {
-
     }
 }
