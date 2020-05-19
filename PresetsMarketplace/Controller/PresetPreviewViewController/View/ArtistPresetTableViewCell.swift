@@ -24,7 +24,7 @@ class ArtistPresetTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func setLayout(for artist: User) {
+    func setLayout(for artist: Artist) {
         artistAboutDescriptionLabel.text = artist.about
         profileImageView.load(url: artist.profileImageUrl)
     }

@@ -11,16 +11,29 @@ import Foundation
 class Preset {
     var name: String
     var artist: Artist
-    var imagesURLs: [URL?] = []
+    var description: String = ""
+    private(set) var imagesURLs: [URL?] = []
     private(set) var price: Double = 0
     private(set) var viewsCount: Int = 0
     private(set) var soldCount: Int = 0
 
-    init(name: String, artist: Artist, price: Double = 0, imagesLinks: [String] = []) {
+    init(name: String, artist: Artist, description: String = "", price: Double = 0, imagesLinks: [String] = []) {
         self.name = name
         self.artist = artist
-        self.imagesURLs = URLManager.getURLArray(from: imagesLinks)
+        self.description = description
+        addImagesURLs(from: imagesLinks)
         setPrice(to: price)
+    }
+
+    func addImagesURLs(from imagesLinks: [String]) {
+        self.imagesURLs.append(contentsOf: URLManager.getURLArray(from: imagesLinks))
+    }
+
+    // MARK: - REDO
+    func removeImagesURLs(matching array: [URL?]) {
+        array.forEach { url in
+            imagesURLs.removeAll { $0 == url }
+        }
     }
 
     func setPrice(to price: Double) {

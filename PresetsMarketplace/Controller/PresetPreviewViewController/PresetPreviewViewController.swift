@@ -28,13 +28,14 @@ class PresetPreviewViewController: UIViewController {
     }
 
     func setupPageViewComtroller() {
-//        let pageViewController
+        let pageViewController = UIPageViewController()
+        
     }
 
     func setupFloatingSellingCard() {
         guard let preset = preset else { return }
         floatingPresetNameLabel.text = preset.name
-        floatingSoldLabel.text = "\(preset.soldCound)"
+        floatingSoldLabel.text = "\(preset.soldCount)"
         floatingViewsLabel.text = "\(preset.viewsCount)"
 
         let formatter = NumberFormatter()

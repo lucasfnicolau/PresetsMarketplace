@@ -8,4 +8,11 @@
 
 import Foundation
 
-class Artist: User {}
+class Artist: User {
+    var about: String
+
+    init(name: String, about: String, profileImageLink: String) {
+        self.about = about
+        super.init(name: name, profileImageLink: profileImageLink)
+    }
+}

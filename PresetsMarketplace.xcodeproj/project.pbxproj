@@ -24,6 +24,8 @@
 		B659287624748D3700F4B4C8 /* PresetParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287524748D3700F4B4C8 /* PresetParameters.swift */; };
 		B659287824748D8E00F4B4C8 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287724748D8E00F4B4C8 /* Artist.swift */; };
 		B659287A2474946800F4B4C8 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65928792474946800F4B4C8 /* URLManager.swift */; };
+		B659287C2474986700F4B4C8 /* ImagesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287B2474986700F4B4C8 /* ImagesPageViewController.swift */; };
+		B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287D2474993E00F4B4C8 /* PresetImageViewController.swift */; };
 		B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F1024732674003B0EF5 /* TabBarController.swift */; };
 		B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F12247326B6003B0EF5 /* FeedViewController.swift */; };
 		B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */; };
@@ -53,6 +55,8 @@
 		B659287524748D3700F4B4C8 /* PresetParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetParameters.swift; sourceTree = "<group>"; };
 		B659287724748D8E00F4B4C8 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		B65928792474946800F4B4C8 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		B659287B2474986700F4B4C8 /* ImagesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesPageViewController.swift; sourceTree = "<group>"; };
+		B659287D2474993E00F4B4C8 /* PresetImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetImageViewController.swift; sourceTree = "<group>"; };
 		B68A4F1024732674003B0EF5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B68A4F12247326B6003B0EF5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 		B659287224748A9900F4B4C8 /* ImagesPageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B659287B2474986700F4B4C8 /* ImagesPageViewController.swift */,
+				B659287D2474993E00F4B4C8 /* PresetImageViewController.swift */,
 			);
 			path = ImagesPageViewController;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 				B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */,
 				B659286624747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift in Sources */,
 				B659287824748D8E00F4B4C8 /* Artist.swift in Sources */,
+				B659287C2474986700F4B4C8 /* ImagesPageViewController.swift in Sources */,
 				B659287A2474946800F4B4C8 /* URLManager.swift in Sources */,
 				B68A4F17247327A4003B0EF5 /* ProfileViewController.swift in Sources */,
 				B659283F247335F100F4B4C8 /* BaseViewController.swift in Sources */,
@@ -298,6 +305,7 @@
 				B659286A24747DEB00F4B4C8 /* SlideToMoreDetailsTableViewCell.swift in Sources */,
 				B659284A24745F7F00F4B4C8 /* RoundedBluredView.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
+				B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */,
 				B659286C2474808500F4B4C8 /* EmptyPresetTableViewCell.swift in Sources */,
 				B659285D24746FC100F4B4C8 /* CircleImageView.swift in Sources */,
 				B6A4E019246F2114009A78AC /* SceneDelegate.swift in Sources */,
