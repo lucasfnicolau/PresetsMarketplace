@@ -16,7 +16,7 @@
 		B659286424747D8E00F4B4C8 /* AboutPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286324747D8E00F4B4C8 /* AboutPresetTableViewCell.swift */; };
 		B659286624747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286524747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift */; };
 		B659286824747DB300F4B4C8 /* OthersPresetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286724747DB300F4B4C8 /* OthersPresetsTableViewCell.swift */; };
-		B659286A24747DEB00F4B4C8 /* SlideToMoreInfoPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286924747DEB00F4B4C8 /* SlideToMoreInfoPresetTableViewCell.swift */; };
+		B659286A24747DEB00F4B4C8 /* PresetPhotosPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286924747DEB00F4B4C8 /* PresetPhotosPreviewTableViewCell.swift */; };
 		B659286C2474808500F4B4C8 /* EmptyPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286B2474808500F4B4C8 /* EmptyPresetTableViewCell.swift */; };
 		B659286E2474824300F4B4C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286D2474824300F4B4C8 /* User.swift */; };
 		B65928702474844D00F4B4C8 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286F2474844D00F4B4C8 /* UIImageView.swift */; };
@@ -41,7 +41,7 @@
 		B659286324747D8E00F4B4C8 /* AboutPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPresetTableViewCell.swift; sourceTree = "<group>"; };
 		B659286524747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistPresetTableViewCell.swift; sourceTree = "<group>"; };
 		B659286724747DB300F4B4C8 /* OthersPresetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPresetsTableViewCell.swift; sourceTree = "<group>"; };
-		B659286924747DEB00F4B4C8 /* SlideToMoreInfoPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideToMoreInfoPresetTableViewCell.swift; sourceTree = "<group>"; };
+		B659286924747DEB00F4B4C8 /* PresetPhotosPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPhotosPreviewTableViewCell.swift; sourceTree = "<group>"; };
 		B659286B2474808500F4B4C8 /* EmptyPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPresetTableViewCell.swift; sourceTree = "<group>"; };
 		B659286D2474824300F4B4C8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B659286F2474844D00F4B4C8 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		B659286224747C8200F4B4C8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B659286924747DEB00F4B4C8 /* SlideToMoreInfoPresetTableViewCell.swift */,
+				B659286924747DEB00F4B4C8 /* PresetPhotosPreviewTableViewCell.swift */,
 				B659286324747D8E00F4B4C8 /* AboutPresetTableViewCell.swift */,
 				B659286524747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift */,
 				B659286724747DB300F4B4C8 /* OthersPresetsTableViewCell.swift */,
@@ -271,7 +271,7 @@
 				B659286824747DB300F4B4C8 /* OthersPresetsTableViewCell.swift in Sources */,
 				B6A4E021246F2114009A78AC /* PresetsMarketplace.xcdatamodeld in Sources */,
 				B65928702474844D00F4B4C8 /* UIImageView.swift in Sources */,
-				B659286A24747DEB00F4B4C8 /* SlideToMoreInfoPresetTableViewCell.swift in Sources */,
+				B659286A24747DEB00F4B4C8 /* PresetPhotosPreviewTableViewCell.swift in Sources */,
 				B659284A24745F7F00F4B4C8 /* RoundedBluredView.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
 				B659286C2474808500F4B4C8 /* EmptyPresetTableViewCell.swift in Sources */,

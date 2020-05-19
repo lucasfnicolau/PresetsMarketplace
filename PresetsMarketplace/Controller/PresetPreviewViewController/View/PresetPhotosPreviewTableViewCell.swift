@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SlideToMoreInfoPresetTableViewCell: UITableViewCell {
+class PresetPhotosPreviewTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var chevronImageView: UIImageView!
 
