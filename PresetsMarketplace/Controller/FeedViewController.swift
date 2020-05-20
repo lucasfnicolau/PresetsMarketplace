@@ -15,6 +15,11 @@ class FeedViewController: BaseViewController {
         navigationItem.title = "Feed"
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        let vc = PresetPreviewViewController()
+        navigationController?.present(vc, animated: true, completion: nil)
+    }
+
     /*
     // MARK: - Navigation
 
