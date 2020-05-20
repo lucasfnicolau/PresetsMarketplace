@@ -24,8 +24,6 @@ class PresetInfoTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         switch indexPath.row {
-        case 0:
-            return getSlideToMoreInfoCell()
         case 1:
             return getAboutPresetTableViewCell()
         case 2:
@@ -35,20 +33,13 @@ class PresetInfoTableViewDataSource: NSObject, UITableViewDataSource {
         default:
             let emptyCell = UITableViewCell()
             emptyCell.backgroundColor = .clear
+            emptyCell.selectionStyle = .none
             return emptyCell
         }
     }
 }
 
 extension PresetInfoTableViewDataSource {
-
-    func getSlideToMoreInfoCell() -> UITableViewCell {
-        if let slideToMoreInfoCell = tableView.dequeueReusableCell(withIdentifier: Identifier.slideToMoreDetailsTableViewCell) as? SlideToMoreDetailsTableViewCell {
-
-            return slideToMoreInfoCell
-        }
-        return UITableViewCell()
-    }
 
     func getAboutPresetTableViewCell() -> UITableViewCell {
         if let aboutPresetTableViewCell = tableView.dequeueReusableCell(withIdentifier: Identifier.aboutPresetTableViewCell) as? AboutPresetTableViewCell {
