@@ -15,6 +15,25 @@ class FeedViewController: BaseViewController {
         navigationItem.title = "Feed"
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        let artist = Artist(name: "Dagoberto",
+                            about: "Ex-futebolista",
+                            profileImageLink: "https://dragoesdareal.com.br/vps/wp-content/uploads/2017/03/Dagoberto-170321.jpg")
+        let preset = Preset(name: "Summer Set",
+                            artist: artist,
+                            description: "Cores quentes, igual você 😏",
+                            price: 422.10,
+                            imagesLinks: [
+                                "https://greekcitytimes.com/wp-content/uploads/2020/04/elena-ktenopoulou-cjzV4WK46qY-unsplash-scaled.jpg"
+        ])
+
+        if let vc = UIStoryboard(name: Storyboard.presetPreviewViewController, bundle: nil).instantiateViewController(identifier: Identifier.presetPreviewViewController) as? PresetPreviewViewController {
+            vc.preset = preset
+            vc.modalPresentationStyle = .fullScreen
+            navigationController?.present(vc, animated: true, completion: nil)
+        }
+    }
+
     /*
     // MARK: - Navigation
 

@@ -29,6 +29,8 @@ class PresetImageViewController: UIViewController {
 
     func setupLayout() {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

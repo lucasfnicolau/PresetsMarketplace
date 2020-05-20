@@ -21,20 +21,28 @@ class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var floatingBuyButton: UIButton!
     var preset: Preset?
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func viewDidLayoutSubviews() {
         setupViews()
-        setupPageViewComtroller()
+        setupPageViewController()
         setupFloatingSellingCard()
     }
 
     func setupViews() {
         guard let preset = preset else { return }
+        blurView.alpha = 0.0
         presetNameLabel.text = preset.name
-        presetArtistNameLabel.text = preset.artist.name
+        presetArtistNameLabel.text = "por \(preset.artist.name)"
     }
 
-    func setupPageViewComtroller() {
+    func setupPageViewController() {
         guard let preset = preset else { return }
         let pageViewController = ImagesPageViewController(withImagesURLs: preset.imagesURLs)
         add(pageViewController, on: pageViewControllerView)
@@ -51,6 +59,12 @@ class PresetPreviewViewController: UIViewController {
         formatter.numberStyle = .currency
         if let price = formatter.string(from: NSNumber(value: preset.price)) {
             floatingBuyButton.setTitle(price, for: .normal)
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let presetInfoTableViewViewController = segue.destination as? PresetInfoTableViewViewController {
+            presetInfoTableViewViewController.preset = preset
         }
     }
 
