@@ -24,7 +24,8 @@ class FeedViewController: BaseViewController {
                             description: "Cores quentes, igual você 😏",
                             price: 422.10,
                             imagesLinks: [
-                                "https://greekcitytimes.com/wp-content/uploads/2020/04/elena-ktenopoulou-cjzV4WK46qY-unsplash-scaled.jpg"
+                                "https://greekcitytimes.com/wp-content/uploads/2020/04/elena-ktenopoulou-cjzV4WK46qY-unsplash-scaled.jpg",
+                                "https://www.highreshdwallpapers.com/wp-content/uploads/2011/07/High-resolution-football-wallpaper.jpg"
         ])
 
         if let vc = UIStoryboard(name: Storyboard.presetPreviewViewController, bundle: nil).instantiateViewController(identifier: Identifier.presetPreviewViewController) as? PresetPreviewViewController {

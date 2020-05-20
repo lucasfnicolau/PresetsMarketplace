@@ -11,8 +11,9 @@ import UIKit
 class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var presetNameLabel: UILabel!
     @IBOutlet weak var presetArtistNameLabel: UILabel!
-    @IBOutlet weak var pageViewControllerView: UIView!
     @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var pageViewControllerView: UIView!
+    var imagesPageViewController: ImagesPageViewController!
 
     // MARK: - Floating Selling Card
     @IBOutlet weak var floatingPresetNameLabel: UILabel!
@@ -27,12 +28,10 @@ class PresetPreviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewDidLayoutSubviews() {
         setupViews()
         setupPageViewController()
         setupFloatingSellingCard()
+        setupGesturesRecognizer()
     }
 
     func setupViews() {
@@ -44,8 +43,31 @@ class PresetPreviewViewController: UIViewController {
 
     func setupPageViewController() {
         guard let preset = preset else { return }
-        let pageViewController = ImagesPageViewController(withImagesURLs: preset.imagesURLs)
-        add(pageViewController, on: pageViewControllerView)
+        imagesPageViewController = ImagesPageViewController(withImagesURLs: preset.imagesURLs)
+        add(imagesPageViewController, on: pageViewControllerView)
+    }
+
+    func setupGesturesRecognizer() {
+        let swipetToLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipe(gesture:)))
+        swipetToLeftGesture.direction = .left
+
+        let swipetToRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipe(gesture:)))
+
+        view.addGestureRecognizer(swipetToLeftGesture)
+        view.addGestureRecognizer(swipetToRightGesture)
+    }
+
+    @objc func swipe(gesture: UISwipeGestureRecognizer) {
+        switch gesture.direction {
+        case .left:
+            imagesPageViewController.goToNextPage()
+            break
+        case .right:
+            imagesPageViewController.goToPreviousPage()
+            break
+        default:
+            return
+        }
     }
 
     func setupFloatingSellingCard() {

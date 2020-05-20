@@ -447,7 +447,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bottom_dark_gradient" width="374" height="106"/>
+        <image name="bottom_dark_gradient" width="414" height="126"/>
         <image name="close_btn" width="37" height="38"/>
         <image name="profile_selected" width="25" height="25"/>
         <image name="sales" width="9" height="11"/>
