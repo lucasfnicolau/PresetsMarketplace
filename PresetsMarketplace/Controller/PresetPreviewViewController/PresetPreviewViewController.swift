@@ -12,6 +12,7 @@ class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var presetNameLabel: UILabel!
     @IBOutlet weak var presetArtistNameLabel: UILabel!
     @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var slideToMoreInfoStackView: UIStackView!
     @IBOutlet weak var pageViewControllerView: UIView!
     var imagesPageViewController: ImagesPageViewController!
 
@@ -87,6 +88,8 @@ class PresetPreviewViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let presetInfoTableViewViewController = segue.destination as? PresetInfoTableViewViewController {
             presetInfoTableViewViewController.preset = preset
+            presetInfoTableViewViewController.blurView = blurView
+            presetInfoTableViewViewController.slideToMoreInfoStackView = slideToMoreInfoStackView
         }
     }
 

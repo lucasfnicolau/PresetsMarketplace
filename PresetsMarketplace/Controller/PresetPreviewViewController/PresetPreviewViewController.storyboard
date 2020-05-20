@@ -238,6 +238,7 @@
                         <outlet property="pageViewControllerView" destination="3Bq-C6-w20" id="mys-lc-5HT"/>
                         <outlet property="presetArtistNameLabel" destination="7n8-GK-JQL" id="WX3-ig-IZx"/>
                         <outlet property="presetNameLabel" destination="znI-DV-GRk" id="n3i-VW-X6e"/>
+                        <outlet property="slideToMoreInfoStackView" destination="vER-XQ-bja" id="viN-ZA-vvf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ld3-s0-lxM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
