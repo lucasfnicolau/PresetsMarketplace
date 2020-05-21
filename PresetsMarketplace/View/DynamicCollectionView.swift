@@ -12,7 +12,8 @@ class DynamicCollectionView: UICollectionView {
     
     let layout = DynamicCollectionViewLayout()
     let collectionEnum: CollectionViewCellEnum
-    let img = #imageLiteral(resourceName: "profile_selected")
+    let img = #imageLiteral(resourceName: "praia")
+    let cellSizes: [CGFloat] = [200, 250, 300]
     
     init(collectionType: CollectionViewCellEnum) {
         self.collectionEnum = collectionType
@@ -23,6 +24,7 @@ class DynamicCollectionView: UICollectionView {
         layout.delegate = self
         
         register(DynamicCollectionViewCell.self, forCellWithReuseIdentifier: "DynamicCollectionViewCell")
+        register(DynamicColletionArtistViewCell.self, forCellWithReuseIdentifier: "DynamicCollectionArtistViewCell")
     }
     
     required init?(coder: NSCoder) {
@@ -38,25 +40,24 @@ extension DynamicCollectionView: UICollectionViewDataSource {
         switch collectionEnum {
         case .user:
             guard let cell = dequeueReusableCell(withReuseIdentifier: "DynamicCollectionViewCell", for: indexPath) as? DynamicCollectionViewCell else { return UICollectionViewCell() }
-            cell.setup(image: img)
-            
+            cell.setup(image: img)            
             return cell
-        default:
-            return UICollectionViewCell()
-//        case .artist:
-//            let cell = DynamicColletionArtistViewCell(content: UIImageView(image: #imageLiteral(resourceName: "profile_selected")), views: 10, sales: 5)
-//            return cell
+        case .artist:
+            guard let cell = dequeueReusableCell(withReuseIdentifier: "DynamicCollectionArtistViewCell", for: indexPath) as? DynamicColletionArtistViewCell else { return UICollectionViewCell() }
+            cell.setup(image: img, views: 50, sales: 50)
+            return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 11
+        return 50
     }
 }
 
 extension DynamicCollectionView: DynamicCollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        return img.size.height
+        guard let size = cellSizes.randomElement() else { return 150 }
+        return size
     }
 }

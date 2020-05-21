@@ -14,10 +14,10 @@ class DynamicCollectionViewCell: UICollectionViewCell {
     
     func setup(image: UIImage) {
         self.cellImageView.image = image
-        cellImageView.contentMode = .scaleAspectFill
+        cellImageView.contentMode = .scaleToFill
         contentView.addSubview(cellImageView)
         setupCornerRadius()
-        setupConstraints()
+        setupConstraints()        
     }
     
     func setupConstraints() {
@@ -31,6 +31,10 @@ class DynamicCollectionViewCell: UICollectionViewCell {
     }
     
     func setupCornerRadius() {
+        self.contentView.layer.masksToBounds = true
         self.contentView.layer.cornerRadius = 4
+    }
+    
+    override func prepareForReuse() {
     }
 }

@@ -12,7 +12,7 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
     
     var views: Int = 0
     var sales: Int = 0
-    var blurredRect: UIView?
+    var blurredRect: UIVisualEffectView = UIVisualEffectView()
     let salesStackView: UIStackView = UIStackView()
     let viewsStackView: UIStackView = UIStackView()
     
@@ -20,31 +20,34 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
         self.setup(image: image)
         self.views = views
         self.sales = sales
-        
+                
         setupBlurredRect()
         setupSalesStackView()
         setupViewsStackView()
-        setupImages()
-        setupLabels()
+//        setupImages()
+//        setupLabels()
     }
     
     func setupBlurredRect() {
-        guard let blurredRect = blurredRect else { return }
+        self.contentView.addSubview(blurredRect)
         let cellWidth = self.frame.size.width * 0.42
-        let cellHeight = blurredRect.frame.size.width * 0.27
+        let cellHeight = cellWidth * 0.27
         
+        let blurredEffect = UIBlurEffect(style: .light)
+        blurredRect.effect = blurredEffect
+        
+        blurredRect.layer.masksToBounds = true
         blurredRect.layer.cornerRadius = 4
-        blurredRect.layer.maskedCorners = [.layerMinXMaxYCorner]
+        blurredRect.layer.maskedCorners = [.layerMinXMinYCorner]
         blurredRect.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            blurredRect.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
-            blurredRect.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
-            blurredRect.heightAnchor.constraint(equalToConstant: cellHeight),
-            blurredRect.widthAnchor.constraint(equalToConstant: cellWidth)
+            blurredRect.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            blurredRect.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            blurredRect.widthAnchor.constraint(equalToConstant: cellWidth),
+            blurredRect.heightAnchor.constraint(equalToConstant: cellHeight)
+            
             ])
-        
-        self.contentView.addSubview(blurredRect)
     }
     
     func setupStackView(stackView: UIStackView) {
@@ -55,36 +58,31 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
     
     func setupSalesStackView() {
         setupStackView(stackView: salesStackView)
-        
-        guard let blurredRect = blurredRect else { return }
-        
+        blurredRect.contentView.addSubview(salesStackView)
+                
         salesStackView.translatesAutoresizingMaskIntoConstraints = false
-        let width = blurredRect.frame.size.width * 0.4
+//        let width = blurredRect.frame.size.width * 0.4
+        let width = (self.frame.size.width * 0.42) * 0.4
         NSLayoutConstraint.activate([
-            salesStackView.topAnchor.constraint(equalTo: blurredRect.topAnchor, constant: 3),
-            salesStackView.bottomAnchor.constraint(equalTo: blurredRect.bottomAnchor, constant: 3),
-            salesStackView.leadingAnchor.constraint(equalTo: blurredRect.leadingAnchor, constant: 6),
+            salesStackView.topAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.topAnchor, constant: 3),
+            salesStackView.bottomAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.bottomAnchor, constant: 3),
+            salesStackView.leadingAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.leadingAnchor, constant: 1),
             salesStackView.widthAnchor.constraint(equalToConstant: width)
         ])
-        
-        blurredRect.addSubview(salesStackView)
     }
     
     func setupViewsStackView() {
         setupStackView(stackView: viewsStackView)
-        
-        guard let blurredRect = blurredRect else { return }
-        
+        blurredRect.contentView.addSubview(viewsStackView)
+                
         viewsStackView.translatesAutoresizingMaskIntoConstraints = false
-        let width = blurredRect.frame.size.width * 0.4
+        let width = (self.frame.size.width * 0.42) * 0.4
         NSLayoutConstraint.activate([
-            viewsStackView.topAnchor.constraint(equalTo: blurredRect.topAnchor, constant: 3),
-            viewsStackView.bottomAnchor.constraint(equalTo: blurredRect.bottomAnchor, constant: 3),
-            viewsStackView.trailingAnchor.constraint(equalTo: blurredRect.trailingAnchor, constant: 6),
+            viewsStackView.topAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.topAnchor, constant: 3),
+            viewsStackView.bottomAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.bottomAnchor, constant: 3),
+            viewsStackView.trailingAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.trailingAnchor, constant: 1),
             viewsStackView.widthAnchor.constraint(equalToConstant: width)
         ])
-        
-        blurredRect.addSubview(viewsStackView)
     }
     
     func setupLabels() {
@@ -101,6 +99,16 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
         if views % 1000 >= 1 {
             viewsLabel.text = "\(views / 1000)k"
         }
+        
+        salesLabel.translatesAutoresizingMaskIntoConstraints = false
+        viewsLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+//        let width = (self.frame.size.width * 0.42) * 0.2
+//        
+//        NSLayoutConstraint.activate([
+//            salesLabel.widthAnchor.constraint(equalToConstant: width),
+//            viewsLabel.widthAnchor.constraint(equalToConstant: width)
+//        ])
         
         salesLabel.adjustsFontSizeToFitWidth = true
         viewsLabel.adjustsFontSizeToFitWidth = true

@@ -10,7 +10,7 @@ import UIKit
 
 class FeedViewController: BaseViewController {
     
-    let collectionView = DynamicCollectionView(collectionType: .user)
+    let collectionView = DynamicCollectionView(collectionType: .artist)
 
     override func viewDidLoad() {
         super.viewDidLoad()
