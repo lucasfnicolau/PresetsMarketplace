@@ -16,7 +16,7 @@ class OthersPresetsCollectionViewCell: UICollectionViewCell {
     }
 
     func setup(for preset: Preset) {
-//        presetImageView.load(url: preset.imagesURLs[0])
+        presetImageView.load(url: preset.imagesURLs[0])
         presetImageView.layer.cornerRadius = 4
     }
 }
