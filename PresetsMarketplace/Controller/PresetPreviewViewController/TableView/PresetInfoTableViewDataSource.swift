@@ -29,12 +29,9 @@ class PresetInfoTableViewDataSource: NSObject, UITableViewDataSource {
         case 2:
             return getArtistPresetTableViewCell()
         case 3:
-            return getOthersPresetsTableViewCell()
+            return preset.artist.presets.count > 1 ? getOthersPresetsTableViewCell() : getEmptyCell()
         default:
-            let emptyCell = UITableViewCell()
-            emptyCell.backgroundColor = .clear
-            emptyCell.selectionStyle = .none
-            return emptyCell
+            return getEmptyCell()
         }
     }
 }
@@ -65,5 +62,12 @@ extension PresetInfoTableViewDataSource {
             return othersPresetsTableViewCell
         }
         return UITableViewCell()
+    }
+
+    func getEmptyCell() -> UITableViewCell {
+        let emptyCell = UITableViewCell()
+        emptyCell.backgroundColor = .clear
+        emptyCell.selectionStyle = .none
+        return emptyCell
     }
 }

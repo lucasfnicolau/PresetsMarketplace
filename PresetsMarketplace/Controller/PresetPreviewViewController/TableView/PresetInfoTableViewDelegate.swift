@@ -15,22 +15,27 @@ class PresetInfoTableViewDelegate: NSObject, UITableViewDelegate {
     let preset: Preset
     let blurView: UIVisualEffectView
     let slideToMoreInfoStackView: UIStackView
-    let heights: [CGFloat]
 
     init(for tableView: UITableView, with preset: Preset, with blurView: UIVisualEffectView, with slideToMoreInfoStackView: UIStackView) {
         self.tableView = tableView
         self.preset = preset
         self.blurView = blurView
         self.slideToMoreInfoStackView = slideToMoreInfoStackView
-
-        heights = [
-            UIScreen.main.bounds.height - HEADER_SIZE,
-            400
-        ]
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row > 0 ? 400 : heights[0]
+        switch indexPath.row {
+        case 0:
+            return UIScreen.main.bounds.height - HEADER_SIZE
+        case 1:
+            return max(CGFloat(230 * preset.description.count / 280), 100)
+        case 2:
+            return max(CGFloat(230 * preset.artist.about.count / 140), 170)
+        case 3:
+            return 170
+        default:
+            return 200
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

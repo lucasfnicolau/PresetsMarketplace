@@ -21,7 +21,7 @@ class FeedViewController: BaseViewController {
                             profileImageLink: "https://dragoesdareal.com.br/vps/wp-content/uploads/2017/03/Dagoberto-170321.jpg")
         let preset = Preset(name: "Summer Set",
                             artist: artist,
-                            description: "Cores quentes, igual você 😏",
+                            description: "Cores quentes",
                             price: 422.10,
                             imagesLinks: [
                                 "https://greekcitytimes.com/wp-content/uploads/2020/04/elena-ktenopoulou-cjzV4WK46qY-unsplash-scaled.jpg",
