@@ -32,7 +32,7 @@ class PresetInfoTableViewDelegate: NSObject, UITableViewDelegate {
         case 2:
             return max(CGFloat(230 * preset.artist.about.count / 140), 170)
         case 3:
-            return 170
+            return 220
         default:
             return 200
         }

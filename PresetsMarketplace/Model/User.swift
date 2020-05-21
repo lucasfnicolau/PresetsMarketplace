@@ -8,12 +8,18 @@
 
 import Foundation
 
-class User {
+class User: Equatable {
+    var id: String
     var name: String
     var profileImageUrl: URL?
 
-    init(name: String, profileImageLink: String) {
+    init(id: String = "", name: String, profileImageLink: String) {
+        self.id = id.count > 0 ? id : UUID().uuidString
         self.name = name
         self.profileImageUrl = URL(string: profileImageLink)
+    }
+
+    static func ==(lhs: User, rhs: User) -> Bool {
+        return lhs.id == rhs.id
     }
 }

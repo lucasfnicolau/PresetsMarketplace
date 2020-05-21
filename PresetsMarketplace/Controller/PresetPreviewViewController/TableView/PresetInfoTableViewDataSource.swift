@@ -11,6 +11,8 @@ import UIKit
 class PresetInfoTableViewDataSource: NSObject, UITableViewDataSource {
     let tableView: UITableView
     let preset: Preset
+    var othersPresetsCollectionViewDelegate: OthersPresetsCollectionViewDelegate?
+    var othersPresetsCollectionViewDataSource: OthersPresetsCollectionViewDataSource?
 
     init(for tableView: UITableView, with preset: Preset) {
         self.tableView = tableView
@@ -59,6 +61,7 @@ extension PresetInfoTableViewDataSource {
     func getOthersPresetsTableViewCell() -> UITableViewCell {
         if let othersPresetsTableViewCell = tableView.dequeueReusableCell(withIdentifier: Identifier.othersPresetsTableViewCell) as? OthersPresetsTableViewCell {
 
+            configureOthersPresetsCollectionView(for: othersPresetsTableViewCell)
             return othersPresetsTableViewCell
         }
         return UITableViewCell()
@@ -69,5 +72,15 @@ extension PresetInfoTableViewDataSource {
         emptyCell.backgroundColor = .clear
         emptyCell.selectionStyle = .none
         return emptyCell
+    }
+
+    func configureOthersPresetsCollectionView(for cell: OthersPresetsTableViewCell) {
+        let othersPresets = preset.artist.presets.filter { $0 != preset }
+        othersPresetsCollectionViewDelegate = OthersPresetsCollectionViewDelegate(with: othersPresets)
+        othersPresetsCollectionViewDataSource = OthersPresetsCollectionViewDataSource(with: othersPresets)
+
+        cell.othersPresetsCollectionView.delegate = othersPresetsCollectionViewDelegate
+        cell.othersPresetsCollectionView.dataSource = othersPresetsCollectionViewDataSource
+        cell.othersPresetsCollectionView.reloadData()
     }
 }

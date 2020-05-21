@@ -10,7 +10,7 @@ import UIKit
 
 class OthersPresetsTableViewCell: UITableViewCell {
     @IBOutlet weak var otherPresetsTitleTextView: UITextView!
-    @IBOutlet weak var otherPresetsCollectionView: UICollectionView!
+    @IBOutlet weak var othersPresetsCollectionView: UICollectionView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

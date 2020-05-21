@@ -16,6 +16,9 @@ enum Identifier {
     static let artistPresetTableViewCell = "ArtistPresetTableViewCell"
     static let othersPresetsTableViewCell = "OthersPresetsTableViewCell"
 
+    // MARK: - CollectionViewCell
+    static let othersPresetsCollectionViewCell = "OthersPresetsCollectionViewCell"
+
     // MARK: - ViewController
     static let presetPreviewViewController = "PresetPreviewViewController"
     static let presetInfoTableViewViewController = "PresetInfoTableViewViewController"

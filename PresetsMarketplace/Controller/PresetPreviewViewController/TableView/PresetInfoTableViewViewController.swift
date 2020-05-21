@@ -12,19 +12,19 @@ import UIKit
 
 class PresetInfoTableViewViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var presetInfoTableViewDataSource: PresetInfoTableViewDataSource?
-    var presetInfoTableViewDelegate: PresetInfoTableViewDelegate?
     
     var preset: Preset?
     var blurView: UIVisualEffectView?
     var slideToMoreInfoStackView: UIStackView?
+    var presetInfoTableViewDataSource: PresetInfoTableViewDataSource?
+    var presetInfoTableViewDelegate: PresetInfoTableViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         guard let preset = preset, 
             let blurView = blurView, 
-            let slideToMoreInfoStackView = slideToMoreInfoStackView  else {
+            let slideToMoreInfoStackView = slideToMoreInfoStackView else {
             return
         }
         
