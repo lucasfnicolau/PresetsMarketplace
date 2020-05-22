@@ -26,8 +26,8 @@ class DynamicCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(image: UIImage) {
-        self.cellImageView.image = image
+    func setup(for imageURL: URL?) {
+        self.cellImageView.load(url: imageURL)
     }
     
     func setupConstraints() {

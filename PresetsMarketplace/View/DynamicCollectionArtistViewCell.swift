@@ -38,8 +38,8 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
         viewsLabel.text = (views / 1000 >= 1) ? "\(views / 1000)k" : "\(views)"
     }
     
-    func setup (image: UIImage, views: Int, sales: Int) {
-        self.setup(image: image)
+    func setup(for imageURL: URL?, views: Int, sales: Int) {
+        self.setup(for: imageURL)
         self.views = views
         self.sales = sales
         setLabelsValues(sales: sales, views: views)

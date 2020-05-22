@@ -12,7 +12,6 @@ class DynamicCollectionView: UICollectionView {
     
     let layout = DynamicCollectionViewLayout()
     let collectionEnum: CollectionViewCellEnum
-    let img = #imageLiteral(resourceName: "praia")
     let presets: [Preset]
     var searchDelegate: SearchDelegate?
     weak var collectionViewDataSource: DynamicCollectionViewDataSource?
@@ -39,6 +38,9 @@ class DynamicCollectionView: UICollectionView {
         collectionViewDataSource = dataSource
         collectionViewDelegate = delegate
         searchDelegate = collectionViewDataSource
+
+        self.delegate = collectionViewDelegate
+        self.dataSource = collectionViewDataSource
         self.reloadData()
     }
 }

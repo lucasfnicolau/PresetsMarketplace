@@ -21,6 +21,6 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO
+        print("Item: \(indexPath.item) | Row: \(indexPath.row) | Name: \(presets[indexPath.item].name)")
     }
 }
