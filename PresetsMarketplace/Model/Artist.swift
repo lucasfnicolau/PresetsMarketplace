@@ -9,6 +9,7 @@
 import Foundation
 
 class Artist: User {
+    var presets: [Preset] = []
     var about: String
 
     init(name: String, about: String, profileImageLink: String) {

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60F3D742475A6E0009CBE10 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F3D732475A6E0009CBE10 /* Storyboard.swift */; };
+		B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3824759EA100027C23 /* PresetInfoTableViewDelegate.swift */; };
+		B654DE3B24759EB800027C23 /* PresetInfoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3A24759EB800027C23 /* PresetInfoTableViewDataSource.swift */; };
+		B654DE3D24759F7500027C23 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3C24759F7500027C23 /* Identifier.swift */; };
+		B654DE3F2475A17200027C23 /* PresetInfoTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3E2475A17200027C23 /* PresetInfoTableViewViewController.swift */; };
 		B659283F247335F100F4B4C8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659283E247335F100F4B4C8 /* BaseViewController.swift */; };
 		B65928482474598600F4B4C8 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65928472474598600F4B4C8 /* CloseButton.swift */; };
 		B659284A24745F7F00F4B4C8 /* RoundedBluredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659284924745F7F00F4B4C8 /* RoundedBluredView.swift */; };
@@ -16,8 +21,6 @@
 		B659286424747D8E00F4B4C8 /* AboutPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286324747D8E00F4B4C8 /* AboutPresetTableViewCell.swift */; };
 		B659286624747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286524747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift */; };
 		B659286824747DB300F4B4C8 /* OthersPresetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286724747DB300F4B4C8 /* OthersPresetsTableViewCell.swift */; };
-		B659286A24747DEB00F4B4C8 /* SlideToMoreDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286924747DEB00F4B4C8 /* SlideToMoreDetailsTableViewCell.swift */; };
-		B659286C2474808500F4B4C8 /* EmptyPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286B2474808500F4B4C8 /* EmptyPresetTableViewCell.swift */; };
 		B659286E2474824300F4B4C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286D2474824300F4B4C8 /* User.swift */; };
 		B65928702474844D00F4B4C8 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659286F2474844D00F4B4C8 /* UIImageView.swift */; };
 		B659287424748D1500F4B4C8 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287324748D1500F4B4C8 /* Preset.swift */; };
@@ -26,6 +29,7 @@
 		B659287A2474946800F4B4C8 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65928792474946800F4B4C8 /* URLManager.swift */; };
 		B659287C2474986700F4B4C8 /* ImagesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287B2474986700F4B4C8 /* ImagesPageViewController.swift */; };
 		B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287D2474993E00F4B4C8 /* PresetImageViewController.swift */; };
+		B659288024749E0700F4B4C8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287F24749E0700F4B4C8 /* UIViewController.swift */; };
 		B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F1024732674003B0EF5 /* TabBarController.swift */; };
 		B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F12247326B6003B0EF5 /* FeedViewController.swift */; };
 		B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */; };
@@ -35,6 +39,9 @@
 		B6A4E021246F2114009A78AC /* PresetsMarketplace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6A4E01F246F2114009A78AC /* PresetsMarketplace.xcdatamodeld */; };
 		B6A4E023246F2115009A78AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A4E022246F2115009A78AC /* Assets.xcassets */; };
 		B6A4E026246F2115009A78AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A4E024246F2115009A78AC /* LaunchScreen.storyboard */; };
+		B6E764FD2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E764FC2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift */; };
+		B6E764FF2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E764FE2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift */; };
+		B6E76502247701B7000B5778 /* OthersPresetsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E76501247701B7000B5778 /* OthersPresetsCollectionViewCell.swift */; };
 		C0802F7424759EF2006267F7 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F7324759EF2006267F7 /* DynamicCollectionView.swift */; };
 		C0802F762475A109006267F7 /* DynamicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F752475A109006267F7 /* DynamicCollectionViewCell.swift */; };
 		C0802F782475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */; };
@@ -44,6 +51,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B60F3D732475A6E0009CBE10 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		B654DE3824759EA100027C23 /* PresetInfoTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetInfoTableViewDelegate.swift; sourceTree = "<group>"; };
+		B654DE3A24759EB800027C23 /* PresetInfoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetInfoTableViewDataSource.swift; sourceTree = "<group>"; };
+		B654DE3C24759F7500027C23 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		B654DE3E2475A17200027C23 /* PresetInfoTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetInfoTableViewViewController.swift; sourceTree = "<group>"; };
 		B659283E247335F100F4B4C8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B65928472474598600F4B4C8 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		B659284924745F7F00F4B4C8 /* RoundedBluredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBluredView.swift; sourceTree = "<group>"; };
@@ -53,8 +65,6 @@
 		B659286324747D8E00F4B4C8 /* AboutPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPresetTableViewCell.swift; sourceTree = "<group>"; };
 		B659286524747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistPresetTableViewCell.swift; sourceTree = "<group>"; };
 		B659286724747DB300F4B4C8 /* OthersPresetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPresetsTableViewCell.swift; sourceTree = "<group>"; };
-		B659286924747DEB00F4B4C8 /* SlideToMoreDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideToMoreDetailsTableViewCell.swift; sourceTree = "<group>"; };
-		B659286B2474808500F4B4C8 /* EmptyPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPresetTableViewCell.swift; sourceTree = "<group>"; };
 		B659286D2474824300F4B4C8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B659286F2474844D00F4B4C8 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		B659287324748D1500F4B4C8 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
@@ -63,6 +73,7 @@
 		B65928792474946800F4B4C8 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		B659287B2474986700F4B4C8 /* ImagesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesPageViewController.swift; sourceTree = "<group>"; };
 		B659287D2474993E00F4B4C8 /* PresetImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetImageViewController.swift; sourceTree = "<group>"; };
+		B659287F24749E0700F4B4C8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B68A4F1024732674003B0EF5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B68A4F12247326B6003B0EF5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +85,9 @@
 		B6A4E022246F2115009A78AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6A4E025246F2115009A78AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6A4E027246F2115009A78AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6E764FC2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPresetsCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		B6E764FE2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPresetsCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		B6E76501247701B7000B5778 /* OthersPresetsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPresetsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0802F7324759EF2006267F7 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		C0802F752475A109006267F7 /* DynamicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionArtistViewCell.swift; sourceTree = "<group>"; };
@@ -93,6 +107,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B654DE3724759E7C00027C23 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				B6E764FB2476FF2F000B5778 /* CollectionView */,
+				B654DE3E2475A17200027C23 /* PresetInfoTableViewViewController.swift */,
+				B654DE3824759EA100027C23 /* PresetInfoTableViewDelegate.swift */,
+				B654DE3A24759EB800027C23 /* PresetInfoTableViewDataSource.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		B65928382473343900F4B4C8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B659286F2474844D00F4B4C8 /* UIImageView.swift */,
+				B659287F24749E0700F4B4C8 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -113,6 +139,7 @@
 		B6592846247458D800F4B4C8 /* PresetPreviewViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B654DE3724759E7C00027C23 /* TableView */,
 				B659287224748A9900F4B4C8 /* ImagesPageViewController */,
 				B659286224747C8200F4B4C8 /* View */,
 				B659285E2474770C00F4B4C8 /* PresetPreviewViewController.storyboard */,
@@ -124,11 +151,9 @@
 		B659286224747C8200F4B4C8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B659286924747DEB00F4B4C8 /* SlideToMoreDetailsTableViewCell.swift */,
 				B659286324747D8E00F4B4C8 /* AboutPresetTableViewCell.swift */,
 				B659286524747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift */,
 				B659286724747DB300F4B4C8 /* OthersPresetsTableViewCell.swift */,
-				B659286B2474808500F4B4C8 /* EmptyPresetTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				B65928792474946800F4B4C8 /* URLManager.swift */,
+				B654DE3C24759F7500027C23 /* Identifier.swift */,
+				B60F3D732475A6E0009CBE10 /* Storyboard.swift */,
 				D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */,
 				C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */,
 			);
@@ -229,6 +256,24 @@
 				B6A4E01F246F2114009A78AC /* PresetsMarketplace.xcdatamodeld */,
 			);
 			path = PresetsMarketplace;
+			sourceTree = "<group>";
+		};
+		B6E764FB2476FF2F000B5778 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B6E765002477019D000B5778 /* View */,
+				B6E764FC2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift */,
+				B6E764FE2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		B6E765002477019D000B5778 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6E76501247701B7000B5778 /* OthersPresetsCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,17 +350,24 @@
 				D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */,
 				B659286424747D8E00F4B4C8 /* AboutPresetTableViewCell.swift in Sources */,
 				B659286124747C5A00F4B4C8 /* PresetPreviewViewController.swift in Sources */,
+				B6E76502247701B7000B5778 /* OthersPresetsCollectionViewCell.swift in Sources */,
 				B659287424748D1500F4B4C8 /* Preset.swift in Sources */,
+				B654DE3B24759EB800027C23 /* PresetInfoTableViewDataSource.swift in Sources */,
+				B654DE3F2475A17200027C23 /* PresetInfoTableViewViewController.swift in Sources */,
 				B659287624748D3700F4B4C8 /* PresetParameters.swift in Sources */,
 				B65928482474598600F4B4C8 /* CloseButton.swift in Sources */,
+				B6E764FD2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift in Sources */,
 				B6A4E017246F2114009A78AC /* AppDelegate.swift in Sources */,
 				B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */,
+				B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */,
 				B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */,
 				B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */,
 				B659286624747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift in Sources */,
+				B60F3D742475A6E0009CBE10 /* Storyboard.swift in Sources */,
 				C0802F782475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift in Sources */,
 				B659287824748D8E00F4B4C8 /* Artist.swift in Sources */,
 				B659287C2474986700F4B4C8 /* ImagesPageViewController.swift in Sources */,
+				B654DE3D24759F7500027C23 /* Identifier.swift in Sources */,
 				B659287A2474946800F4B4C8 /* URLManager.swift in Sources */,
 				B68A4F17247327A4003B0EF5 /* ProfileViewController.swift in Sources */,
 				B659283F247335F100F4B4C8 /* BaseViewController.swift in Sources */,
@@ -325,10 +377,11 @@
 				B659286A24747DEB00F4B4C8 /* SlideToMoreDetailsTableViewCell.swift in Sources */,
 				D947897F24749C2A00A536DF /* DynamicCollectionViewDelegate.swift in Sources */,
 				B659284A24745F7F00F4B4C8 /* RoundedBluredView.swift in Sources */,
+				B659288024749E0700F4B4C8 /* UIViewController.swift in Sources */,
 				C0802F762475A109006267F7 /* DynamicCollectionViewCell.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
 				B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */,
-				B659286C2474808500F4B4C8 /* EmptyPresetTableViewCell.swift in Sources */,
+				B6E764FF2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift in Sources */,
 				B659285D24746FC100F4B4C8 /* CircleImageView.swift in Sources */,
 				C0802F7424759EF2006267F7 /* DynamicCollectionView.swift in Sources */,
 				C0802F7A2475BF85006267F7 /* CollectionViewCellEnum.swift in Sources */,
@@ -469,7 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Z92W36843;
+				DEVELOPMENT_TEAM = 4BUKN8ST5B;
 				INFOPLIST_FILE = PresetsMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -487,7 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9Z92W36843;
+				DEVELOPMENT_TEAM = 4BUKN8ST5B;
 				INFOPLIST_FILE = PresetsMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

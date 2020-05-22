@@ -22,10 +22,6 @@ class RoundedBluredView: UIVisualEffectView {
         }
     }
 
-    override init(effect: UIVisualEffect?) {
-        super.init(effect: effect)
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
         setLayout()
@@ -40,9 +36,4 @@ class RoundedBluredView: UIVisualEffectView {
         self.layer.cornerRadius = isFullyRounded ? self.frame.height / 2 : cornerRadius
         self.clipsToBounds = true
     }
-
-    required init?(coder: NSCoder) {
-        super.init(effect: UIBlurEffect(style: .light))
-    }
-
 }

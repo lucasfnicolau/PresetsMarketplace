@@ -10,11 +10,11 @@ import UIKit
 
 class OthersPresetsTableViewCell: UITableViewCell {
     @IBOutlet weak var otherPresetsTitleTextView: UITextView!
-    @IBOutlet weak var otherPresetsCollectionView: UICollectionView!
+    @IBOutlet weak var othersPresetsCollectionView: UICollectionView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        otherPresetsTitleTextView.text = "Outros presets"
+        otherPresetsTitleTextView.text = "Presets populares do artista"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

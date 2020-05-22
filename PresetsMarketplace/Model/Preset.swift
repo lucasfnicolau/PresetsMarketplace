@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Preset {
+class Preset: Equatable {
+
     var name: String
     var artist: Artist
     var description: String = ""
@@ -47,5 +48,9 @@ class Preset {
 
     func incrementViewsCount() {
         self.viewsCount += 1
+    }
+
+    static func == (lhs: Preset, rhs: Preset) -> Bool {
+        return lhs.name == rhs.name && lhs.artist == rhs.artist
     }
 }
