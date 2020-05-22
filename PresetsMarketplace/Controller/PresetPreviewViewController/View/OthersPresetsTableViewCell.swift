@@ -14,7 +14,7 @@ class OthersPresetsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        otherPresetsTitleTextView.text = "Outros presets"
+        otherPresetsTitleTextView.text = "Presets populares do artista"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

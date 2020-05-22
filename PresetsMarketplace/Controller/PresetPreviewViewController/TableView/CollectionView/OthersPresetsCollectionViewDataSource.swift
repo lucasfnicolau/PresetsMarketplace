@@ -16,7 +16,7 @@ class OthersPresetsCollectionViewDataSource: NSObject, UICollectionViewDataSourc
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presets.count
+        return presets.count <= 3 ? presets.count : 3
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
