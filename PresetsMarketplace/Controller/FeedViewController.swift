@@ -38,7 +38,15 @@ class FeedViewController: BaseViewController {
                                 "https://greekcitytimes.com/wp-content/uploads/2020/04/elena-ktenopoulou-cjzV4WK46qY-unsplash-scaled.jpg"
         ])
 
-        artist.presets = [preset, preset2]
+        let preset3 = Preset(name: "Biruta",
+                             artist: artist,
+                             description: "Oh yeah",
+                             price: 90,
+                             imagesLinks: [
+                                "https://miro.medium.com/max/1400/1*UpYip0hMzt2uGfaGaMdQXw.jpeg"
+        ])
+
+        artist.presets = [preset, preset2, preset3]
 
         if let vc = UIStoryboard(name: Storyboard.presetPreviewViewController, bundle: nil).instantiateViewController(identifier: Identifier.presetPreviewViewController) as? PresetPreviewViewController {
             vc.preset = preset
