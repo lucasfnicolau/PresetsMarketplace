@@ -18,6 +18,8 @@ enum Identifier {
 
     // MARK: - CollectionViewCell
     static let othersPresetsCollectionViewCell = "OthersPresetsCollectionViewCell"
+    static let dynamicCollectionViewCell = "DynamicCollectionViewCell"
+    static let dynamicCollectionArtistViewCell = "DynamicCollectionArtistViewCell"
 
     // MARK: - ViewController
     static let presetPreviewViewController = "PresetPreviewViewController"

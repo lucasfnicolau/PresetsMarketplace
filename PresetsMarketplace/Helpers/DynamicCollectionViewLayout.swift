@@ -11,11 +11,9 @@ import UIKit
 
 class DynamicCollectionViewLayout: UICollectionViewLayout {
     
-    
-    weak var delegate: DynamicCollectionViewDelegate?
-    
     private let numberOfColumns = 2
     private let cellPadding: CGFloat = 6
+    private let cellSizes: [CGFloat] = [200, 250, 300]
     
     private var cache: [UICollectionViewLayoutAttributes] = []
     
@@ -51,9 +49,7 @@ class DynamicCollectionViewLayout: UICollectionViewLayout {
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             
-            let photoHeight = delegate?.collectionView(
-                collectionView,
-                heightForPhotoAtIndexPath: indexPath) ?? 180
+            let photoHeight = cellSizes.randomElement() ?? 200
             let height = cellPadding * 2 + photoHeight
             let frame = CGRect(x: xOffset[column],
                                y: yOffset[column],
