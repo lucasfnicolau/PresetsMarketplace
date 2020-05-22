@@ -19,7 +19,6 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .white
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
     }
 
     /*

@@ -10,19 +10,59 @@ import UIKit
 
 class DiscoverViewController: BaseViewController {
 
+    var collectionView: DynamicCollectionView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Explorar"
+        navigationItem.title = "Descobrir"
+
+        setupSearchController()
+        setupCollectionView()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        setupCollectionViewConstraints()
     }
-    */
 
+    func setupCollectionView() {
+        collectionView = DynamicCollectionView(collectionType: .user, with: Mock.shared.presets)
+        guard let collectionView = collectionView else { return }
+        self.view.addSubview(collectionView)
+    }
+
+    func setupCollectionViewConstraints() {
+        guard let collectionView = collectionView else { return }
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0)
+        ])
+
+        collectionView.backgroundColor = .clear
+    }
+
+    func setupSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Busque por artistas e presets"
+        self.definesPresentationContext = true
+        self.navigationItem.searchController = searchController
+    }
+}
+
+extension DiscoverViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let collectionView = collectionView else { return }
+
+        let query = searchController.searchBar.text ?? ""
+        collectionView.searchDelegate?.search(usingQuery: query) {
+            presets in
+            collectionView.collectionViewDelegate?.updatePresets(to: presets)
+            collectionView.reloadData()
+        }
+    }
 }
