@@ -48,4 +48,9 @@ class DynamicCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         cellImageView.image = nil
     }
+    
+    /// Prevent the cell from bug when the large title from the view shrinks with scroll
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        return layoutAttributes
+    }
 }
