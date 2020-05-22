@@ -48,7 +48,7 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
     func setupBlurredRect() {
         self.contentView.addSubview(blurredRect)
         //        let cellWidth = self.frame.size.width * 0.42
-        let cellWidth = self.frame.size.width * 0.7
+        let cellWidth = self.frame.size.width * 0.5
         let cellHeight = cellWidth * 0.27
         
         let blurredEffect = UIBlurEffect(style: .light)
@@ -72,7 +72,7 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
-        //        stackView.spacing = 5
+        stackView.spacing = 5
     }
     
     func setupSalesStackView() {
@@ -81,7 +81,7 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
         
         salesStackView.translatesAutoresizingMaskIntoConstraints = false
         //        let width = blurredRect.frame.size.width * 0.4
-        let width = (self.frame.size.width * 0.42) * 0.4
+        let width = (self.frame.size.width * 0.5) * 0.4
         NSLayoutConstraint.activate([
             salesStackView.topAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.topAnchor, constant: 3),
             salesStackView.bottomAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.bottomAnchor, constant: -3),
@@ -95,7 +95,7 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
         blurredRect.contentView.addSubview(viewsStackView)
         
         viewsStackView.translatesAutoresizingMaskIntoConstraints = false
-        let width = (self.frame.size.width * 0.42) * 0.4
+        let width = (self.frame.size.width * 0.5) * 0.4
         NSLayoutConstraint.activate([
             viewsStackView.topAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.topAnchor, constant: 3),
             viewsStackView.bottomAnchor.constraint(equalTo: blurredRect.safeAreaLayoutGuide.bottomAnchor, constant: -3),
@@ -125,6 +125,16 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
         
         salesImage.contentMode = .scaleAspectFit
         viewsImage.contentMode = .scaleAspectFit
+        
+        salesImage.translatesAutoresizingMaskIntoConstraints = false
+        viewsImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        let width = (self.frame.size.width * 0.5) * 0.4 * 0.3
+        
+        NSLayoutConstraint.activate([
+            salesImage.widthAnchor.constraint(equalToConstant: width),
+            viewsImage.widthAnchor.constraint(equalToConstant: width)
+        ])
         
         salesStackView.addArrangedSubview(salesImage)
         viewsStackView.addArrangedSubview(viewsImage)

@@ -44,7 +44,7 @@ extension DynamicCollectionView: UICollectionViewDataSource {
             return cell
         case .artist:
             guard let cell = dequeueReusableCell(withReuseIdentifier: "DynamicCollectionArtistViewCell", for: indexPath) as? DynamicColletionArtistViewCell else { return UICollectionViewCell() }
-            cell.setup(image: img, views: 50, sales: 50)
+            cell.setup(image: img, views: 500, sales: 500)
             return cell
         }
     }
