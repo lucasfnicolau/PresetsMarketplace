@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OthersPresetsCollectionViewDelegate: NSObject, UICollectionViewDelegate {
+class OthersPresetsCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var presets: [Preset]
 
     init(with presets: [Preset]) {
@@ -19,4 +19,8 @@ class OthersPresetsCollectionViewDelegate: NSObject, UICollectionViewDelegate {
         // TODO
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: 170, height: 170)
+    }
 }

@@ -13,6 +13,18 @@ class OthersPresetsCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.clipsToBounds = true
+        self.contentMode = .scaleAspectFill
+        presetImageView.clipsToBounds = true
+        presetImageView.contentMode = .scaleAspectFill
+
+        NSLayoutConstraint.activate([
+            presetImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            presetImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            presetImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            presetImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
 
     func setup(for preset: Preset) {
