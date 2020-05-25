@@ -23,7 +23,7 @@ class FeedViewController: BaseViewController {
     }
     
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .artist, with: Mock.shared.presets)
+        collectionView = DynamicCollectionView(collectionType: .artist)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
     }

@@ -9,18 +9,14 @@
 import UIKit
 
 class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
-    private var presets: [Preset]
+    private let dao: DynamicCollectionViewDAO
 
-    init(with presets: [Preset]) {
-        self.presets = presets
+    init(for dao: DynamicCollectionViewDAO) {
+        self.dao = dao
         super.init()
     }
 
-    func updatePresets(to presets: [Preset]) {
-        self.presets = presets
-    }
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO
+        print("Item: \(indexPath.item) | Row: \(indexPath.row) | Name: \(dao.filteredPresets[indexPath.item].name)")
     }
 }
