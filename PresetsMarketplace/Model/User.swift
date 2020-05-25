@@ -12,7 +12,8 @@ class User: Equatable {
     var id: String
     var name: String
     var profileImageUrl: URL?
-    var following: [Artist] = []
+    private(set) var following: [Artist] = []
+    private(set) var acquiredPresets: [Preset] = []
 
     init(id: String = "", name: String, profileImageLink: String) {
         self.id = id.count > 0 ? id : UUID().uuidString
@@ -38,4 +39,11 @@ class User: Equatable {
         }
     }
     
+    func addPreset(_ preset: Preset) {
+        acquiredPresets.append(preset)
+    }
+
+    func hasPreset(_ preset: Preset) -> Bool {
+        return acquiredPresets.contains(preset)
+    }
 }
