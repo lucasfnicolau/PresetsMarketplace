@@ -17,15 +17,17 @@ class PublicProfileViewController: UIViewController {
     var profileDescriptionLabel: UILabel = UILabel()
     
     let followButton: UIButton = UIButton(type: .custom)
+    let closeButton: UIButton = UIButton(type: .custom)
     
     var collectionView: DynamicCollectionView?
-
+    
     override func viewDidLoad() {
         view.backgroundColor = .white
         setupImageView()
         setupLabels()
-        setupButton()
+        setupFollowButton()
         setupCollectionView()
+        setupCloseButton()
         super.viewDidLoad()
     }
     
@@ -34,6 +36,7 @@ class PublicProfileViewController: UIViewController {
         setupLabelsConstraints()
         setupButtonConstraint()
         setupCollectionViewConstraints()
+        setupCloseButtonConstraints()
     }
     
     func setupLabels() {
@@ -46,11 +49,14 @@ class PublicProfileViewController: UIViewController {
     func setupLabelsConstraints() {
         profileNameLabel.translatesAutoresizingMaskIntoConstraints = false
         profileDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        profileDescriptionLabel.numberOfLines = 0
         
         NSLayoutConstraint.activate([
             profileNameLabel.topAnchor.constraint(equalTo: profilePhotoImageView.bottomAnchor, constant: 60),
             profileNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             profileDescriptionLabel.topAnchor.constraint(equalTo: profileNameLabel.bottomAnchor, constant: 18),
+            profileDescriptionLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            profileDescriptionLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             profileDescriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
@@ -70,14 +76,14 @@ class PublicProfileViewController: UIViewController {
         self.view.addSubview(profilePhotoImageView)
         profilePhotoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            profilePhotoImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 70),
+            profilePhotoImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 70),
             profilePhotoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             profilePhotoImageView.widthAnchor.constraint(equalToConstant: size),
             profilePhotoImageView.heightAnchor.constraint(equalToConstant: size)
         ])
     }
     
-    func setupButton() {
+    func setupFollowButton() {
         if userProfile.following == [], !userProfile.following.contains(artistProfile) {
             let image = #imageLiteral(resourceName: "UnactiveFollowingBtn")
             followButton.setBackgroundImage(image, for: .normal)
@@ -103,6 +109,27 @@ class PublicProfileViewController: UIViewController {
             followButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             followButton.widthAnchor.constraint(equalToConstant: widht),
             followButton.heightAnchor.constraint(equalToConstant: height)
+        ])
+    }
+    
+    func setupCloseButton() {
+        let image = #imageLiteral(resourceName: "close_btn")
+        
+        closeButton.setImage(image, for: .normal)
+        closeButton.addTarget(self, action: #selector(selfDismiss), for: .touchDown)
+        self.view.addSubview(closeButton)
+    }
+    
+    func setupCloseButtonConstraints() {
+        
+        let size = self.view.frame.width * 0.1
+        
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            closeButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            closeButton.widthAnchor.constraint(equalToConstant: size),
+            closeButton.heightAnchor.constraint(equalToConstant: size)
         ])
     }
     
@@ -153,5 +180,9 @@ class PublicProfileViewController: UIViewController {
         let image = #imageLiteral(resourceName: "UnactiveFollowingBtn")
         followButton.setBackgroundImage(image, for: .normal)
         startFollowingButton()
+    }
+    
+    @objc func selfDismiss() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
