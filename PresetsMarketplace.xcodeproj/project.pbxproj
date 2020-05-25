@@ -64,6 +64,19 @@
 		D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B6C2F23F247C8276009A1C8B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A7B96C7F247877BD000A695A /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		A7B96C80247877BD000A695A /* TransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
@@ -360,6 +373,7 @@
 				B6A4E00F246F2113009A78AC /* Sources */,
 				B6A4E010246F2113009A78AC /* Frameworks */,
 				B6A4E011246F2113009A78AC /* Resources */,
+				B6C2F23F247C8276009A1C8B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -376,7 +390,7 @@
 		B6A4E00B246F2113009A78AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Lucas Fernandez Nicolau";
 				TargetAttributes = {
@@ -459,7 +473,6 @@
 				B659286824747DB300F4B4C8 /* OthersPresetsTableViewCell.swift in Sources */,
 				B6A4E021246F2114009A78AC /* PresetsMarketplace.xcdatamodeld in Sources */,
 				B65928702474844D00F4B4C8 /* UIImageView.swift in Sources */,
-				D947897F24749C2A00A536DF /* DynamicCollectionViewDelegate.swift in Sources */,
 				B659284A24745F7F00F4B4C8 /* RoundedBluredView.swift in Sources */,
 				B659288024749E0700F4B4C8 /* UIViewController.swift in Sources */,
 				B6C2F21A247C56C7009A1C8B /* DynamicCollectionViewDAO.swift in Sources */,

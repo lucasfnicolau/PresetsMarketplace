@@ -11,7 +11,7 @@ import UIKit
 
 class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration: TimeInterval = 10
+    let duration: TimeInterval = 1
     var presenting: Bool = true
     var originFrame: CGRect = CGRect.zero
     

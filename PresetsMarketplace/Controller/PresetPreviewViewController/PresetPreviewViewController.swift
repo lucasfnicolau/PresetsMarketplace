@@ -43,6 +43,15 @@ class PresetPreviewViewController: UIViewController {
         presetArtistNameLabel.text = "por \(preset.artist.name)"
     }
 
+    func setButtonState() {
+        guard let preset = preset else { return }
+        if Mock.shared.user.hasPreset(preset) {
+            floatingBuyButton.setTitle("ABRIR", for: .normal)
+        } else {
+            floatingBuyButton.setTitle("OBTER", for: .normal)
+        }
+    }
+
     func setupPageViewController() {
         guard let preset = preset else { return }
         imagesPageViewController = ImagesPageViewController(withImagesURLs: preset.imagesURLs)
@@ -77,13 +86,14 @@ class PresetPreviewViewController: UIViewController {
         floatingPresetNameLabel.text = preset.name
         floatingSoldLabel.text = "\(preset.soldCount)"
         floatingViewsLabel.text = "\(preset.viewsCount)"
+        setButtonState()
 
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .currency
-        if let price = formatter.string(from: NSNumber(value: preset.price)) {
-            floatingBuyButton.setTitle(price, for: .normal)
-        }
+//        let formatter = NumberFormatter()
+//        formatter.locale = Locale.current
+//        formatter.numberStyle = .currency
+//        if let price = formatter.string(from: NSNumber(value: preset.price)) {
+//            floatingBuyButton.setTitle(price, for: .normal)
+//        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,6 +105,23 @@ class PresetPreviewViewController: UIViewController {
     }
 
     @IBAction func floatingBuyButtonTouched(_ sender: Any) {
+        guard let preset = preset else { return }
+        if !Mock.shared.user.hasPreset(preset) {
+            Mock.shared.user.addPreset(preset)
+            setButtonState()
+
+        } else {
+            guard let url = Bundle.main.url(forResource: preset.dngPath, withExtension: "dng") else {
+                return
+            }
+            do {
+                let data = try Data(contentsOf: url)
+                let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                self.present(activityViewController, animated: true, completion: nil)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 
     @IBAction func closeButtonTouched(_ sender: Any) {

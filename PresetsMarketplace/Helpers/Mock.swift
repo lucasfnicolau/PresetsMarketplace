@@ -11,6 +11,10 @@ import Foundation
 class Mock {
 
     static let shared = Mock()
+    private(set) lazy var user: User = {
+        let user = User(name: "Dagoberto", profileImageLink: "https://media-exp1.licdn.com/dms/image/C4E03AQHpklS_YuAfiQ/profile-displayphoto-shrink_400_400/0?e=1595462400&v=beta&t=-9bmhicFb54LcNZVtT9LpoyDvHt-Q_Ms4-Qr-lEBfkM")
+        return user
+    }()
     private(set) var presets: [Preset] = []
 
     private init() {
