@@ -35,7 +35,7 @@ class Mock {
         leonardoGuedes.presets = [leonardoGuedesPreset0, leonardoGuedesPreset1]
 
         // MARK: - Artist mock 1
-        let pedroOliveira = Artist(name: "Leonardo Guedes", about: "O artista mais blogueirinha que você irá conhecer", profileImageLink: "https://media-exp1.licdn.com/dms/image/C4E03AQHpklS_YuAfiQ/profile-displayphoto-shrink_400_400/0?e=1595462400&v=beta&t=-9bmhicFb54LcNZVtT9LpoyDvHt-Q_Ms4-Qr-lEBfkM")
+        let pedroOliveira = Artist(name: "Pedro Oliveira", about: "O artista mais blogueirinha que você irá conhecer", profileImageLink: "https://media-exp1.licdn.com/dms/image/C4E03AQHpklS_YuAfiQ/profile-displayphoto-shrink_400_400/0?e=1595462400&v=beta&t=-9bmhicFb54LcNZVtT9LpoyDvHt-Q_Ms4-Qr-lEBfkM")
 
         let pedroOliveira0 = Preset(name: "F1 2020", artist: leonardoGuedes, description: "F1 vruuuum vruuuum. Velocidade, eu sou a velocidade. KATCHAU!", price: 49.99, imagesLinks: [
             "https://cdn.wallpapersafari.com/12/85/2WfMJO.jpg",

@@ -9,18 +9,13 @@
 import UIKit
 
 class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
-    
-    private var presets: [Preset]
+    private let dao: DynamicCollectionViewDAO
     weak var viewController: UIViewController?
 
-    init(with presets: [Preset], from viewController: UIViewController) {
+    init(for dao: DynamicCollectionViewDAO, from viewController: UIViewController) {
         self.viewController = viewController
-        self.presets = presets
+        self.dao = dao
         super.init()
-    }
-
-    func updatePresets(to presets: [Preset]) {
-        self.presets = presets
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

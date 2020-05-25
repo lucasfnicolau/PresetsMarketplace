@@ -14,6 +14,7 @@ class Preset: Equatable {
     var artist: Artist
     var description: String = ""
     private(set) var imagesURLs: [URL?] = []
+    private(set) var imagesData: [Data] = []
     private(set) var price: Double = 0
     private(set) var viewsCount: Int = 0
     private(set) var soldCount: Int = 0
@@ -24,6 +25,23 @@ class Preset: Equatable {
         self.description = description
         addImagesURLs(from: imagesLinks)
         setPrice(to: price)
+    }
+
+    func loadImagesData(withCompletion completion: @escaping () -> Void) {
+        if imagesData.isEmpty {
+            DispatchQueue.global().async {
+                for url in self.imagesURLs {
+                    guard let url = url else { continue }
+                    do {
+                        let data = try Data(contentsOf: url)
+                        self.imagesData.append(data)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                completion()
+            }
+        } else { completion() }
     }
 
     func addImagesURLs(from imagesLinks: [String]) {
