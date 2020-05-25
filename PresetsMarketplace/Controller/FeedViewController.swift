@@ -9,12 +9,14 @@
 import UIKit
 
 class FeedViewController: BaseViewController {
-    
+
+    let transition = TransitionAnimator()
     var collectionView: DynamicCollectionView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Feed"
+        
         setupCollectionView()
     }
     
@@ -23,7 +25,7 @@ class FeedViewController: BaseViewController {
     }
     
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .artist)
+        collectionView = DynamicCollectionView(collectionType: .artist, in: self)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
     }
