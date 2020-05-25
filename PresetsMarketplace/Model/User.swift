@@ -12,6 +12,7 @@ class User: Equatable {
     var id: String
     var name: String
     var profileImageUrl: URL?
+    var acquiredPresets: [Preset] = []
 
     init(id: String = "", name: String, profileImageLink: String) {
         self.id = id.count > 0 ? id : UUID().uuidString
