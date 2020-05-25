@@ -34,6 +34,9 @@ class TransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
+        
+        transition.presenting = true
+        
+        return transition
     }
 }

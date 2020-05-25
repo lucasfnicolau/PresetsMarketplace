@@ -22,6 +22,8 @@ class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var floatingViewsLabel: UILabel!
     @IBOutlet weak var floatingBuyButton: UIButton!
     var preset: Preset?
+    
+    var transitionDelegate: TransitionDelegate?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -30,10 +32,16 @@ class PresetPreviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTransition()
         setupViews()
         setupPageViewController()
         setupFloatingSellingCard()
         setupGesturesRecognizer()
+    }
+    
+    func setupTransition() {
+        transitionDelegate = TransitionDelegate(from: self.view.frame)
+        self.transitioningDelegate = transitionDelegate
     }
 
     func setupViews() {
