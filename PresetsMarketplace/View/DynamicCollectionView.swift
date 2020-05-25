@@ -12,7 +12,6 @@ class DynamicCollectionView: UICollectionView {
     
     let layout = DynamicCollectionViewLayout()
     let collectionEnum: CollectionViewCellEnum
-//    var searchDelegate: SearchDelegate?
     let collectionViewDataSource: DynamicCollectionViewDataSource
     let collectionViewDelegate: DynamicCollectionViewDelegate
     let dao = DynamicCollectionViewDAO()
@@ -34,7 +33,6 @@ class DynamicCollectionView: UICollectionView {
     }
 
     func configureCollectionView() {
-//        searchDelegate = collectionViewDataSource
         self.delegate = collectionViewDelegate
         self.dataSource = collectionViewDataSource
         self.reloadData()

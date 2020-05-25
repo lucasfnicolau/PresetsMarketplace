@@ -34,7 +34,6 @@
 		B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F12247326B6003B0EF5 /* FeedViewController.swift */; };
 		B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */; };
 		B68A4F17247327A4003B0EF5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F16247327A4003B0EF5 /* ProfileViewController.swift */; };
-		B6A1976F24786D9800C93302 /* SearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A1976E24786D9800C93302 /* SearchDelegate.swift */; };
 		B6A19771247870DE00C93302 /* DynamicCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A19770247870DE00C93302 /* DynamicCollectionViewDelegate.swift */; };
 		B6A19773247873F600C93302 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A19772247873F600C93302 /* Mock.swift */; };
 		B6A4E017246F2114009A78AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A4E016246F2114009A78AC /* AppDelegate.swift */; };
@@ -81,7 +80,6 @@
 		B68A4F12247326B6003B0EF5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		B68A4F16247327A4003B0EF5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		B6A1976E24786D9800C93302 /* SearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelegate.swift; sourceTree = "<group>"; };
 		B6A19770247870DE00C93302 /* DynamicCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		B6A19772247873F600C93302 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		B6A4E013246F2114009A78AC /* PresetsMarketplace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresetsMarketplace.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,7 +125,6 @@
 		B65928382473343900F4B4C8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				B6A1976E24786D9800C93302 /* SearchDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -373,7 +370,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */,
-				B6A1976F24786D9800C93302 /* SearchDelegate.swift in Sources */,
 				B659286424747D8E00F4B4C8 /* AboutPresetTableViewCell.swift in Sources */,
 				B659286124747C5A00F4B4C8 /* PresetPreviewViewController.swift in Sources */,
 				B6E76502247701B7000B5778 /* OthersPresetsCollectionViewCell.swift in Sources */,
