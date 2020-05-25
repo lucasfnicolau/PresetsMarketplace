@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SearchDelegate: AnyObject {
-    func search(usingQuery query: String, completion: @escaping ([Preset]) -> Void)
-}
+//protocol SearchDelegate: AnyObject {
+//    func search(usingQuery query: String, completion: @escaping ([Preset]) -> Void)
+//}

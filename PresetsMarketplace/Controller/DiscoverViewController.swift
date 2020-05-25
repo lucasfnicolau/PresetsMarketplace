@@ -25,7 +25,7 @@ class DiscoverViewController: BaseViewController {
     }
 
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .user, with: Mock.shared.presets)
+        collectionView = DynamicCollectionView(collectionType: .user)
         guard let collectionView = collectionView else { return }
         collectionView.reloadData()
         self.view.addSubview(collectionView)
@@ -60,10 +60,7 @@ extension DiscoverViewController: UISearchResultsUpdating {
         guard let collectionView = collectionView else { return }
 
         let query = searchController.searchBar.text ?? ""
-        collectionView.searchDelegate?.search(usingQuery: query) {
-            presets in
-            collectionView.collectionViewDelegate?.updatePresets(to: presets)
-            collectionView.reloadData()
-        }
+        collectionView.dao.filterPresets(withQuery: query)
+        collectionView.reloadData()
     }
 }
