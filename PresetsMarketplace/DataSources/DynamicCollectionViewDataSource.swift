@@ -23,14 +23,16 @@ class DynamicCollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
+        let row = indexPath.item
+
         switch collectionEnum {
         case .user:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.dynamicCollectionViewCell, for: indexPath) as? DynamicCollectionViewCell else { return UICollectionViewCell() }
-            cell.setup(image: #imageLiteral(resourceName: "praia"))
+            cell.setup(for: presets[row].imagesURLs[0])
             return cell
         case .artist:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.dynamicCollectionArtistViewCell, for: indexPath) as? DynamicColletionArtistViewCell else { return UICollectionViewCell() }
-            cell.setup(image: #imageLiteral(resourceName: "praia"), views: 500, sales: 500)
+            cell.setup(for: presets[row].imagesURLs[0], views: 500, sales: 500)
             return cell
         }
     }
@@ -48,7 +50,7 @@ extension DynamicCollectionViewDataSource: SearchDelegate {
             self.filteredPresets = self.presets
         } else {
             self.filteredPresets = self.presets.filter {
-                $0.name.lowercased().contains(query) || $0.artist.name.lowercased().contains(query)
+                $0.name.lowercased().contains(formattedQuery) || $0.artist.name.lowercased().contains(formattedQuery)
             }
         }
 

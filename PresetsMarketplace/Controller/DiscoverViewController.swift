@@ -27,6 +27,7 @@ class DiscoverViewController: BaseViewController {
     func setupCollectionView() {
         collectionView = DynamicCollectionView(collectionType: .user, with: Mock.shared.presets)
         guard let collectionView = collectionView else { return }
+        collectionView.reloadData()
         self.view.addSubview(collectionView)
     }
 
