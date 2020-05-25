@@ -25,7 +25,7 @@ class DiscoverViewController: BaseViewController {
     }
 
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .user)
+        collectionView = DynamicCollectionView(collectionType: .user, in: self)
         guard let collectionView = collectionView else { return }
         collectionView.reloadData()
         self.view.addSubview(collectionView)

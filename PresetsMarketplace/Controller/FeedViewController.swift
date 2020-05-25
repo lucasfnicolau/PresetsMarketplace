@@ -25,7 +25,7 @@ class FeedViewController: BaseViewController {
     }
     
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .artist)
+        collectionView = DynamicCollectionView(collectionType: .artist, in: self)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
     }

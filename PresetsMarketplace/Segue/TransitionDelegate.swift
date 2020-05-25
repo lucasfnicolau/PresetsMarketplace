@@ -19,12 +19,6 @@ class TransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        guard let selectedIndexPathCell = tableView.indexPathForSelectedRow,
-            let selectedCell = tableView.cellForRow(at: selectedIndexPathCell) as? RecipeTableViewCell,
-            let selectedCellSuperview = selectedCell.superview else {
-                return nil
-        }
-        
         transition.originFrame = originFrame
         
         transition.originFrame = CGRect(

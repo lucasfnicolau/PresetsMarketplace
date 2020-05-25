@@ -12,15 +12,13 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
     private let dao: DynamicCollectionViewDAO
     weak var viewController: UIViewController?
 
-    init(for dao: DynamicCollectionViewDAO, from viewController: UIViewController) {
+    init(for dao: DynamicCollectionViewDAO, from viewController: UIViewController? = nil) {
         self.viewController = viewController
         self.dao = dao
         super.init()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        print("Item: \(indexPath.item) | Row: \(indexPath.row) | Name: \(presets[indexPath.item].name)")
         
         presentPresetPreview(from: collectionView, fromSelectedItemAt: indexPath)
     }
@@ -30,35 +28,37 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
     func presentPresetPreview(from collectionView: UICollectionView, fromSelectedItemAt indexPath: IndexPath) {
         
         guard let viewController = viewController, 
-            let navigationController =  viewController.navigationController else {
-            print("Error when guarding viewController or navigationController")
+            let navigationController = viewController.navigationController, 
+            let cell = collectionView.cellForItem(at: indexPath) as? DynamicCollectionViewCell else {
+            print("Error when guarding viewController or navigationController or cell")
             return
         }
         
-        viewController.modalPresentationStyle = .fullScreen
         
-        let destination = PresetPreviewViewController()
-        
-        guard let cell = collectionView.cellForItem(at: indexPath) as? DynamicCollectionViewCell else {
-            return
+        if let destination = UIStoryboard(name: Storyboard.presetPreviewViewController, bundle: nil).instantiateViewController(identifier: Identifier.presetPreviewViewController) as? PresetPreviewViewController {
+            
+            let originFrame = setOriginFrame(from: cell)
+            let transitionDelegate = TransitionDelegate(from: originFrame)
+            
+            destination.transitioningDelegate = transitionDelegate
+            destination.modalPresentationStyle = .fullScreen
+            destination.preset = dao.filteredPresets[indexPath.item]
+            
+            navigationController.present(destination, animated: true, completion: nil)
         }
-        
-        let originFrame = setOriginFrame(from: cell)
-        
-        destination.transitionDelegate = TransitionDelegate(from: originFrame)
-        navigationController.present(destination, animated: true, completion: nil) 
-        
     }
     
     func setOriginFrame(from cell: DynamicCollectionViewCell) -> CGRect {
         
         var originFrame: CGRect = .zero
         
-        guard let cellSuperView = cell.superview else {
+        guard let viewController = viewController, 
+            let cellSuperView = cell.superview else {
             return .zero
         }
         
-        originFrame = cellSuperView.convert(cell.frame, to: nil)
+        
+        originFrame = cellSuperView.convert(cell.frame, to: viewController.view)
         
         return originFrame
     }

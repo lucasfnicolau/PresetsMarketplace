@@ -16,10 +16,10 @@ class DynamicCollectionView: UICollectionView {
     let collectionViewDelegate: DynamicCollectionViewDelegate
     let dao = DynamicCollectionViewDAO()
     
-    init(collectionType: CollectionViewCellEnum) {
+    init(collectionType: CollectionViewCellEnum, in viewController: UIViewController) {
         self.collectionEnum = collectionType
         self.collectionViewDataSource = DynamicCollectionViewDataSource(collectionEnum: collectionType, for: dao)
-        self.collectionViewDelegate = DynamicCollectionViewDelegate(for: dao)
+        self.collectionViewDelegate = DynamicCollectionViewDelegate(for: dao, from: viewController)
 
         super.init(frame: .zero, collectionViewLayout: layout)
 

@@ -11,7 +11,7 @@ import UIKit
 
 class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration: TimeInterval = 0.8
+    let duration: TimeInterval = 10
     var presenting: Bool = true
     var originFrame: CGRect = CGRect.zero
     
@@ -40,7 +40,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animate(
           withDuration: duration,
           delay: 0.0,
-          usingSpringWithDamping: 0.5,
+          usingSpringWithDamping: 0.8,
           initialSpringVelocity: 0.2,
           animations: { self.setAnimations(for: destinationView, with: scaleTransform, to: frames.final) }, 
           completion: { _ in
