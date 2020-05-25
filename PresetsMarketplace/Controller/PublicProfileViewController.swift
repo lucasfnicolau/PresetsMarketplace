@@ -65,6 +65,8 @@ class PublicProfileViewController: UIViewController {
     func setupImageConstraints() {
         
         let size = self.view.frame.size.width * 0.328
+        profilePhotoImageView.layer.masksToBounds = true
+        profilePhotoImageView.layer.cornerRadius = size / 2
         self.view.addSubview(profilePhotoImageView)
         profilePhotoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -121,7 +123,7 @@ class PublicProfileViewController: UIViewController {
     }
     
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .artist)
+        collectionView = DynamicCollectionView(collectionType: .artist, in: self)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
     }
