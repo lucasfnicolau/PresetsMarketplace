@@ -11,47 +11,32 @@ import UIKit
 class DynamicCollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
     let collectionEnum: CollectionViewCellEnum
-    let presets: [Preset]
-    var filteredPresets: [Preset]
+    let dao: DynamicCollectionViewDAO
 
-    init(collectionEnum: CollectionViewCellEnum, with presets: [Preset]) {
+    init(collectionEnum: CollectionViewCellEnum, for dao: DynamicCollectionViewDAO) {
         self.collectionEnum = collectionEnum
-        self.presets = presets
-        self.filteredPresets = self.presets
+        self.dao = dao
         super.init()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
+        let item = indexPath.item
+        let preset = dao.filteredPresets[item]
+
         switch collectionEnum {
         case .user:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.dynamicCollectionViewCell, for: indexPath) as? DynamicCollectionViewCell else { return UICollectionViewCell() }
-            cell.setup(image: #imageLiteral(resourceName: "praia"))
+            cell.setup(for: preset)
             return cell
         case .artist:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.dynamicCollectionArtistViewCell, for: indexPath) as? DynamicColletionArtistViewCell else { return UICollectionViewCell() }
-            cell.setup(image: #imageLiteral(resourceName: "praia"), views: 500, sales: 500)
+            cell.setup(for: preset)
             return cell
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredPresets.count
-    }
-}
-
-extension DynamicCollectionViewDataSource: SearchDelegate {
-    func search(usingQuery query: String, completion: @escaping ([Preset]) -> Void) {
-        let formattedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-
-        if formattedQuery.count == 0 {
-            self.filteredPresets = self.presets
-        } else {
-            self.filteredPresets = self.presets.filter {
-                $0.name.lowercased().contains(query) || $0.artist.name.lowercased().contains(query)
-            }
-        }
-
-        completion(filteredPresets)
+        return dao.filteredPresets.count
     }
 }

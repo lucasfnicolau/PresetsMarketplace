@@ -12,15 +12,14 @@ class DynamicCollectionView: UICollectionView {
     
     let layout = DynamicCollectionViewLayout()
     let collectionEnum: CollectionViewCellEnum
-    let img = #imageLiteral(resourceName: "praia")
-    let presets: [Preset]
-    var searchDelegate: SearchDelegate?
-    weak var collectionViewDataSource: DynamicCollectionViewDataSource?
-    weak var collectionViewDelegate: DynamicCollectionViewDelegate?
+    let collectionViewDataSource: DynamicCollectionViewDataSource
+    let collectionViewDelegate: DynamicCollectionViewDelegate
+    let dao = DynamicCollectionViewDAO()
     
-    init(collectionType: CollectionViewCellEnum, with presets: [Preset]) {
+    init(collectionType: CollectionViewCellEnum) {
         self.collectionEnum = collectionType
-        self.presets = presets
+        self.collectionViewDataSource = DynamicCollectionViewDataSource(collectionEnum: collectionType, for: dao)
+        self.collectionViewDelegate = DynamicCollectionViewDelegate(for: dao)
 
         super.init(frame: .zero, collectionViewLayout: layout)
 
@@ -34,11 +33,8 @@ class DynamicCollectionView: UICollectionView {
     }
 
     func configureCollectionView() {
-        let dataSource = DynamicCollectionViewDataSource(collectionEnum: collectionEnum, with: presets)
-        let delegate = DynamicCollectionViewDelegate(with: presets)
-        collectionViewDataSource = dataSource
-        collectionViewDelegate = delegate
-        searchDelegate = collectionViewDataSource
+        self.delegate = collectionViewDelegate
+        self.dataSource = collectionViewDataSource
         self.reloadData()
     }
 }
