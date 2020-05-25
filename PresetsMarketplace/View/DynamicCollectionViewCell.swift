@@ -26,8 +26,12 @@ class DynamicCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(for imageURL: URL?) {
-        self.cellImageView.load(url: imageURL)
+    func setup(for preset: Preset) {
+        preset.loadImagesData {
+            DispatchQueue.main.async {
+                self.cellImageView.image = UIImage(data: preset.imagesData[0])
+            }
+        }
     }
     
     func setupConstraints() {

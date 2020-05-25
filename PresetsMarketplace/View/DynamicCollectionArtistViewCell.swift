@@ -38,16 +38,15 @@ class DynamicColletionArtistViewCell: DynamicCollectionViewCell {
         viewsLabel.text = (views / 1000 >= 1) ? "\(views / 1000)k" : "\(views)"
     }
     
-    func setup(for imageURL: URL?, views: Int, sales: Int) {
-        self.setup(for: imageURL)
-        self.views = views
-        self.sales = sales
+    override func setup(for preset: Preset) {
+        super.setup(for: preset)
+        self.views = preset.viewsCount
+        self.sales = preset.soldCount
         setLabelsValues(sales: sales, views: views)
     }
     
     func setupBlurredRect() {
         self.contentView.addSubview(blurredRect)
-        //        let cellWidth = self.frame.size.width * 0.42
         let cellWidth = self.frame.size.width * 0.5
         let cellHeight = cellWidth * 0.27
         

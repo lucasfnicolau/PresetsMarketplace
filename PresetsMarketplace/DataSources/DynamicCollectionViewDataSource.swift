@@ -21,16 +21,17 @@ class DynamicCollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let row = indexPath.item
+        let item = indexPath.item
+        let preset = dao.filteredPresets[item]
 
         switch collectionEnum {
         case .user:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.dynamicCollectionViewCell, for: indexPath) as? DynamicCollectionViewCell else { return UICollectionViewCell() }
-            cell.setup(for: dao.filteredPresets[row].imagesURLs[0])
+            cell.setup(for: preset)
             return cell
         case .artist:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.dynamicCollectionArtistViewCell, for: indexPath) as? DynamicColletionArtistViewCell else { return UICollectionViewCell() }
-            cell.setup(for: dao.filteredPresets[row].imagesURLs[0], views: 500, sales: 500)
+            cell.setup(for: preset)
             return cell
         }
     }
