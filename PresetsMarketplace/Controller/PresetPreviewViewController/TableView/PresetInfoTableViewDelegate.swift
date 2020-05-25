@@ -15,12 +15,14 @@ class PresetInfoTableViewDelegate: NSObject, UITableViewDelegate {
     let preset: Preset
     let blurView: UIVisualEffectView
     let slideToMoreInfoStackView: UIStackView
+    weak var fromViewController: UIViewController?
 
-    init(for tableView: UITableView, with preset: Preset, with blurView: UIVisualEffectView, with slideToMoreInfoStackView: UIStackView) {
+    init(for tableView: UITableView, with preset: Preset, with blurView: UIVisualEffectView, with slideToMoreInfoStackView: UIStackView, from viewController: UIViewController) {
         self.tableView = tableView
         self.preset = preset
         self.blurView = blurView
         self.slideToMoreInfoStackView = slideToMoreInfoStackView
+        self.fromViewController = viewController
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -35,6 +37,15 @@ class PresetInfoTableViewDelegate: NSObject, UITableViewDelegate {
             return 260
         default:
             return 200
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            let publicProfileViewController = PublicProfileViewController()
+            publicProfileViewController.artistProfile = preset.artist
+            guard let guardedViewController = fromViewController else { return }
+            guardedViewController.navigationController?.pushViewController(publicProfileViewController, animated: true)
         }
     }
     

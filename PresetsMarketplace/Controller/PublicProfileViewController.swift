@@ -10,8 +10,8 @@ import UIKit
 
 class PublicProfileViewController: UIViewController {
     
-    let artistProfile: Artist = Artist(name: "MockedArtist", about: "MockedArtist", profileImageLink: "Falar com o Lucas")
-    let userProfile: User = User(name: "MockedUser", profileImageLink: "Falar com o lucas")
+    var artistProfile: Artist = Artist(name: "MockedArtist", about: "MockedArtist", profileImageLink: "Falar com o Lucas")
+    var userProfile: User = User(name: "MockedUser", profileImageLink: "Falar com o lucas")
     var profilePhotoImageView: UIImageView = UIImageView()
     var profileNameLabel: UILabel = UILabel()
     var profileDescriptionLabel: UILabel = UILabel()
@@ -121,7 +121,7 @@ class PublicProfileViewController: UIViewController {
     }
     
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .artist, with: Mock.shared.presets)
+        collectionView = DynamicCollectionView(collectionType: .artist)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
     }
