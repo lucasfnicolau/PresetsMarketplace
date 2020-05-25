@@ -106,6 +106,4 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
         view.center = CGPoint(x: frame.midX, y: frame.midY)
     }
-    
-    
 }
