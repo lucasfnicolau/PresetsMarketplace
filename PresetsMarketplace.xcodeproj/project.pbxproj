@@ -49,6 +49,7 @@
 		C0802F762475A109006267F7 /* DynamicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F752475A109006267F7 /* DynamicCollectionViewCell.swift */; };
 		C0802F782475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */; };
 		C0802F7A2475BF85006267F7 /* CollectionViewCellEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */; };
+		D90E48C5247C5277002F4A74 /* PublicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90E48C4247C5277002F4A74 /* PublicProfileViewController.swift */; };
 		D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		C0802F752475A109006267F7 /* DynamicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionArtistViewCell.swift; sourceTree = "<group>"; };
 		C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellEnum.swift; sourceTree = "<group>"; };
+		D90E48C4247C5277002F4A74 /* PublicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicProfileViewController.swift; sourceTree = "<group>"; };
 		D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +197,7 @@
 				B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */,
 				B68A4F16247327A4003B0EF5 /* ProfileViewController.swift */,
 				B659283E247335F100F4B4C8 /* BaseViewController.swift */,
+				D90E48C4247C5277002F4A74 /* PublicProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				B6A19773247873F600C93302 /* Mock.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
 				B6A19771247870DE00C93302 /* DynamicCollectionViewDelegate.swift in Sources */,
+				D90E48C5247C5277002F4A74 /* PublicProfileViewController.swift in Sources */,
 				B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */,
 				B6E764FF2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift in Sources */,
 				B659285D24746FC100F4B4C8 /* CircleImageView.swift in Sources */,

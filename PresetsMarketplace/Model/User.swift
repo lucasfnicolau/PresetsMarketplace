@@ -12,6 +12,7 @@ class User: Equatable {
     var id: String
     var name: String
     var profileImageUrl: URL?
+    var following: [Artist] = []
 
     init(id: String = "", name: String, profileImageLink: String) {
         self.id = id.count > 0 ? id : UUID().uuidString
@@ -22,4 +23,19 @@ class User: Equatable {
     static func ==(lhs: User, rhs: User) -> Bool {
         return lhs.id == rhs.id
     }
+    
+    public func startFollowing( artirt: Artist) {
+        self.following.append(artirt)
+    }
+    
+    public func stopFollowing( artist: Artist) {
+        if following != [] {
+            for i in following.indices {
+                if following[i] == artist {
+                    following.remove(at: i)
+                }
+            }
+        }
+    }
+    
 }
