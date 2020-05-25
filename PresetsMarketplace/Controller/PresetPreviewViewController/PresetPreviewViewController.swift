@@ -29,6 +29,7 @@ class PresetPreviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupViews()
         setupPageViewController()
         setupFloatingSellingCard()
