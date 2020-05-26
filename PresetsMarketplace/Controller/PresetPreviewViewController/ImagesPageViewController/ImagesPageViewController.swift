@@ -8,23 +8,32 @@
 
 import UIKit
 
-class ImagesPageViewController: UIPageViewController {
+class ImagesPageViewController: UIPageViewController, UIPageViewControllerDelegate {
 
     let imagesURLs: [URL?]
+    var pageControl = UIPageControl()
+    var pageControlView: UIView
 
     lazy var pages: [UIViewController] = {
         return self.imagesURLs.map { PresetImageViewController(withImageURL: $0) }
     }()
 
-    init(withImagesURLs imagesURLs: [URL?]) {
+    init(withImagesURLs imagesURLs: [URL?], pageControlView: UIView) {
         self.imagesURLs = imagesURLs
+        self.pageControlView = pageControlView
+
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+
         self.dataSource = self
+        configurePageControl()
     }
 
     required init?(coder: NSCoder) {
         self.imagesURLs = []
+        self.pageControlView = UIView()
+
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+
         self.dataSource = self
     }
 
@@ -34,6 +43,26 @@ class ImagesPageViewController: UIPageViewController {
         if let firstVC = pages.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
+    }
+
+    func configurePageControl() {
+        pageControl = UIPageControl(frame: .zero)
+        self.pageControl.numberOfPages = pages.count
+        self.pageControl.currentPage = 0
+        self.pageControl.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0.5)
+        self.pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.pageControl.isUserInteractionEnabled = false
+
+        pageControlView.addSubview(pageControl)
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            pageControl.leadingAnchor.constraint(equalTo: pageControlView.leadingAnchor),
+            pageControl.trailingAnchor.constraint(equalTo: pageControlView.trailingAnchor),
+            pageControl.heightAnchor.constraint(equalToConstant: 50),
+            pageControl.centerYAnchor.constraint(equalTo: pageControlView.centerYAnchor)
+        ])
     }
 
     func goToNextPage(animated: Bool = true) {
@@ -60,6 +89,8 @@ extension ImagesPageViewController: UIPageViewControllerDataSource {
 
         guard pages.count > previousIndex else { return nil }
 
+        self.pageControl.currentPage = previousIndex
+
         return pages[previousIndex]
     }
 
@@ -71,6 +102,8 @@ extension ImagesPageViewController: UIPageViewControllerDataSource {
         guard nextIndex < pages.count else { return nil }
 
         guard pages.count > nextIndex else { return nil }
+
+        self.pageControl.currentPage = nextIndex
 
         return pages[nextIndex]
     }

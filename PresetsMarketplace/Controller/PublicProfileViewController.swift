@@ -43,6 +43,7 @@ class PublicProfileViewController: UIViewController {
         profileNameLabel.text = artist.name
         profileNameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         profileDescriptionLabel.text = artist.about
+        profileDescriptionLabel.textColor = #colorLiteral(red: 0.4666666667, green: 0.4666666667, blue: 0.4666666667, alpha: 1)
         self.view.addSubview(profileNameLabel)
         self.view.addSubview(profileDescriptionLabel)
     }
