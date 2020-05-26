@@ -32,8 +32,7 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
     
     func presentPresetPreview(from collectionView: UICollectionView, fromSelectedItemAt indexPath: IndexPath) {
         
-        guard let viewController = viewController, 
-            let navigationController = viewController.navigationController, 
+        guard let viewController = viewController,
             let cell = collectionView.cellForItem(at: indexPath) as? DynamicCollectionViewCell else {
             print("Error when guarding viewController or navigationController or cell")
             return
@@ -49,8 +48,8 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
             destination.modalPresentationStyle = .fullScreen
             destination.preset = dao.filteredPresets[indexPath.item]
             destination.viewController = viewController
-            
-            navigationController.present(destination, animated: true, completion: nil)
+
+            viewController.present(destination, animated: true, completion: nil)
         }
     }
     

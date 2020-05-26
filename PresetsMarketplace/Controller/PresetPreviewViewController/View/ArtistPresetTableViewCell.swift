@@ -26,6 +26,7 @@ class ArtistPresetTableViewCell: UITableViewCell {
             profileImageView.widthAnchor.constraint(equalToConstant: PROFILE_IMAGE_SIZE),
             profileImageView.heightAnchor.constraint(equalToConstant: PROFILE_IMAGE_SIZE)
         ])
+        profileImageView.contentMode = .scaleAspectFill
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

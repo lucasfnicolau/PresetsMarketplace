@@ -70,8 +70,8 @@ class ProfileViewController: BaseViewController {
 
         NSLayoutConstraint.activate([
             presetsCollectionView.topAnchor.constraint(equalTo: artistInfoStackView.bottomAnchor, constant: 30),
-            presetsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            presetsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            presetsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            presetsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             presetsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
