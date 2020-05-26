@@ -20,13 +20,20 @@ class FeedViewController: BaseViewController {
         setupCollectionView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let filteredPresets = getFollowingArtistsPresets()
+        let dao = DynamicCollectionViewDAO(with: filteredPresets)
+        collectionView?.dao = dao
+        collectionView?.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         setupCollectionViewConstraints()
     }
     
     func setupCollectionView() {
-        //MARK: Filtrar presets pelos que o usuario segue
-        let dao = DynamicCollectionViewDAO(with: Mock.shared.presets)
+        let filteredPresets = getFollowingArtistsPresets()
+        let dao = DynamicCollectionViewDAO(with: filteredPresets)
         collectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
@@ -42,5 +49,13 @@ class FeedViewController: BaseViewController {
             collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0)
         ])
+    }
+    
+    func getFollowingArtistsPresets() -> [Preset] {
+        var filteredPresets: [Preset] = []
+        for artist in Mock.shared.user.following {
+            filteredPresets += artist.presets
+        }
+        return filteredPresets
     }
 }
