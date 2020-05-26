@@ -31,6 +31,7 @@
 		B659287C2474986700F4B4C8 /* ImagesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287B2474986700F4B4C8 /* ImagesPageViewController.swift */; };
 		B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287D2474993E00F4B4C8 /* PresetImageViewController.swift */; };
 		B659288024749E0700F4B4C8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659287F24749E0700F4B4C8 /* UIViewController.swift */; };
+		B664BB91247DB17C0099951D /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B664BB90247DB17C0099951D /* Screen.swift */; };
 		B67E410224786B2D003DE748 /* DynamicCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E410124786B2D003DE748 /* DynamicCollectionViewDataSource.swift */; };
 		B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F1024732674003B0EF5 /* TabBarController.swift */; };
 		B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F12247326B6003B0EF5 /* FeedViewController.swift */; };
@@ -104,6 +105,7 @@
 		B659287B2474986700F4B4C8 /* ImagesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesPageViewController.swift; sourceTree = "<group>"; };
 		B659287D2474993E00F4B4C8 /* PresetImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetImageViewController.swift; sourceTree = "<group>"; };
 		B659287F24749E0700F4B4C8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		B664BB90247DB17C0099951D /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		B67E410124786B2D003DE748 /* DynamicCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		B68A4F1024732674003B0EF5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B68A4F12247326B6003B0EF5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */,
 				B6A19772247873F600C93302 /* Mock.swift */,
 				B6C2F219247C56C7009A1C8B /* DynamicCollectionViewDAO.swift */,
+				B664BB90247DB17C0099951D /* Screen.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */,
 				B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */,
 				B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */,
+				B664BB91247DB17C0099951D /* Screen.swift in Sources */,
 				B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */,
 				B659286624747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift in Sources */,
 				B60F3D742475A6E0009CBE10 /* Storyboard.swift in Sources */,

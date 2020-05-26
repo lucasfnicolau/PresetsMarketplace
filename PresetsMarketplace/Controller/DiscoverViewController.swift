@@ -14,7 +14,7 @@ class DiscoverViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Descobrir"
+        navigationItem.title = Screen.discover
 
         setupSearchController()
         setupCollectionView()

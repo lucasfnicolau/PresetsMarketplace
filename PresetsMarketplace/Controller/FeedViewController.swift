@@ -15,7 +15,7 @@ class FeedViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Feed"
+        navigationItem.title = Screen.feed
         
         setupCollectionView()
     }
