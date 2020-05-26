@@ -24,9 +24,10 @@ class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var floatingViewsLabel: UILabel!
     @IBOutlet weak var floatingBuyButton: UIButton!
     var preset: Preset?
-    
+  
     var transitionDelegate: TransitionDelegate?
     var origin: CGRect = .zero
+    var viewController: UIViewController?=
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -120,6 +121,7 @@ class PresetPreviewViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let presetInfoTableViewViewController = segue.destination as? PresetInfoTableViewViewController {
             presetInfoTableViewViewController.preset = preset
+            presetInfoTableViewViewController.viewController = viewController
             presetInfoTableViewViewController.blurView = blurView
             presetInfoTableViewViewController.slideToMoreInfoStackView = slideToMoreInfoStackView
         }
@@ -138,6 +140,11 @@ class PresetPreviewViewController: UIViewController {
             do {
                 let data = try Data(contentsOf: url)
                 let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                activityViewController.excludedActivityTypes = [
+                    .saveToCameraRoll,
+                    .assignToContact,
+                    .print
+                ]
                 self.present(activityViewController, animated: true, completion: nil)
             } catch {
                 print(error.localizedDescription)

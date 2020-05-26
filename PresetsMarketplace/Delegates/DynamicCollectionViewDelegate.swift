@@ -43,6 +43,7 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
             destination.origin = originFrame
             destination.modalPresentationStyle = .fullScreen
             destination.preset = dao.filteredPresets[indexPath.item]
+            destination.viewController = viewController
             
             navigationController.present(destination, animated: true, completion: nil)
         }
