@@ -14,14 +14,19 @@ class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var slideToMoreInfoStackView: UIStackView!
     @IBOutlet weak var pageViewControllerView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
     var imagesPageViewController: ImagesPageViewController!
 
     // MARK: - Floating Selling Card
+    @IBOutlet weak var floatingBlurView: RoundedBluredView!
     @IBOutlet weak var floatingPresetNameLabel: UILabel!
     @IBOutlet weak var floatingSoldLabel: UILabel!
     @IBOutlet weak var floatingViewsLabel: UILabel!
     @IBOutlet weak var floatingBuyButton: UIButton!
     var preset: Preset?
+  
+    var transitionDelegate: TransitionDelegate?
+    var origin: CGRect = .zero
     var viewController: UIViewController?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -30,11 +35,27 @@ class PresetPreviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
         setupPageViewController()
         setupFloatingSellingCard()
         setupGesturesRecognizer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      
+      UIView.animate(withDuration: 0.2) {
+        self.presetNameLabel.alpha = 0
+        self.presetArtistNameLabel.alpha = 0
+        self.blurView.alpha = 0
+        self.closeButton.alpha = 0
+        self.slideToMoreInfoStackView.alpha = 0
+        self.floatingBlurView.alpha = 0
+        self.floatingPresetNameLabel.alpha = 0
+        self.floatingSoldLabel.alpha = 0
+        self.floatingViewsLabel.alpha = 0
+        self.floatingBuyButton.alpha = 0
+      }
     }
 
     func setupViews() {
@@ -132,6 +153,14 @@ class PresetPreviewViewController: UIViewController {
     }
 
     @IBAction func closeButtonTouched(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        
+        if let presetImageViewController = imagesPageViewController.pages[0] as? PresetImageViewController {
+            
+            let imageView = presetImageViewController.imageView
+            transitionDelegate = TransitionDelegate(to: origin, with: imageView)
+            
+            self.transitioningDelegate = transitionDelegate
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }

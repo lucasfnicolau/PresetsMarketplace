@@ -231,6 +231,8 @@
                     </view>
                     <connections>
                         <outlet property="blurView" destination="feG-cQ-Tzm" id="GuK-bY-yzj"/>
+                        <outlet property="closeButton" destination="0Xk-2t-GTg" id="Gwc-c9-D4p"/>
+                        <outlet property="floatingBlurView" destination="iov-tE-dPo" id="lIa-85-ehO"/>
                         <outlet property="floatingBuyButton" destination="I8R-O2-hNc" id="rVy-vR-JvX"/>
                         <outlet property="floatingPresetNameLabel" destination="4zX-pn-UWc" id="dUV-BA-eGk"/>
                         <outlet property="floatingSoldLabel" destination="yKf-gv-bJ4" id="Oa2-ge-axf"/>

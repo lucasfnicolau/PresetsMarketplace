@@ -11,9 +11,12 @@ import UIKit
 
 class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration: TimeInterval = 1
+    let duration: TimeInterval = 0.8
     var presenting: Bool = true
     var originFrame: CGRect = CGRect.zero
+    var imageView: UIImageView = .init(frame: .zero)
+    
+    var dismissCompletion: (() -> Void)?
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
@@ -40,17 +43,22 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animate(
           withDuration: duration,
           delay: 0.0,
-          usingSpringWithDamping: 0.8,
+          usingSpringWithDamping: getSpringWithDamping(),
           initialSpringVelocity: 0.2,
-          animations: { self.setAnimations(for: destinationView, with: scaleTransform, to: frames.final) }, 
+          animations: { 
+            self.getAnimations(for: destinationView, with: scaleTransform, to: frames.final)
+          }, 
           completion: { _ in
+            if !self.presenting {
+              self.dismissCompletion?()
+            }
             transitionContext.completeTransition(true)
         })
     }
     
     // MARK: - Auxiliar methods
     
-    func setFrames(from view: UIView) -> (initial: CGRect, final: CGRect) {
+    private func setFrames(from view: UIView) -> (initial: CGRect, final: CGRect) {
         
         var initialFrame: CGRect
         var finalFrame: CGRect
@@ -66,7 +74,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         return (initial: initialFrame, final: finalFrame)
     }
     
-    func setScaleTransform(_ initial: CGRect, _ final: CGRect) -> CGAffineTransform {
+    private func setScaleTransform(_ initial: CGRect, _ final: CGRect) -> CGAffineTransform {
         
         var xScaleFactor: CGFloat
         var yScaleFactor: CGFloat
@@ -82,7 +90,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         return CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
     }
     
-    func configureDestinationView(_ destinationView: UIView, with scaleTransform: CGAffineTransform, with frames: (initial: CGRect, final: CGRect)) {
+    private func configureDestinationView(_ destinationView: UIView, with scaleTransform: CGAffineTransform, with frames: (initial: CGRect, final: CGRect)) {
         
         if presenting {
           destinationView.transform = scaleTransform
@@ -94,7 +102,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         destinationView.layer.masksToBounds = true
     }
     
-    func setAnimations(for view: UIView, with scaleTransform: CGAffineTransform, to frame: CGRect) {
+    private func getAnimations(for view: UIView, with scaleTransform: CGAffineTransform, to frame: CGRect) {
         
         if presenting {
             view.transform = .identity
@@ -102,8 +110,23 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         } else {
             view.transform = scaleTransform
             view.layer.cornerRadius = 20.0
+            view.alpha = 0.0
         }
         
+        imageView.contentMode = .scaleAspectFill
         view.center = CGPoint(x: frame.midX, y: frame.midY)
+    }
+    
+    private func getSpringWithDamping() -> CGFloat {
+        
+        if presenting {
+            return 0.8
+        } else {
+            return 1.0
+        }
+    }
+    
+    private func handleRadius(recipeView: UIView, hasRadius: Bool) {
+        recipeView.layer.cornerRadius = hasRadius ? 20.0 : 0.0
     }
 }
