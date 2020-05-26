@@ -175,7 +175,7 @@ class PublicProfileViewController: UIViewController {
     
     @objc func startFollowing() {
         guard let artist = artist else { return }
-        Mock.shared.user.startFollowing(artirt: artist)
+        Mock.shared.user.startFollowing(artist: artist)
         let image = #imageLiteral(resourceName: "ActiveFollowingBtn")
         followButton.setBackgroundImage(image, for: .normal)
         stopFollowingButton()
