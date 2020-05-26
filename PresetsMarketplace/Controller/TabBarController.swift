@@ -11,7 +11,6 @@ import UIKit
 class TabBarController: UITabBarController {
     let feedViewController = FeedViewController()
     let discoverViewController = DiscoverViewController()
-    let profileViewController = PublicProfileViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +29,11 @@ class TabBarController: UITabBarController {
                                                                image: #imageLiteral(resourceName: "discover_outline"),
                                                                selectedImage: #imageLiteral(resourceName: "discover_selected"))
         discoverNavigationController.tabBarItem.tag = 1
+
+
+        guard let profileViewController = UIStoryboard(name: Storyboard.profileViewController, bundle: nil).instantiateViewController(identifier: Identifier.profileViewController) as? ProfileViewController else {
+            return
+        }
 
         let profileNavigationController = UINavigationController(rootViewController: profileViewController)
         profileNavigationController.tabBarItem = UITabBarItem(title: "Perfil",

@@ -25,7 +25,8 @@ class FeedViewController: BaseViewController {
     }
     
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .artist, in: self)
+        let dao = DynamicCollectionViewDAO(with: Mock.shared.presets)
+        collectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
     }
@@ -40,7 +41,5 @@ class FeedViewController: BaseViewController {
             collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0)
         ])
-        
-        collectionView.backgroundColor = .clear
     }
 }

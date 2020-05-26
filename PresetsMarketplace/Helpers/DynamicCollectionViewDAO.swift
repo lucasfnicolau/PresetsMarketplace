@@ -9,8 +9,13 @@
 import Foundation
 
 class DynamicCollectionViewDAO: NSObject {
-    private var presets: [Preset] = Mock.shared.presets
-    var filteredPresets: [Preset] = Mock.shared.presets
+    private let presets: [Preset]
+    var filteredPresets: [Preset]
+
+    init(with presets: [Preset]) {
+        self.presets = presets
+        self.filteredPresets = self.presets
+    }
 
     func filterPresets(withQuery query: String) {
         let formattedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()

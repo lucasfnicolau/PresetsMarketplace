@@ -150,7 +150,8 @@ class PublicProfileViewController: UIViewController {
     }
     
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .artist, in: self)
+        let dao = DynamicCollectionViewDAO(with: Mock.shared.presets)
+        collectionView = DynamicCollectionView(collectionType: .artist, in: self, using: dao)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
     }

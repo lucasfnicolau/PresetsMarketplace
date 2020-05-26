@@ -24,4 +24,5 @@ enum Identifier {
     // MARK: - ViewController
     static let presetPreviewViewController = "PresetPreviewViewController"
     static let presetInfoTableViewViewController = "PresetInfoTableViewViewController"
+    static let profileViewController = "ProfileViewController"
 }
