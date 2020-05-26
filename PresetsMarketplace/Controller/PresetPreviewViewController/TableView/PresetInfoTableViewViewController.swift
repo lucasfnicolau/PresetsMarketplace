@@ -28,7 +28,7 @@ class PresetInfoTableViewViewController: UIViewController {
             return
         }
         
-        presetInfoTableViewDataSource = PresetInfoTableViewDataSource(for: tableView, with: preset)
+        presetInfoTableViewDataSource = PresetInfoTableViewDataSource(for: tableView, with: preset, fromViewController: self)
         presetInfoTableViewDelegate = PresetInfoTableViewDelegate(for: tableView, with: preset, with: blurView, with: slideToMoreInfoStackView, from: self)
         tableView.dataSource = presetInfoTableViewDataSource
         tableView.delegate = presetInfoTableViewDelegate

@@ -11,12 +11,14 @@ import UIKit
 class PresetInfoTableViewDataSource: NSObject, UITableViewDataSource {
     let tableView: UITableView
     let preset: Preset
+    let viewController: UIViewController
     var othersPresetsCollectionViewDelegate: OthersPresetsCollectionViewDelegate?
     var othersPresetsCollectionViewDataSource: OthersPresetsCollectionViewDataSource?
 
-    init(for tableView: UITableView, with preset: Preset) {
+    init(for tableView: UITableView, with preset: Preset, fromViewController viewController: UIViewController) {
         self.tableView = tableView
         self.preset = preset
+        self.viewController = viewController
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +78,7 @@ extension PresetInfoTableViewDataSource {
 
     func configureOthersPresetsCollectionView(for cell: OthersPresetsTableViewCell) {
         let othersPresets = preset.artist.presets.filter { $0 != preset }
-        othersPresetsCollectionViewDelegate = OthersPresetsCollectionViewDelegate(with: othersPresets)
+        othersPresetsCollectionViewDelegate = OthersPresetsCollectionViewDelegate(with: othersPresets, fromViewController: viewController)
         othersPresetsCollectionViewDataSource = OthersPresetsCollectionViewDataSource(with: othersPresets)
 
         cell.othersPresetsCollectionView.delegate = othersPresetsCollectionViewDelegate
