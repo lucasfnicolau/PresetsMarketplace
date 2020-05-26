@@ -116,7 +116,7 @@ class PublicProfileViewController: UIViewController {
         let image = #imageLiteral(resourceName: "close_btn")
         
         closeButton.setImage(image, for: .normal)
-        closeButton.addTarget(self, action: #selector(selfDismiss), for: .touchDown)
+        closeButton.addTarget(self, action: #selector(selfDismiss), for: .touchUpInside)
         self.view.addSubview(closeButton)
     }
     
