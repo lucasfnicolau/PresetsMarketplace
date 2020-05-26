@@ -27,7 +27,7 @@ class PresetPreviewViewController: UIViewController {
   
     var transitionDelegate: TransitionDelegate?
     var origin: CGRect = .zero
-    var viewController: UIViewController?=
+    var viewController: UIViewController?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
