@@ -11,11 +11,16 @@ import UIKit
 class DynamicCollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
     let collectionEnum: CollectionViewCellEnum
-    let dao: DynamicCollectionViewDAO
+    let collectionView: DynamicCollectionView
+    var dao: DynamicCollectionViewDAO {
+        get {
+            return collectionView.dao
+        }
+    }
 
-    init(collectionEnum: CollectionViewCellEnum, for dao: DynamicCollectionViewDAO) {
+    init(collectionEnum: CollectionViewCellEnum, for collectionView: DynamicCollectionView) {
         self.collectionEnum = collectionEnum
-        self.dao = dao
+        self.collectionView = collectionView
         super.init()
     }
 

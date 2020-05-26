@@ -42,7 +42,5 @@ class FeedViewController: BaseViewController {
             collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0)
         ])
-        
-        collectionView.backgroundColor = .clear
     }
 }
