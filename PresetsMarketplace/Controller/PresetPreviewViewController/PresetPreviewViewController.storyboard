@@ -103,17 +103,12 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IPa-n9-cH9">
                                             <rect key="frame" x="16" y="16" width="154.5" height="30"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="eSp-Xh-cQQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Summer Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zX-pn-UWc">
                                                     <rect key="frame" x="0.0" y="0.0" width="154.5" height="15.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Summer Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zX-pn-UWc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="154.5" height="15.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EoP-WF-8nH">
                                                     <rect key="frame" x="0.0" y="20.5" width="67.5" height="9.5"/>
                                                     <subviews>
@@ -151,50 +146,38 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRE-C3-BRL" customClass="RoundedBluredView" customModule="PREMA" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTU-pl-dUO" customClass="RoundedView" customModule="PREMA" customModuleProvider="target">
                                             <rect key="frame" x="291" y="16.5" width="87" height="29"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YRQ-xd-0f8">
-                                                <rect key="frame" x="0.0" y="0.0" width="87" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8R-O2-hNc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="87" height="29"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                        <state key="normal" title="R$19,99">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="floatingBuyButtonTouched:" destination="0w9-rQ-4pk" eventType="touchUpInside" id="GJY-ko-g1z"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="I8R-O2-hNc" secondAttribute="bottom" id="7Pq-Wo-irn"/>
-                                                    <constraint firstItem="I8R-O2-hNc" firstAttribute="leading" secondItem="YRQ-xd-0f8" secondAttribute="leading" id="8Sx-Ly-MNk"/>
-                                                    <constraint firstAttribute="trailing" secondItem="I8R-O2-hNc" secondAttribute="trailing" id="h4L-rk-x3T"/>
-                                                    <constraint firstItem="I8R-O2-hNc" firstAttribute="top" secondItem="YRQ-xd-0f8" secondAttribute="top" id="lff-kl-Nk1"/>
-                                                </constraints>
-                                            </view>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8R-O2-hNc">
+                                                    <rect key="frame" x="0.0" y="-0.5" width="87" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="R$19,99">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="floatingBuyButtonTouched:" destination="0w9-rQ-4pk" eventType="touchUpInside" id="GJY-ko-g1z"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.55169092465753422" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="hRE-C3-BRL" secondAttribute="height" multiplier="3:1" id="yMd-tc-rYy"/>
+                                                <constraint firstAttribute="width" secondItem="TTU-pl-dUO" secondAttribute="height" multiplier="3:1" id="Ha2-fi-dRd"/>
                                             </constraints>
-                                            <blurEffect style="dark"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isFullyRounded" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </visualEffectView>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="hRE-C3-BRL" firstAttribute="centerY" secondItem="ZGK-cD-wct" secondAttribute="centerY" id="4A6-mG-w8a"/>
                                         <constraint firstAttribute="bottom" secondItem="IPa-n9-cH9" secondAttribute="bottom" constant="16" id="ExM-se-sgx"/>
-                                        <constraint firstAttribute="trailing" secondItem="hRE-C3-BRL" secondAttribute="trailing" constant="16" id="ICe-FD-1Ia"/>
                                         <constraint firstItem="IPa-n9-cH9" firstAttribute="leading" secondItem="ZGK-cD-wct" secondAttribute="leading" constant="16" id="KCr-ju-m3B"/>
                                         <constraint firstItem="IPa-n9-cH9" firstAttribute="top" secondItem="ZGK-cD-wct" secondAttribute="top" constant="16" id="UYJ-OF-tH8"/>
+                                        <constraint firstItem="TTU-pl-dUO" firstAttribute="centerY" secondItem="ZGK-cD-wct" secondAttribute="centerY" id="ZVw-ff-MFS"/>
+                                        <constraint firstAttribute="trailing" secondItem="TTU-pl-dUO" secondAttribute="trailing" constant="16" id="uiO-pp-Eh0"/>
                                     </constraints>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iov-tE-dPo" secondAttribute="height" multiplier="197:31" id="6fm-It-C6A"/>
-                                    <constraint firstItem="hRE-C3-BRL" firstAttribute="width" secondItem="iov-tE-dPo" secondAttribute="width" multiplier="0.220812" id="bbh-Y0-GC4"/>
+                                    <constraint firstItem="TTU-pl-dUO" firstAttribute="width" secondItem="iov-tE-dPo" secondAttribute="width" multiplier="0.220812" id="v1F-Ke-WN2"/>
                                 </constraints>
                                 <blurEffect style="light"/>
                                 <userDefinedRuntimeAttributes>
@@ -244,6 +227,7 @@
                         <outlet property="closeButton" destination="0Xk-2t-GTg" id="Gwc-c9-D4p"/>
                         <outlet property="floatingBlurView" destination="iov-tE-dPo" id="lIa-85-ehO"/>
                         <outlet property="floatingBuyButton" destination="I8R-O2-hNc" id="rVy-vR-JvX"/>
+                        <outlet property="floatingBuyButtonView" destination="TTU-pl-dUO" id="puV-FT-rs7"/>
                         <outlet property="floatingPresetNameLabel" destination="4zX-pn-UWc" id="dUV-BA-eGk"/>
                         <outlet property="floatingSoldLabel" destination="yKf-gv-bJ4" id="Oa2-ge-axf"/>
                         <outlet property="floatingViewsLabel" destination="uFU-09-YUF" id="irl-bY-TPX"/>

@@ -23,6 +23,7 @@ class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var floatingPresetNameLabel: UILabel!
     @IBOutlet weak var floatingSoldLabel: UILabel!
     @IBOutlet weak var floatingViewsLabel: UILabel!
+    @IBOutlet weak var floatingBuyButtonView: RoundedView!
     @IBOutlet weak var floatingBuyButton: UIButton!
     var preset: Preset?
   
@@ -69,8 +70,16 @@ class PresetPreviewViewController: UIViewController {
     func setButtonState() {
         guard let preset = preset else { return }
         if Mock.shared.user.hasPreset(preset) {
+            UIView.animate(withDuration: 0.1) {
+                self.floatingBuyButtonView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.55)
+                self.floatingBuyButton.setTitleColor(.white, for: .normal)
+            }
             floatingBuyButton.setTitle("ABRIR", for: .normal)
         } else {
+            UIView.animate(withDuration: 0.1) {
+                self.floatingBuyButtonView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.55)
+                self.floatingBuyButton.setTitleColor(.black, for: .normal)
+            }
             floatingBuyButton.setTitle("OBTER", for: .normal)
         }
     }
