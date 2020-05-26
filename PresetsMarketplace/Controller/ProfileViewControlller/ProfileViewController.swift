@@ -15,6 +15,7 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var artistAboutLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var noPresetsAcquiredLabel: UILabel!
     var presetsCollectionView: DynamicCollectionView?
 
     override func viewDidLoad() {
@@ -25,6 +26,11 @@ class ProfileViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        if !Mock.shared.user.acquiredPresets.isEmpty {
+            noPresetsAcquiredLabel.isHidden = true
+        }
+
         presetsCollectionView?.dao = DynamicCollectionViewDAO(with: Mock.shared.user.acquiredPresets)
         presetsCollectionView?.reloadData()
     }
@@ -35,14 +41,22 @@ class ProfileViewController: BaseViewController {
             artistAboutLabel.text = artist.about
         }
 
-        profileImageView.load(url: Mock.shared.user.profileImageUrl) { _ in
-            let size: CGFloat = 125
-            self.profileImageView.layer.cornerRadius = size / 2
-            NSLayoutConstraint.activate([
-                self.profileImageView.widthAnchor.constraint(equalToConstant: size),
-                self.profileImageView.heightAnchor.constraint(equalToConstant: size)
-            ])
-        }
+//        profileImageView.load(url: Mock.shared.user.profileImageUrl) { _ in
+//            let size: CGFloat = 125
+//            self.profileImageView.layer.cornerRadius = size / 2
+//            NSLayoutConstraint.activate([
+//                self.profileImageView.widthAnchor.constraint(equalToConstant: size),
+//                self.profileImageView.heightAnchor.constraint(equalToConstant: size)
+//            ])
+//        }
+
+        self.profileImageView.image = UIImage(named: "mock_profile")
+        let size: CGFloat = 125
+        self.profileImageView.layer.cornerRadius = size / 2
+        NSLayoutConstraint.activate([
+            self.profileImageView.widthAnchor.constraint(equalToConstant: size),
+            self.profileImageView.heightAnchor.constraint(equalToConstant: size)
+        ])
 
         let dao = DynamicCollectionViewDAO(with: Mock.shared.user.acquiredPresets)
         presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
@@ -55,7 +69,7 @@ class ProfileViewController: BaseViewController {
         presetsCollectionView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            presetsCollectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
+            presetsCollectionView.topAnchor.constraint(equalTo: artistInfoStackView.bottomAnchor, constant: 30),
             presetsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             presetsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             presetsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)

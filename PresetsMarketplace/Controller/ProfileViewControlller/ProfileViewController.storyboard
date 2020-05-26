@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="V0G-gL-oOR">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="V0G-gL-oOR">
                                 <rect key="frame" x="20" y="229" width="374" height="32"/>
                                 <segments>
                                     <segment title="Adquiridos"/>
@@ -51,6 +51,12 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nenhum preset adquirido :(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYB-pu-mSk">
+                                <rect key="frame" x="20" y="439" width="374" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -58,8 +64,12 @@
                             <constraint firstItem="TlG-nf-uHV" firstAttribute="trailing" secondItem="mSu-GK-AS6" secondAttribute="trailing" constant="20" id="2xq-4n-sbO"/>
                             <constraint firstItem="V0G-gL-oOR" firstAttribute="leading" secondItem="TlG-nf-uHV" secondAttribute="leading" constant="20" id="8v5-iu-olR"/>
                             <constraint firstItem="mSu-GK-AS6" firstAttribute="top" secondItem="TlG-nf-uHV" secondAttribute="top" constant="30" id="ELl-ct-mXz"/>
+                            <constraint firstItem="qYB-pu-mSk" firstAttribute="centerY" secondItem="aDy-6J-uWk" secondAttribute="centerY" id="TEQ-1L-Bi7"/>
                             <constraint firstItem="V0G-gL-oOR" firstAttribute="top" secondItem="mSu-GK-AS6" secondAttribute="bottom" constant="30" id="TKq-pR-gfv"/>
                             <constraint firstItem="mSu-GK-AS6" firstAttribute="leading" secondItem="TlG-nf-uHV" secondAttribute="leading" constant="20" id="WdE-ST-7MM"/>
+                            <constraint firstItem="TlG-nf-uHV" firstAttribute="trailing" secondItem="qYB-pu-mSk" secondAttribute="trailing" constant="20" id="aUR-1x-wRX"/>
+                            <constraint firstItem="qYB-pu-mSk" firstAttribute="leading" secondItem="TlG-nf-uHV" secondAttribute="leading" constant="20" id="cAa-mu-uaP"/>
+                            <constraint firstItem="qYB-pu-mSk" firstAttribute="centerX" secondItem="aDy-6J-uWk" secondAttribute="centerX" id="iwX-mQ-j89"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TlG-nf-uHV"/>
                     </view>
@@ -67,6 +77,7 @@
                         <outlet property="artistAboutLabel" destination="2Q0-LZ-m4Z" id="VZV-sf-7cW"/>
                         <outlet property="artistInfoStackView" destination="mSu-GK-AS6" id="uWe-E5-hyp"/>
                         <outlet property="artistNameLabel" destination="3wP-F3-uTI" id="aLA-xh-S0a"/>
+                        <outlet property="noPresetsAcquiredLabel" destination="qYB-pu-mSk" id="anh-aP-6fh"/>
                         <outlet property="profileImageView" destination="CmB-GL-fnA" id="MU2-yW-qif"/>
                         <outlet property="segmentedControl" destination="V0G-gL-oOR" id="RO4-92-Ama"/>
                     </connections>
