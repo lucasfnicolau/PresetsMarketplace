@@ -42,10 +42,13 @@ class PresetInfoTableViewDelegate: NSObject, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
-            let publicProfileViewController = PublicProfileViewController()
-            publicProfileViewController.artistProfile = preset.artist
             guard let guardedViewController = fromViewController else { return }
+
+            let publicProfileViewController = PublicProfileViewController()
+            publicProfileViewController.artist = preset.artist
+            publicProfileViewController.artist = preset.artist
             publicProfileViewController.modalPresentationStyle = .fullScreen
+            
             guardedViewController.dismiss(animated: true, completion: nil)
             guardedViewController.present(publicProfileViewController, animated: true, completion: nil)
         }

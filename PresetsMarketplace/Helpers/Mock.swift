@@ -24,7 +24,7 @@ class Mock {
     func createPresets() {
 
         // MARK: - Artist mock 0
-        let leonardoGuedes = Artist(name: "Leonardo Guedes", about: "O artista mais blogueirinha que você irá conhecer", profileImageLink: "https://media-exp1.licdn.com/dms/image/C4E03AQHpklS_YuAfiQ/profile-displayphoto-shrink_400_400/0?e=1595462400&v=beta&t=-9bmhicFb54LcNZVtT9LpoyDvHt-Q_Ms4-Qr-lEBfkM")
+        let leonardoGuedes = Artist(name: "Leonardo Guedes", about: "O artista mais blogueirinha que você irá conhecer", profileImageLink: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80")
 
         var dngPath = "Vintage"
         let leonardoGuedesPreset0 = Preset(name: "SPFC", artist: leonardoGuedes, description: "Filtro com as cores do soberano. #SaoPauloDoDiniz", dngPath: dngPath, price: 633, imagesLinks: [
@@ -41,16 +41,16 @@ class Mock {
         leonardoGuedes.presets = [leonardoGuedesPreset0, leonardoGuedesPreset1]
 
         // MARK: - Artist mock 1
-        let pedroOliveira = Artist(name: "Pedro Oliveira", about: "O artista mais blogueirinha que você irá conhecer", profileImageLink: "https://media-exp1.licdn.com/dms/image/C4E03AQHpklS_YuAfiQ/profile-displayphoto-shrink_400_400/0?e=1595462400&v=beta&t=-9bmhicFb54LcNZVtT9LpoyDvHt-Q_Ms4-Qr-lEBfkM")
+        let pedroOliveira = Artist(name: "Pedro Oliveira", about: "O artista mais blogueirinha que você irá conhecer", profileImageLink: "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80")
 
         dngPath = "HDR"
-        let pedroOliveira0 = Preset(name: "F1 2020", artist: leonardoGuedes, description: "F1 vruuuum vruuuum. Velocidade, eu sou a velocidade. KATCHAU!", dngPath: dngPath, price: 49.99, imagesLinks: [
+        let pedroOliveira0 = Preset(name: "F1 2020", artist: pedroOliveira, description: "F1 vruuuum vruuuum. Velocidade, eu sou a velocidade. KATCHAU!", dngPath: dngPath, price: 49.99, imagesLinks: [
             "https://cdn.wallpapersafari.com/12/85/2WfMJO.jpg",
             "https://wallpaperaccess.com/full/1221877.jpg"
         ])
 
         dngPath = "Contrast"
-        let pedroOliveira1 = Preset(name: "NFL", artist: leonardoGuedes, description: "O marido da Gisele é TOP. Enquanto não tem outro Super Bowl, aproveite esse lindo preset.", dngPath: dngPath, price: 500, imagesLinks: [
+        let pedroOliveira1 = Preset(name: "NFL", artist: pedroOliveira, description: "O marido da Gisele é TOP. Enquanto não tem outro Super Bowl, aproveite esse lindo preset.", dngPath: dngPath, price: 500, imagesLinks: [
             "https://wallpaperaccess.com/full/301291.jpg",
             "https://wallpaperaccess.com/full/308967.jpg"
         ])
