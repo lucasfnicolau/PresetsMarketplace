@@ -25,18 +25,12 @@ class User: Equatable {
         return lhs.id == rhs.id
     }
     
-    public func startFollowing( artirt: Artist) {
-        self.following.append(artirt)
+    public func startFollowing(artist: Artist) {
+        self.following.append(artist)
     }
     
-    public func stopFollowing( artist: Artist) {
-        if following != [] {
-            for i in following.indices {
-                if following[i] == artist {
-                    following.remove(at: i)
-                }
-            }
-        }
+    public func stopFollowing(artist: Artist) {
+        following.removeAll { $0 == artist }
     }
     
     func addPreset(_ preset: Preset) {

@@ -14,6 +14,7 @@ class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var slideToMoreInfoStackView: UIStackView!
     @IBOutlet weak var pageViewControllerView: UIView!
+    @IBOutlet weak var pageControlView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     var imagesPageViewController: ImagesPageViewController!
 
@@ -76,7 +77,7 @@ class PresetPreviewViewController: UIViewController {
 
     func setupPageViewController() {
         guard let preset = preset else { return }
-        imagesPageViewController = ImagesPageViewController(withImagesURLs: preset.imagesURLs)
+        imagesPageViewController = ImagesPageViewController(withImagesURLs: preset.imagesURLs, pageControlView: pageControlView)
         add(imagesPageViewController, on: pageViewControllerView)
     }
 

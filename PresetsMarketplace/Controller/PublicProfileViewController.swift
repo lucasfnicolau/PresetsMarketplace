@@ -43,6 +43,7 @@ class PublicProfileViewController: UIViewController {
         profileNameLabel.text = artist.name
         profileNameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         profileDescriptionLabel.text = artist.about
+        profileDescriptionLabel.textColor = #colorLiteral(red: 0.4666666667, green: 0.4666666667, blue: 0.4666666667, alpha: 1)
         self.view.addSubview(profileNameLabel)
         self.view.addSubview(profileDescriptionLabel)
     }
@@ -175,7 +176,7 @@ class PublicProfileViewController: UIViewController {
     
     @objc func startFollowing() {
         guard let artist = artist else { return }
-        Mock.shared.user.startFollowing(artirt: artist)
+        Mock.shared.user.startFollowing(artist: artist)
         let image = #imageLiteral(resourceName: "ActiveFollowingBtn")
         followButton.setBackgroundImage(image, for: .normal)
         stopFollowingButton()

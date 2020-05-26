@@ -37,7 +37,8 @@ class DynamicCollectionViewLayout: UICollectionViewLayout {
     
     override func prepare() {
         guard
-            let collectionView = collectionView
+            let collectionView = collectionView,
+            cache.count < collectionView.numberOfItems(inSection: 0)
             else {
                 return
         }
@@ -45,10 +46,10 @@ class DynamicCollectionViewLayout: UICollectionViewLayout {
         for column in 0..<numberOfColumns {
             xOffset.append(CGFloat(column) * columnWidth)
         }
-        
+
         for item in cache.count..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
-            
+
             let photoHeight = cellSizes.randomElement() ?? 200
             let height = cellPadding * 2 + photoHeight
             let frame = CGRect(x: xOffset[column],
@@ -56,14 +57,14 @@ class DynamicCollectionViewLayout: UICollectionViewLayout {
                                width: columnWidth,
                                height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-            
+
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attributes.frame = insetFrame
             cache.append(attributes)
-            
+
             contentHeight = max(contentHeight, frame.maxY)
             yOffset[column] = yOffset[column] + height
-            
+
             column = column < (numberOfColumns - 1) ? (column + 1) : 0
         }
     }
