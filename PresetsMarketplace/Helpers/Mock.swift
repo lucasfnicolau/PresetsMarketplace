@@ -12,7 +12,7 @@ class Mock {
 
     static let shared = Mock()
     private(set) lazy var user: User = {
-        let user = User(name: "Usuário", profileImageLink: "https://cdn.pixabay.com/photo/2017/11/15/20/49/head-2952533_1280.png")
+        let user = User(name: "Usuário", profileImageLink: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80")
         return user
     }()
     private(set) var presets: [Preset] = []
@@ -93,8 +93,8 @@ class Mock {
 
         self.presets = leonardoOliveira.presets + pedroGuedes.presets + lucasNicolau.presets + gabrielHenrique.presets
 
-        user.startFollowing(artirt: pedroGuedes)
-        user.startFollowing(artirt: leonardoOliveira)
-        user.startFollowing(artirt: lucasNicolau)
+        user.startFollowing(artist: pedroGuedes)
+        user.startFollowing(artist: leonardoOliveira)
+        user.startFollowing(artist: lucasNicolau)
     }
 }
