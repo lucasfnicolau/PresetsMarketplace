@@ -40,7 +40,7 @@ class DynamicCollectionViewCell: UICollectionViewCell {
             cellImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             cellImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             cellImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            cellImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            cellImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
         ])
     }
     

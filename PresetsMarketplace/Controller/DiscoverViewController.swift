@@ -25,7 +25,8 @@ class DiscoverViewController: BaseViewController {
     }
 
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .user, in: self)
+        let dao = DynamicCollectionViewDAO(with: Mock.shared.presets)
+        collectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
         guard let collectionView = collectionView else { return }
         collectionView.reloadData()
         self.view.addSubview(collectionView)
@@ -41,8 +42,6 @@ class DiscoverViewController: BaseViewController {
             collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0)
         ])
-
-        collectionView.backgroundColor = .clear
     }
 
     func setupSearchController() {

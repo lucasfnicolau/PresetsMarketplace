@@ -9,12 +9,17 @@
 import UIKit
 
 class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
-    private let dao: DynamicCollectionViewDAO
+    let collectionView: DynamicCollectionView
+    var dao: DynamicCollectionViewDAO {
+        get {
+            return collectionView.dao
+        }
+    }
     weak var viewController: UIViewController?
 
-    init(for dao: DynamicCollectionViewDAO, from viewController: UIViewController? = nil) {
+    init(for collectionView: DynamicCollectionView, from viewController: UIViewController? = nil) {
         self.viewController = viewController
-        self.dao = dao
+        self.collectionView = collectionView
         super.init()
     }
 
