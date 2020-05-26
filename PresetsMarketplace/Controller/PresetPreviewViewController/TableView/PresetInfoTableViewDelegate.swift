@@ -46,7 +46,6 @@ class PresetInfoTableViewDelegate: NSObject, UITableViewDelegate {
             publicProfileViewController.artistProfile = preset.artist
             guard let guardedViewController = fromViewController else { return }
             publicProfileViewController.modalPresentationStyle = .fullScreen
-            guardedViewController.dismiss(animated: true, completion: nil)
             guardedViewController.present(publicProfileViewController, animated: true, completion: nil)
         }
     }
