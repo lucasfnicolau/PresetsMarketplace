@@ -22,6 +22,8 @@ class OthersPresetsCollectionViewDelegate: NSObject, UICollectionViewDelegate, U
 
             presetPreviewViewController.modalPresentationStyle = .fullScreen
             presetPreviewViewController.preset = presets[indexPath.item]
+            presetPreviewViewController.viewController = viewController
+            viewController.dismiss(animated: true, completion: nil)
             viewController.present(presetPreviewViewController, animated: true, completion: nil)
         }
     }
