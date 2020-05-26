@@ -19,13 +19,13 @@ class TabBarController: UITabBarController {
         tabBar.barTintColor = .white
 
         let feedNavigationController = UINavigationController(rootViewController: feedViewController)
-        feedNavigationController.tabBarItem = UITabBarItem(title: "Feed",
+        feedNavigationController.tabBarItem = UITabBarItem(title: Screen.feed,
                                                            image: #imageLiteral(resourceName: "feed_outline"),
                                                            selectedImage: #imageLiteral(resourceName: "feed_selected"))
         feedNavigationController.tabBarItem.tag = 0
 
         let discoverNavigationController = UINavigationController(rootViewController: discoverViewController)
-        discoverNavigationController.tabBarItem = UITabBarItem(title: "Explorar",
+        discoverNavigationController.tabBarItem = UITabBarItem(title: Screen.discover,
                                                                image: #imageLiteral(resourceName: "discover_outline"),
                                                                selectedImage: #imageLiteral(resourceName: "discover_selected"))
         discoverNavigationController.tabBarItem.tag = 1
@@ -36,7 +36,7 @@ class TabBarController: UITabBarController {
         }
 
         let profileNavigationController = UINavigationController(rootViewController: profileViewController)
-        profileNavigationController.tabBarItem = UITabBarItem(title: "Perfil",
+        profileNavigationController.tabBarItem = UITabBarItem(title: Screen.profile,
                                                               image: #imageLiteral(resourceName: "profile_outline"),
                                                               selectedImage: #imageLiteral(resourceName: "profile_selected"))
         profileNavigationController.tabBarItem.tag = 2
