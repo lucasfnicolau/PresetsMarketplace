@@ -27,15 +27,15 @@ class Mock {
         let leonardoOliveira = Artist(name: "Leonardo Oliveira", about: "O artista mais boleiro que você irá conhecer", profileImageLink: "https://media-exp1.licdn.com/dms/image/C4E03AQHpklS_YuAfiQ/profile-displayphoto-shrink_400_400/0?e=1596067200&v=beta&t=FUWaswy-qlERU-_YPWEwIgSHKSTeRFlnR2p4Oocghe4")
 
         var dngPath = "Vintage"
-        let leonardoOliveira0 = Preset(name: dngPath, artist: leonardoOliveira, description: "Filtro com as cores do soberano. #SaoPauloDoDiniz", dngPath: dngPath, price: 633, imagesLinks: [
-            "https://i0.wp.com/spfcnoticias.com/wp-content/uploads/2016/04/sao-paulo-x-cruzeiro-7.jpg",
-            "https://images.daznservices.com/di/library/GOAL/6f/f7/abertura-copa-america-morumbi-14062019_aj8t5ysrqmwh13v9tkx1cxiq6.jpg"
+        let leonardoOliveira0 = Preset(name: dngPath, artist: leonardoOliveira, description: "Vintage e clássico.", dngPath: dngPath, price: 633, imagesLinks: [
+            "https://i.ibb.co/Sc9JwrH/California-0.jpg",
+            "https://i.ibb.co/zFYM38c/California-1.jpg"
         ])
 
         dngPath = "Film"
-        let leonardoOliveira1 = Preset(name: dngPath, artist: leonardoOliveira, description: "Todo mundo tenta, mas só o Brasil é penta", dngPath: dngPath, price: 500, imagesLinks: [
-            "https://www.osmais.com/wallpapers/201406/selecao-brasileira-wallpaper.jpg",
-            "https://adrenaline.com.br/forum/attachments/teamkit_bra_4-jpg.71177/"
+        let leonardoOliveira1 = Preset(name: dngPath, artist: leonardoOliveira, description: "Baseado em filmes antigos.", dngPath: dngPath, price: 500, imagesLinks: [
+            "https://i.ibb.co/HXfPbJm/Amazon-0.jpg",
+            "https://i.ibb.co/s6k9qjM/Amazon-1.jpg"
         ])
 
         leonardoOliveira.presets = [leonardoOliveira0, leonardoOliveira1]
@@ -44,15 +44,15 @@ class Mock {
         let pedroGuedes = Artist(name: "Pedro Guedes", about: "Economista, fotógrafo e o preferido", profileImageLink: "https://media-exp1.licdn.com/dms/image/C4D03AQG6EataKCjxhw/profile-displayphoto-shrink_400_400/0?e=1596067200&v=beta&t=1yWfPzALKc5Wbja5R3Y2lOYuKEY8AX3Scp1gKQbDLro")
 
         dngPath = "HDR"
-        let pedroGuedes0 = Preset(name: dngPath, artist: pedroGuedes, description: "F1 vruuuum vruuuum. Velocidade, eu sou a velocidade. KATCHAU!", dngPath: dngPath, price: 49.99, imagesLinks: [
-            "https://cdn.wallpapersafari.com/12/85/2WfMJO.jpg",
-            "https://wallpaperaccess.com/full/1221877.jpg"
+        let pedroGuedes0 = Preset(name: dngPath, artist: pedroGuedes, description: "HDR, para melhorar a iluminação.", dngPath: dngPath, price: 49.99, imagesLinks: [
+            "https://i.ibb.co/wY2WrHq/Brasilia-0.jpg",
+            "https://i.ibb.co/L1DDw3c/Brasilia-1.jpg"
         ])
 
         dngPath = "Contrast"
-        let pedroGuedes1 = Preset(name: dngPath, artist: pedroGuedes, description: "O marido da Gisele é TOP. Enquanto não tem outro Super Bowl, aproveite esse lindo preset.", dngPath: dngPath, price: 500, imagesLinks: [
-            "https://wallpaperaccess.com/full/301291.jpg",
-            "https://wallpaperaccess.com/full/308967.jpg"
+        let pedroGuedes1 = Preset(name: dngPath, artist: pedroGuedes, description: "Todos sabem da importância de contraste.", dngPath: dngPath, price: 500, imagesLinks: [
+            "https://i.ibb.co/D4sy2fT/Europe-0.jpg",
+            "https://i.ibb.co/LPJrsnP/Europe-1.jpg"
         ])
 
         pedroGuedes.presets = [pedroGuedes0, pedroGuedes1]
@@ -61,15 +61,15 @@ class Mock {
         let lucasNicolau = Artist(name: "Lucas Nicolau", about: "Não sou dev", profileImageLink: "https://media-exp1.licdn.com/dms/image/C4E03AQE3oPhCGvEvyg/profile-displayphoto-shrink_400_400/0?e=1596067200&v=beta&t=Q8TmrdaNJIalZYD0ZumtsoYr13oAeuHbH5Zds6LpGgU")
 
         dngPath = "Matte"
-        let lucasNicolau0 = Preset(name: dngPath, artist: lucasNicolau, description: "F1 vruuuum vruuuum. Velocidade, eu sou a velocidade. KATCHAU!", dngPath: dngPath, price: 49.99, imagesLinks: [
-            "https://cdn.wallpapersafari.com/12/85/2WfMJO.jpg",
-            "https://wallpaperaccess.com/full/1221877.jpg"
+        let lucasNicolau0 = Preset(name: dngPath, artist: lucasNicolau, description: "Efeito de matte, para melhorar suas imagens.", dngPath: dngPath, price: 49.99, imagesLinks: [
+            "https://i.ibb.co/RhRzQzy/Interlagos-0.jpg",
+            "https://i.ibb.co/txBNGXn/Interlagos-1.jpg"
         ])
 
         dngPath = "Pastel"
-        let lucasNicolau1 = Preset(name: dngPath, artist: lucasNicolau, description: "O marido da Gisele é TOP. Enquanto não tem outro Super Bowl, aproveite esse lindo preset.", dngPath: dngPath, price: 500, imagesLinks: [
-            "https://wallpaperaccess.com/full/301291.jpg",
-            "https://wallpaperaccess.com/full/308967.jpg"
+        let lucasNicolau1 = Preset(name: dngPath, artist: lucasNicolau, description: "Cores pastéis, deixando a fotografia mais agradável.", dngPath: dngPath, price: 500, imagesLinks: [
+            "https://i.ibb.co/y8kY1TB/Luxembourg-0.jpg",
+            "https://i.ibb.co/MRy9Jp1/Luxembourg-1.jpg"
         ])
 
         lucasNicolau.presets = [lucasNicolau0, lucasNicolau1]
@@ -78,15 +78,15 @@ class Mock {
         let gabrielHenrique = Artist(name: "Gabriel Henrique", about: "O mestre em CollectionView", profileImageLink: "https://media-exp1.licdn.com/dms/image/C4D03AQEbvJvZCOljHg/profile-displayphoto-shrink_400_400/0?e=1596067200&v=beta&t=H-o3tlWbVCvJMEmnLM_VgK99Ssi6MstZpQ7yWnLgHMQ")
 
         dngPath = "Monotone"
-        let gabrielHenrique0 = Preset(name: dngPath, artist: gabrielHenrique, description: "F1 vruuuum vruuuum. Velocidade, eu sou a velocidade. KATCHAU!", dngPath: dngPath, price: 49.99, imagesLinks: [
-            "https://cdn.wallpapersafari.com/12/85/2WfMJO.jpg",
-            "https://wallpaperaccess.com/full/1221877.jpg"
+        let gabrielHenrique0 = Preset(name: dngPath, artist: gabrielHenrique, description: "Um tom único para dar um efeito monótono nas fotos.", dngPath: dngPath, price: 49.99, imagesLinks: [
+            "https://i.ibb.co/8jdKpmw/London-0.jpg",
+            "https://i.ibb.co/YfwWNLb/London-1.jpg"
         ])
 
         dngPath = "Duotone"
-        let gabrielHenrique1 = Preset(name: dngPath, artist: gabrielHenrique, description: "O marido da Gisele é TOP. Enquanto não tem outro Super Bowl, aproveite esse lindo preset.", dngPath: dngPath, price: 500, imagesLinks: [
-            "https://wallpaperaccess.com/full/301291.jpg",
-            "https://wallpaperaccess.com/full/308967.jpg"
+        let gabrielHenrique1 = Preset(name: dngPath, artist: gabrielHenrique, description: "Duplo tom, melhorando as imagens.", dngPath: dngPath, price: 500, imagesLinks: [
+            "https://i.ibb.co/FBsjbR4/Skyline-0.jpg",
+            "https://i.ibb.co/4fYYqZX/Skyline-1.jpg"
         ])
 
         gabrielHenrique.presets = [gabrielHenrique0, gabrielHenrique1]

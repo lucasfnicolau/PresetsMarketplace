@@ -111,7 +111,7 @@
 		B68A4F16247327A4003B0EF5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B6A19770247870DE00C93302 /* DynamicCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		B6A19772247873F600C93302 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
-		B6A4E013246F2114009A78AC /* PresetsMarketplace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresetsMarketplace.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6A4E013246F2114009A78AC /* PREMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PREMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A4E016246F2114009A78AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6A4E018246F2114009A78AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B6A4E020246F2114009A78AC /* PresetsMarketplace.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PresetsMarketplace.xcdatamodel; sourceTree = "<group>"; };
@@ -306,7 +306,7 @@
 		B6A4E014246F2114009A78AC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B6A4E013246F2114009A78AC /* PresetsMarketplace.app */,
+				B6A4E013246F2114009A78AC /* PREMA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 			);
 			name = PresetsMarketplace;
 			productName = PresetsMarketplace;
-			productReference = B6A4E013246F2114009A78AC /* PresetsMarketplace.app */;
+			productReference = B6A4E013246F2114009A78AC /* PREMA.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -639,14 +639,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9Y63W6Q4X;
+				DEVELOPMENT_TEAM = 87G2Y58K9U;
 				INFOPLIST_FILE = PresetsMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = academy.PresetsMarketplace;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PREMA;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -657,14 +657,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9Y63W6Q4X;
+				DEVELOPMENT_TEAM = 87G2Y58K9U;
 				INFOPLIST_FILE = PresetsMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = academy.PresetsMarketplace;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PREMA;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
