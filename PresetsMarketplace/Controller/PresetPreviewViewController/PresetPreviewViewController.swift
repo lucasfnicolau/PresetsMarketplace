@@ -119,6 +119,11 @@ class PresetPreviewViewController: UIViewController {
             do {
                 let data = try Data(contentsOf: url)
                 let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                activityViewController.excludedActivityTypes = [
+                    .saveToCameraRoll,
+                    .assignToContact,
+                    .print
+                ]
                 self.present(activityViewController, animated: true, completion: nil)
             } catch {
                 print(error.localizedDescription)
