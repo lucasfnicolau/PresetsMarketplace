@@ -10,13 +10,20 @@ import UIKit
 
 class OthersPresetsCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     var presets: [Preset]
+    let viewController: UIViewController
 
-    init(with presets: [Preset]) {
+    init(with presets: [Preset], fromViewController viewController: UIViewController) {
         self.presets = presets
+        self.viewController = viewController
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO
+        if let presetPreviewViewController = UIStoryboard(name: Storyboard.presetPreviewViewController, bundle: nil).instantiateViewController(identifier: Identifier.presetPreviewViewController) as? PresetPreviewViewController {
+
+            presetPreviewViewController.modalPresentationStyle = .fullScreen
+            presetPreviewViewController.preset = presets[indexPath.item]
+            viewController.present(presetPreviewViewController, animated: true, completion: nil)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
