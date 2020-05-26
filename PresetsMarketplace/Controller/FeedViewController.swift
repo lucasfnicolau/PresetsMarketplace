@@ -32,9 +32,7 @@ class FeedViewController: BaseViewController {
     }
     
     func setupCollectionView() {
-        let filteredPresets = getFollowingArtistsPresets()
-        let dao = DynamicCollectionViewDAO(with: filteredPresets)
-        collectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
+        collectionView = DynamicCollectionView(collectionType: .user, in: self)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
     }
