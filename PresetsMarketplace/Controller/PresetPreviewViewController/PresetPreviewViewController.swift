@@ -22,6 +22,7 @@ class PresetPreviewViewController: UIViewController {
     @IBOutlet weak var floatingViewsLabel: UILabel!
     @IBOutlet weak var floatingBuyButton: UIButton!
     var preset: Preset?
+    var viewController: UIViewController?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -99,6 +100,7 @@ class PresetPreviewViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let presetInfoTableViewViewController = segue.destination as? PresetInfoTableViewViewController {
             presetInfoTableViewViewController.preset = preset
+            presetInfoTableViewViewController.viewController = viewController
             presetInfoTableViewViewController.blurView = blurView
             presetInfoTableViewViewController.slideToMoreInfoStackView = slideToMoreInfoStackView
         }
