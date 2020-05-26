@@ -12,22 +12,26 @@ class TransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     var transition = TransitionAnimator()
     var originFrame: CGRect = .zero
+    var destinationFrame: CGRect = .zero
+    var imageView: UIImageView = .init(frame: .zero)
     
-    init(from originFrame: CGRect) {
-        self.originFrame = originFrame
+    init(from originFrame: CGRect? = nil, to destinationFrame: CGRect? = nil, with imageView: UIImageView) {
+        
+        self.imageView = imageView
+        
+        if let origin = originFrame {
+            self.originFrame = origin
+        }
+        
+        if let destination = destinationFrame {
+            self.destinationFrame = destination
+        }
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         transition.originFrame = originFrame
-        
-        transition.originFrame = CGRect(
-          x: transition.originFrame.origin.x + 20,
-          y: transition.originFrame.origin.y + 20,
-          width: transition.originFrame.size.width - 40,
-          height: transition.originFrame.size.height - 40
-        )
-
+        transition.imageView = imageView
         transition.presenting = true
         
         return transition
@@ -35,7 +39,9 @@ class TransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        transition.presenting = true
+        transition.originFrame = destinationFrame
+        transition.imageView = imageView
+        transition.presenting = false
         
         return transition
     }

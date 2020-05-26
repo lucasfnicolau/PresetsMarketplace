@@ -11,9 +11,10 @@ import UIKit
 
 class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration: TimeInterval = 3
+    let duration: TimeInterval = 0.8
     var presenting: Bool = true
     var originFrame: CGRect = CGRect.zero
+    var imageView: UIImageView = .init(frame: .zero)
     
     var dismissCompletion: (() -> Void)?
     
@@ -42,9 +43,11 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animate(
           withDuration: duration,
           delay: 0.0,
-          usingSpringWithDamping: 0.8,
+          usingSpringWithDamping: getSpringWithDamping(),
           initialSpringVelocity: 0.2,
-          animations: { self.setAnimations(for: destinationView, with: scaleTransform, to: frames.final) }, 
+          animations: { 
+            self.getAnimations(for: destinationView, with: scaleTransform, to: frames.final)
+          }, 
           completion: { _ in
             if !self.presenting {
               self.dismissCompletion?()
@@ -99,7 +102,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         destinationView.layer.masksToBounds = true
     }
     
-    private func setAnimations(for view: UIView, with scaleTransform: CGAffineTransform, to frame: CGRect) {
+    private func getAnimations(for view: UIView, with scaleTransform: CGAffineTransform, to frame: CGRect) {
         
         if presenting {
             view.transform = .identity
@@ -107,9 +110,20 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         } else {
             view.transform = scaleTransform
             view.layer.cornerRadius = 20.0
+            view.alpha = 0.0
         }
         
+        imageView.contentMode = .scaleAspectFill
         view.center = CGPoint(x: frame.midX, y: frame.midY)
+    }
+    
+    private func getSpringWithDamping() -> CGFloat {
+        
+        if presenting {
+            return 0.8
+        } else {
+            return 1.0
+        }
     }
     
     private func handleRadius(recipeView: UIView, hasRadius: Bool) {

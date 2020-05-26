@@ -11,6 +11,7 @@ import UIKit
 class PresetImageViewController: UIViewController {
 
     let imageURL: URL?
+    let imageView = UIImageView()
 
     init(withImageURL imageURL: URL?) {
         self.imageURL = imageURL
@@ -28,7 +29,6 @@ class PresetImageViewController: UIViewController {
     }
 
     func setupLayout() {
-        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         view.addSubview(imageView)
