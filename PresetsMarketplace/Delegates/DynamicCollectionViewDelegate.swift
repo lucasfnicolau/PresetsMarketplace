@@ -34,13 +34,13 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
             return
         }
         
-        
         if let destination = UIStoryboard(name: Storyboard.presetPreviewViewController, bundle: nil).instantiateViewController(identifier: Identifier.presetPreviewViewController) as? PresetPreviewViewController {
             
             let originFrame = setOriginFrame(from: cell)
-            let transitionDelegate = TransitionDelegate(from: originFrame)
+            let transitionDelegate = TransitionDelegate(from: originFrame, with: cell.cellImageView)
             
             destination.transitioningDelegate = transitionDelegate
+            destination.origin = originFrame
             destination.modalPresentationStyle = .fullScreen
             destination.preset = dao.filteredPresets[indexPath.item]
             destination.viewController = viewController
@@ -57,7 +57,6 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
             let cellSuperView = cell.superview else {
             return .zero
         }
-        
         
         originFrame = cellSuperView.convert(cell.frame, to: viewController.view)
         
