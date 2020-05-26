@@ -13,16 +13,18 @@ class Preset: Equatable {
     var name: String
     var artist: Artist
     var description: String = ""
+    let dngPath: String
     private(set) var imagesURLs: [URL?] = []
     private(set) var imagesData: [Data] = []
     private(set) var price: Double = 0
     private(set) var viewsCount: Int = 0
     private(set) var soldCount: Int = 0
 
-    init(name: String, artist: Artist, description: String = "", price: Double = 0, imagesLinks: [String] = []) {
+    init(name: String, artist: Artist, description: String = "", dngPath: String, price: Double = 0, imagesLinks: [String] = []) {
         self.name = name
         self.artist = artist
         self.description = description
+        self.dngPath = dngPath
         addImagesURLs(from: imagesLinks)
         setPrice(to: price)
     }

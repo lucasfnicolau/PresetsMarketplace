@@ -11,7 +11,7 @@ import UIKit
 class TabBarController: UITabBarController {
     let feedViewController = FeedViewController()
     let discoverViewController = DiscoverViewController()
-    let profileViewController = ProfileViewController()
+    let profileViewController = PublicProfileViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
