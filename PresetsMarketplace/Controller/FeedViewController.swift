@@ -25,7 +25,9 @@ class FeedViewController: BaseViewController {
     }
     
     func setupCollectionView() {
-        collectionView = DynamicCollectionView(collectionType: .artist, in: self)
+        //MARK: Filtrar presets pelos que o usuario segue
+        let dao = DynamicCollectionViewDAO(with: Mock.shared.presets)
+        collectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
     }

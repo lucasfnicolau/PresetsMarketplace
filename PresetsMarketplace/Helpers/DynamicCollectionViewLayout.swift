@@ -31,22 +31,22 @@ class DynamicCollectionViewLayout: UICollectionViewLayout {
         return CGSize(width: contentWidth, height: contentHeight)
     }
     
+    var xOffset: [CGFloat] = []
+    var column = 0
+    lazy var yOffset: [CGFloat] = .init(repeating: 0, count: numberOfColumns)
+    
     override func prepare() {
         guard
-            cache.isEmpty == true,
             let collectionView = collectionView
             else {
                 return
         }
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
-        var xOffset: [CGFloat] = []
         for column in 0..<numberOfColumns {
             xOffset.append(CGFloat(column) * columnWidth)
         }
-        var column = 0
-        var yOffset: [CGFloat] = .init(repeating: 0, count: numberOfColumns)
         
-        for item in 0..<collectionView.numberOfItems(inSection: 0) {
+        for item in cache.count..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             
             let photoHeight = cellSizes.randomElement() ?? 200
