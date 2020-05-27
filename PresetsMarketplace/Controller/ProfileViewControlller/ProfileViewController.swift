@@ -50,7 +50,8 @@ class ProfileViewController: BaseViewController {
 //            ])
 //        }
 
-        self.profileImageView.image = UIImage(named: "mock_profile")
+        self.profileImageView.image = UIImage(named: "profile_thumbnail_bg")
+        setupLabel()
         let size: CGFloat = 125
         self.profileImageView.layer.cornerRadius = size / 2
         NSLayoutConstraint.activate([
@@ -61,6 +62,25 @@ class ProfileViewController: BaseViewController {
         let dao = DynamicCollectionViewDAO(with: Mock.shared.user.acquiredPresets)
         presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
         setupCollectionViewConstraints()
+    }
+
+    func setupLabel() {
+        let label = UILabel()
+        label.font = label.font.withSize(75)
+        label.textAlignment = .center
+        label.textColor = .black
+
+        profileImageView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor),
+            label.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            label.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor)
+        ])
+
+        label.text = String(Mock.shared.user.name.prefix(1)).uppercased()
     }
 
     func setupCollectionViewConstraints() {

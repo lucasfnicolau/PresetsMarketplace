@@ -101,26 +101,26 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IPa-n9-cH9">
-                                            <rect key="frame" x="16" y="16" width="154.5" height="30"/>
+                                            <rect key="frame" x="16" y="12" width="148.5" height="38"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Summer Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zX-pn-UWc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="154.5" height="15.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Vintage Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zX-pn-UWc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="148.5" height="19.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EoP-WF-8nH">
-                                                    <rect key="frame" x="0.0" y="20.5" width="67.5" height="9.5"/>
+                                                    <rect key="frame" x="0.0" y="24.5" width="67.5" height="13.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Xkj-Aq-F4C">
-                                                            <rect key="frame" x="0.0" y="0.0" width="26" height="9.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="26" height="13.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sales" translatesAutoresizingMaskIntoConstraints="NO" id="Q8G-gF-M8d">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="9" height="9.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="9" height="13.5"/>
                                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5k" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKf-gv-bJ4">
-                                                                    <rect key="frame" x="12" y="0.0" width="14" height="9.5"/>
+                                                                    <rect key="frame" x="12" y="0.0" width="14" height="13.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -128,14 +128,14 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dcw-6c-Sh8">
-                                                            <rect key="frame" x="34" y="0.0" width="33.5" height="9.5"/>
+                                                            <rect key="frame" x="34" y="0.0" width="33.5" height="13.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="views" translatesAutoresizingMaskIntoConstraints="NO" id="QRZ-0T-8pV">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="10.5" height="9.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="10.5" height="13.5"/>
                                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10k" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFU-09-YUF">
-                                                                    <rect key="frame" x="13.5" y="0.0" width="20" height="9.5"/>
+                                                                    <rect key="frame" x="13.5" y="0.0" width="20" height="13.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -168,9 +168,9 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="IPa-n9-cH9" secondAttribute="bottom" constant="16" id="ExM-se-sgx"/>
+                                        <constraint firstAttribute="bottom" secondItem="IPa-n9-cH9" secondAttribute="bottom" constant="12" id="ExM-se-sgx"/>
                                         <constraint firstItem="IPa-n9-cH9" firstAttribute="leading" secondItem="ZGK-cD-wct" secondAttribute="leading" constant="16" id="KCr-ju-m3B"/>
-                                        <constraint firstItem="IPa-n9-cH9" firstAttribute="top" secondItem="ZGK-cD-wct" secondAttribute="top" constant="16" id="UYJ-OF-tH8"/>
+                                        <constraint firstItem="IPa-n9-cH9" firstAttribute="top" secondItem="ZGK-cD-wct" secondAttribute="top" constant="12" id="UYJ-OF-tH8"/>
                                         <constraint firstItem="TTU-pl-dUO" firstAttribute="centerY" secondItem="ZGK-cD-wct" secondAttribute="centerY" id="ZVw-ff-MFS"/>
                                         <constraint firstAttribute="trailing" secondItem="TTU-pl-dUO" secondAttribute="trailing" constant="16" id="uiO-pp-Eh0"/>
                                     </constraints>
@@ -254,45 +254,37 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="760"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutPresetTableViewCell" rowHeight="147" id="sRJ-uR-ckM" customClass="AboutPresetTableViewCell" customModule="PREMA" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="147"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutPresetTableViewCell" rowHeight="146.5" id="sRJ-uR-ckM" customClass="AboutPresetTableViewCell" customModule="PREMA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="146.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sRJ-uR-ckM" id="mWh-jS-bko">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="147"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="146.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="0rf-Ck-Tej">
-                                                    <rect key="frame" x="15" y="11" width="379" height="125"/>
-                                                    <subviews>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" text="Sobre" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4v-j6-eIS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="38.5"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        </textView>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCK-fu-B6f">
-                                                            <rect key="frame" x="0.0" y="30.5" width="379" height="94.5"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <string key="text">Inspiradas no verão, são praias de areia branca e deslumbrantes azuis do oceano. Imagens poderosas que tornam a sua pele ainda mais bronzeada e sedosa. Traga vibrações de verão às suas imagens com apenas alguns cliques!</string>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        </textView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="jCK-fu-B6f" secondAttribute="trailing" id="0rR-oH-31W"/>
-                                                        <constraint firstItem="jCK-fu-B6f" firstAttribute="leading" secondItem="0rf-Ck-Tej" secondAttribute="leading" id="eUk-y3-Ct1"/>
-                                                        <constraint firstAttribute="bottom" secondItem="jCK-fu-B6f" secondAttribute="bottom" id="y9b-Rb-udV"/>
-                                                    </constraints>
-                                                </stackView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" text="Sobre" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4v-j6-eIS">
+                                                    <rect key="frame" x="15" y="11" width="57.5" height="38"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCK-fu-B6f">
+                                                    <rect key="frame" x="15" y="41" width="384" height="94.5"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Inspiradas no verão, são praias de areia branca e deslumbrantes azuis do oceano. Imagens poderosas que tornam a sua pele ainda mais bronzeada e sedosa. Traga vibrações de verão às suas imagens com apenas alguns cliques!</string>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="0rf-Ck-Tej" firstAttribute="leading" secondItem="mWh-jS-bko" secondAttribute="leadingMargin" constant="-5" id="0ev-Nw-cwN"/>
-                                                <constraint firstItem="0rf-Ck-Tej" firstAttribute="top" secondItem="mWh-jS-bko" secondAttribute="topMargin" id="gwW-OO-m5u"/>
-                                                <constraint firstItem="0rf-Ck-Tej" firstAttribute="trailing" secondItem="mWh-jS-bko" secondAttribute="trailingMargin" id="nkD-d0-jU1"/>
-                                                <constraint firstItem="0rf-Ck-Tej" firstAttribute="bottom" secondItem="mWh-jS-bko" secondAttribute="bottomMargin" id="vUX-8x-ETP"/>
+                                                <constraint firstItem="F4v-j6-eIS" firstAttribute="top" secondItem="mWh-jS-bko" secondAttribute="topMargin" id="Lt9-NH-6To"/>
+                                                <constraint firstAttribute="trailing" secondItem="jCK-fu-B6f" secondAttribute="trailing" constant="15" id="QCc-P8-KIg"/>
+                                                <constraint firstItem="jCK-fu-B6f" firstAttribute="top" secondItem="F4v-j6-eIS" secondAttribute="bottom" constant="-8" id="UtN-jE-RQl"/>
+                                                <constraint firstItem="jCK-fu-B6f" firstAttribute="leading" secondItem="mWh-jS-bko" secondAttribute="leading" constant="15" id="ZGh-3E-SJv"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jCK-fu-B6f" secondAttribute="bottom" id="cr5-ub-iNQ"/>
+                                                <constraint firstItem="F4v-j6-eIS" firstAttribute="leading" secondItem="mWh-jS-bko" secondAttribute="leading" constant="15" id="lvz-d2-k0J"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -301,11 +293,11 @@
                                             <outlet property="aboutTitleTextView" destination="F4v-j6-eIS" id="QcH-ti-s1g"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArtistPresetTableViewCell" rowHeight="203" id="sY0-uk-CIz" customClass="ArtistPresetTableViewCell" customModule="PREMA" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="175" width="414" height="203"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArtistPresetTableViewCell" rowHeight="149" id="sY0-uk-CIz" customClass="ArtistPresetTableViewCell" customModule="PREMA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="174.5" width="414" height="149"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sY0-uk-CIz" id="03h-oU-ovx">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="203"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" text="Artista" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXj-No-0jG">
@@ -355,6 +347,7 @@
                                                 <constraint firstItem="NXj-No-0jG" firstAttribute="top" secondItem="03h-oU-ovx" secondAttribute="top" id="kGE-7w-wx8"/>
                                                 <constraint firstItem="7dD-fM-Jlq" firstAttribute="leading" secondItem="03h-oU-ovx" secondAttribute="leading" constant="15" id="o2C-TX-mnT"/>
                                                 <constraint firstAttribute="trailing" secondItem="NXj-No-0jG" secondAttribute="trailing" constant="20" id="sGz-AN-GpJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="7dD-fM-Jlq" secondAttribute="bottom" constant="8" id="sw4-Bu-7lw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -366,7 +359,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OthersPresetsTableViewCell" rowHeight="210" id="Jc2-uv-wLf" customClass="OthersPresetsTableViewCell" customModule="PREMA" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="378" width="414" height="210"/>
+                                        <rect key="frame" x="0.0" y="323.5" width="414" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jc2-uv-wLf" id="j4Z-Vn-lAM">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
@@ -419,7 +412,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="sFx-Uf-hsX" secondAttribute="trailing" id="3eJ-jW-ya1"/>
                                                 <constraint firstAttribute="bottom" secondItem="sFx-Uf-hsX" secondAttribute="bottom" constant="8" id="3lE-yG-tiR"/>
-                                                <constraint firstItem="C9t-bQ-aet" firstAttribute="leading" secondItem="j4Z-Vn-lAM" secondAttribute="leadingMargin" constant="-5" id="Aah-EM-HsE"/>
+                                                <constraint firstItem="C9t-bQ-aet" firstAttribute="leading" secondItem="j4Z-Vn-lAM" secondAttribute="leading" constant="15" id="Aah-EM-HsE"/>
                                                 <constraint firstItem="sFx-Uf-hsX" firstAttribute="centerX" secondItem="j4Z-Vn-lAM" secondAttribute="centerX" id="AlQ-Lc-nnw"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="C9t-bQ-aet" secondAttribute="trailing" constant="15" id="VZA-5z-bBb"/>
                                                 <constraint firstItem="sFx-Uf-hsX" firstAttribute="top" secondItem="C9t-bQ-aet" secondAttribute="bottom" id="asy-vc-A3G"/>

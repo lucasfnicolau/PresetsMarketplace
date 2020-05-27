@@ -62,6 +62,7 @@ class PresetPreviewViewController: UIViewController {
 
     func setupViews() {
         guard let preset = preset else { return }
+        view.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         blurView.alpha = 0.0
         presetNameLabel.text = preset.name
         presetArtistNameLabel.text = "por \(preset.artist.name)"
