@@ -30,11 +30,11 @@ class PresetInfoTableViewDelegate: NSObject, UITableViewDelegate {
         case 0:
             return UIScreen.main.bounds.height - HEADER_SIZE
         case 1:
-            return max(CGFloat(230 * preset.description.count / 280), 100)
+            return UITableView.automaticDimension
         case 2:
-            return max(CGFloat(230 * preset.artist.about.count / 140), 170)
+            return UITableView.automaticDimension
         case 3:
-            return 260
+            return 220
         default:
             return 200
         }

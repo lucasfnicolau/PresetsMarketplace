@@ -30,6 +30,7 @@ class PresetImageViewController: UIViewController {
 
     func setupLayout() {
         imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         imageView.clipsToBounds = true
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
