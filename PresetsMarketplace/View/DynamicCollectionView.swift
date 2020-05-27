@@ -16,9 +16,9 @@ class DynamicCollectionView: UICollectionView {
     var collectionViewDelegate: DynamicCollectionViewDelegate?
     var dao: DynamicCollectionViewDAO
     
-    init(collectionType: CollectionViewCellEnum, in viewController: UIViewController, using dao: DynamicCollectionViewDAO) {
+    init(collectionType: CollectionViewCellEnum, in viewController: UIViewController, using dao: DynamicCollectionViewDAO? = nil) {
         self.collectionEnum = collectionType
-        self.dao = dao
+        self.dao = (dao == nil ? DynamicCollectionViewDAO(with: []) : dao!)
 
         super.init(frame: .zero, collectionViewLayout: layout)
 
