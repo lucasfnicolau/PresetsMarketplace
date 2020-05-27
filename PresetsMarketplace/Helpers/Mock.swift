@@ -94,7 +94,7 @@ class Mock {
         self.presets = leonardoOliveira.presets + pedroGuedes.presets + lucasNicolau.presets + gabrielHenrique.presets
 
         user.startFollowing(artist: pedroGuedes)
-        user.startFollowing(artist: leonardoOliveira)
+//        user.startFollowing(artist: leonardoOliveira)
         user.startFollowing(artist: lucasNicolau)
     }
 }
