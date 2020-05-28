@@ -14,7 +14,7 @@ class Mock {
     static let shared = Mock()
     private(set) lazy var user: User = {
         var name = UIDevice.current.name.replacingOccurrences(of: "iPhone de ", with: "")
-        name = UIDevice.current.name.replacingOccurrences(of: "'s iPhone", with: "")
+        name = name.replacingOccurrences(of: "'s iPhone", with: "")
         let user = User(name: name, profileImageLink: "")
         return user
     }()
