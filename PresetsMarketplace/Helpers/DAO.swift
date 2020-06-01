@@ -76,7 +76,6 @@ class DAO: NSObject {
                 break
             }
         }
-
     }
 
     private func instantiateArtist(usingRecord record: CKRecord) -> Artist? {
