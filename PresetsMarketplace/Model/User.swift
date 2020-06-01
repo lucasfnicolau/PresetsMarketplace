@@ -12,13 +12,19 @@ class User: Equatable {
     var id: String
     var name: String
     var profileImageUrl: URL?
-    private(set) var following: [Artist] = []
-    private(set) var acquiredPresets: [Preset] = []
+    private(set) var following: [Artist]
+    private(set) var acquiredPresets: [Preset]
 
-    init(id: String = "", name: String, profileImageLink: String) {
+    init(id: String = "",
+         name: String,
+         profileImageLink: String,
+         following: [Artist] = [],
+         acquiredPresets: [Preset] = []) {
         self.id = id.count > 0 ? id : UUID().uuidString
         self.name = name
         self.profileImageUrl = URL(string: profileImageLink)
+        self.following = following
+        self.acquiredPresets = acquiredPresets
     }
 
     static func ==(lhs: User, rhs: User) -> Bool {

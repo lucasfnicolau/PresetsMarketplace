@@ -9,21 +9,19 @@
 import Foundation
 import CloudKit
 
-public class CloudKitManager {
+class CloudKitManager {
 
     private let container: CKContainer
     private let publicDB: CKDatabase
     private let privateDB: CKDatabase
 
-    private init() {
+    init() {
         container = CKContainer.default()
         publicDB = container.publicCloudDatabase
         privateDB = container.privateCloudDatabase
     }
 
-    public static let shared = CloudKitManager()
-
-    public func query(using Query: CKQuery, on database: Database, completionHandler: @escaping (Result<[CKRecord], CKError>) -> Void) {
+    public func query(using query: CKQuery, on database: Database, completionHandler: @escaping (Result<[CKRecord], CKError>) -> Void) {
 
         var db: CKDatabase?
 
@@ -35,11 +33,11 @@ public class CloudKitManager {
         }
 
         if let db = db {
-            db.perform(Query, inZoneWith: .default) { (records, error) in
+            db.perform(query, inZoneWith: .default) { (records, error) in
                 if let error = error as? CKError {
                     completionHandler(.failure(error))
                 }
-                guard let records = records else {return}
+                guard let records = records else { return }
                 completionHandler(.success(records))
             }
         }
@@ -95,7 +93,6 @@ public class CloudKitManager {
                         if let updatedRecord = updatedRecord {
                             completionHandler(.success(updatedRecord))
                         }
-
                     }
                 }
             }
@@ -103,6 +100,7 @@ public class CloudKitManager {
     }
 
     public func delete(recordID: CKRecord.ID, on database: Database, completionHandler: @escaping (Result<Void, CKError>) -> Void) {
+
         var db: CKDatabase?
         switch database {
         case .publicDB:
@@ -110,6 +108,7 @@ public class CloudKitManager {
         case .privateDB:
             db = privateDB
         }
+
         if let db = db {
             db.delete(withRecordID: recordID) { (record, error) in
                 if let error = error as? CKError {
@@ -129,6 +128,7 @@ public class CloudKitManager {
         case .privateDB:
             db = privateDB
         }
+
         if let db = db {
             db.fetch(withRecordID: recordID) { (record, error) in
                 if let error = error as? CKError {
@@ -143,7 +143,7 @@ public class CloudKitManager {
         }
     }
 
-    public func fetchReferences(of recordIDs: [CKRecord.ID], on database: Database, completionHandler: @escaping ((Result<[CKRecord.Reference], CKError>) -> Void)) {
+    public func fetchRecords(of recordIDs: [CKRecord.ID], on database: Database, completionHandler: @escaping ((Result<[CKRecord], CKError>) -> Void)) {
 
         var db: CKDatabase?
         switch database {
@@ -152,6 +152,7 @@ public class CloudKitManager {
         case .privateDB:
             db = privateDB
         }
+
         if let db = db {
             let fetchOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
             fetchOperation.fetchRecordsCompletionBlock = { (recordsDict, error) in
@@ -163,13 +164,7 @@ public class CloudKitManager {
                     for (_, record) in recordsDict {
                         records.append(record)
                     }
-                    var recordReferences: [CKRecord.Reference] = []
-                    for record in records {
-                        if let reference = record.parent {
-                            recordReferences.append(reference)
-                        }
-                    }
-                    completionHandler(.success(recordReferences))
+                    completionHandler(.success(records))
                 }
             }
             db.add(fetchOperation)

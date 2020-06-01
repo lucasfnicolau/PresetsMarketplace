@@ -10,6 +10,5 @@ import Foundation
 
 public enum RecordType: String {
     case user = "User"
-    case artist = "Artist"
     case preset = "Preset"
 }

@@ -12,8 +12,8 @@ class Artist: User {
     var presets: [Preset] = []
     var about: String
 
-    init(name: String, about: String, profileImageLink: String) {
+    init(id: String = "", name: String, about: String, profileImageLink: String) {
         self.about = about
-        super.init(name: name, profileImageLink: profileImageLink)
+        super.init(id: id, name: name, profileImageLink: profileImageLink)
     }
 }

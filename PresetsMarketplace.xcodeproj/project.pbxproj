@@ -63,6 +63,7 @@
 		B6FC51B12485994F004F4A3E /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FC51B02485994F004F4A3E /* CloudKitManager.swift */; };
 		B6FC51B3248599C2004F4A3E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FC51B2248599C2004F4A3E /* Database.swift */; };
 		B6FC51B5248599E5004F4A3E /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FC51B4248599E5004F4A3E /* RecordType.swift */; };
+		B6FC51B724859E97004F4A3E /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FC51B624859E97004F4A3E /* DAO.swift */; };
 		C0802F7424759EF2006267F7 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F7324759EF2006267F7 /* DynamicCollectionView.swift */; };
 		C0802F762475A109006267F7 /* DynamicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F752475A109006267F7 /* DynamicCollectionViewCell.swift */; };
 		C0802F782475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */; };
@@ -144,6 +145,7 @@
 		B6FC51B02485994F004F4A3E /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		B6FC51B2248599C2004F4A3E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		B6FC51B4248599E5004F4A3E /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
+		B6FC51B624859E97004F4A3E /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		C0802F7324759EF2006267F7 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		C0802F752475A109006267F7 /* DynamicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionArtistViewCell.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				B6FC51B02485994F004F4A3E /* CloudKitManager.swift */,
 				B6FC51B2248599C2004F4A3E /* Database.swift */,
 				B6FC51B4248599E5004F4A3E /* RecordType.swift */,
+				B6FC51B624859E97004F4A3E /* DAO.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				B6E76502247701B7000B5778 /* OthersPresetsCollectionViewCell.swift in Sources */,
 				B659287424748D1500F4B4C8 /* Preset.swift in Sources */,
 				B654DE3B24759EB800027C23 /* PresetInfoTableViewDataSource.swift in Sources */,
+				B6FC51B724859E97004F4A3E /* DAO.swift in Sources */,
 				B654DE3F2475A17200027C23 /* PresetInfoTableViewViewController.swift in Sources */,
 				B67E410224786B2D003DE748 /* DynamicCollectionViewDataSource.swift in Sources */,
 				B65928482474598600F4B4C8 /* CloseButton.swift in Sources */,
