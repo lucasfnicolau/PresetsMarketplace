@@ -22,6 +22,10 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = Screen.profile
         setupViews()
+
+        let vc = LoginViewController()
+        vc.modalPresentationStyle = .custom
+        self.present(vc, animated: true, completion: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {

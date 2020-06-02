@@ -18,17 +18,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pXF-XR-ev7">
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="pXF-XR-ev7">
                     <rect key="frame" x="0.0" y="358" width="414" height="180"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="180" id="k55-W9-kEf"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="pXF-XR-ev7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="RG2-p4-Xxz"/>
-                <constraint firstItem="pXF-XR-ev7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="t53-2f-jEV"/>
+                <constraint firstItem="pXF-XR-ev7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DVa-ay-9zW"/>
                 <constraint firstItem="pXF-XR-ev7" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="uJV-JK-54h"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

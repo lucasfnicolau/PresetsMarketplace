@@ -16,11 +16,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setupSignInWithAppleButton()
+        addObserverForAppleIDChangeNotification()
+        performExistingAccountSetupFlow()
     }
 
     func setupSignInWithAppleButton() {
         let button = ASAuthorizationAppleIDButton()
         button.addTarget(self, action: #selector(signInWithAppleButtonTouched), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(button)
     }
 
@@ -40,10 +43,11 @@ class LoginViewController: UIViewController {
 
     @objc func appleIDStateChanged() {
         let provider = ASAuthorizationAppleIDProvider()
-        provider.getCredentialState(forUserID: DAO.shared.user?.id ?? "") { (credentialState, error) in
+        provider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
+                print(credentialState)
                 switch credentialState {
                 case .authorized:
                     break
@@ -71,6 +75,14 @@ class LoginViewController: UIViewController {
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
     }
+
+    private func saveUserInKeychain(_ userIdentifier: String) {
+        do {
+            try KeychainItem(service: KeychainInfo.service, account: KeychainInfo.account).saveItem(userIdentifier)
+        } catch {
+            print("Unable to save userIdentifier to keychain.")
+        }
+    }
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate {
@@ -84,6 +96,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         switch authorization.credential {
         case let credential as ASAuthorizationAppleIDCredential:
             userID = credential.user
+            self.saveUserInKeychain(userID)
 
         case let credential as ASPasswordCredential:
             userID = credential.user
@@ -94,7 +107,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         }
 
         if !userID.isEmpty {
-            
+            print(userID)
         }
     }
 }

@@ -45,6 +45,8 @@
 		B6A4E021246F2114009A78AC /* PresetsMarketplace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6A4E01F246F2114009A78AC /* PresetsMarketplace.xcdatamodeld */; };
 		B6A4E023246F2115009A78AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A4E022246F2115009A78AC /* Assets.xcassets */; };
 		B6A4E026246F2115009A78AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6A4E024246F2115009A78AC /* LaunchScreen.storyboard */; };
+		B6A87CE22486C92B001BA8BC /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A87CE12486C92B001BA8BC /* KeychainItem.swift */; };
+		B6A87CE42486C93E001BA8BC /* KeychainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A87CE32486C93E001BA8BC /* KeychainInfo.swift */; };
 		B6C2F21A247C56C7009A1C8B /* DynamicCollectionViewDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2F219247C56C7009A1C8B /* DynamicCollectionViewDAO.swift */; };
 		B6C2F226247C6CDB009A1C8B /* Duotone.dng in Resources */ = {isa = PBXBuildFile; fileRef = B6C2F21C247C6CDA009A1C8B /* Duotone.dng */; };
 		B6C2F227247C6CDB009A1C8B /* Black-And-White.dng in Resources */ = {isa = PBXBuildFile; fileRef = B6C2F21D247C6CDA009A1C8B /* Black-And-White.dng */; };
@@ -129,6 +131,8 @@
 		B6A4E022246F2115009A78AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6A4E025246F2115009A78AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6A4E027246F2115009A78AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6A87CE12486C92B001BA8BC /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		B6A87CE32486C93E001BA8BC /* KeychainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainInfo.swift; sourceTree = "<group>"; };
 		B6C2F219247C56C7009A1C8B /* DynamicCollectionViewDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewDAO.swift; sourceTree = "<group>"; };
 		B6C2F21C247C6CDA009A1C8B /* Duotone.dng */ = {isa = PBXFileReference; lastKnownFileType = file; path = Duotone.dng; sourceTree = "<group>"; };
 		B6C2F21D247C6CDA009A1C8B /* Black-And-White.dng */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Black-And-White.dng"; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				B6FC51B2248599C2004F4A3E /* Database.swift */,
 				B6FC51B4248599E5004F4A3E /* RecordType.swift */,
 				B6FC51B624859E97004F4A3E /* DAO.swift */,
+				B6A87CE32486C93E001BA8BC /* KeychainInfo.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 		B68A4F0D24732608003B0EF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B6A87CE12486C92B001BA8BC /* KeychainItem.swift */,
 				B6A4E016246F2114009A78AC /* AppDelegate.swift */,
 				B6A4E018246F2114009A78AC /* SceneDelegate.swift */,
 			);
@@ -544,10 +550,12 @@
 				C0802F762475A109006267F7 /* DynamicCollectionViewCell.swift in Sources */,
 				B6A19773247873F600C93302 /* Mock.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
+				B6A87CE42486C93E001BA8BC /* KeychainInfo.swift in Sources */,
 				B6A19771247870DE00C93302 /* DynamicCollectionViewDelegate.swift in Sources */,
 				B6FC51BA2485CAA2004F4A3E /* LoginViewController.swift in Sources */,
 				D90E48C5247C5277002F4A74 /* PublicProfileViewController.swift in Sources */,
 				B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */,
+				B6A87CE22486C92B001BA8BC /* KeychainItem.swift in Sources */,
 				B664BB93247DB58F0099951D /* RoundedView.swift in Sources */,
 				B6E764FF2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift in Sources */,
 				B6FC51B3248599C2004F4A3E /* Database.swift in Sources */,
