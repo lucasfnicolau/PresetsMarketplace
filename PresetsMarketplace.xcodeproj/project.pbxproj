@@ -60,10 +60,15 @@
 		B6E764FD2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E764FC2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift */; };
 		B6E764FF2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E764FE2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift */; };
 		B6E76502247701B7000B5778 /* OthersPresetsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E76501247701B7000B5778 /* OthersPresetsCollectionViewCell.swift */; };
+		B6FC51B12485994F004F4A3E /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FC51B02485994F004F4A3E /* CloudKitManager.swift */; };
+		B6FC51B3248599C2004F4A3E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FC51B2248599C2004F4A3E /* Database.swift */; };
+		B6FC51B5248599E5004F4A3E /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FC51B4248599E5004F4A3E /* RecordType.swift */; };
+		B6FC51B724859E97004F4A3E /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FC51B624859E97004F4A3E /* DAO.swift */; };
 		C0802F7424759EF2006267F7 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F7324759EF2006267F7 /* DynamicCollectionView.swift */; };
 		C0802F762475A109006267F7 /* DynamicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F752475A109006267F7 /* DynamicCollectionViewCell.swift */; };
 		C0802F782475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */; };
 		C0802F7A2475BF85006267F7 /* CollectionViewCellEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */; };
+		C086B71524856CBB00F88580 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C086B71424856CBB00F88580 /* CloudKit.framework */; };
 		D90E48C5247C5277002F4A74 /* PublicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90E48C4247C5277002F4A74 /* PublicProfileViewController.swift */; };
 		D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
@@ -137,10 +142,16 @@
 		B6E764FC2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPresetsCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		B6E764FE2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPresetsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		B6E76501247701B7000B5778 /* OthersPresetsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPresetsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6FC51B02485994F004F4A3E /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		B6FC51B2248599C2004F4A3E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		B6FC51B4248599E5004F4A3E /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
+		B6FC51B624859E97004F4A3E /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		C0802F7324759EF2006267F7 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		C0802F752475A109006267F7 /* DynamicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionArtistViewCell.swift; sourceTree = "<group>"; };
 		C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellEnum.swift; sourceTree = "<group>"; };
+		C086B71224856CB300F88580 /* PREMA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PREMA.entitlements; sourceTree = "<group>"; };
+		C086B71424856CBB00F88580 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D90E48C4247C5277002F4A74 /* PublicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicProfileViewController.swift; sourceTree = "<group>"; };
 		D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C086B71524856CBB00F88580 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +300,10 @@
 				B6A19772247873F600C93302 /* Mock.swift */,
 				B6C2F219247C56C7009A1C8B /* DynamicCollectionViewDAO.swift */,
 				B664BB90247DB17C0099951D /* Screen.swift */,
+				B6FC51B02485994F004F4A3E /* CloudKitManager.swift */,
+				B6FC51B2248599C2004F4A3E /* Database.swift */,
+				B6FC51B4248599E5004F4A3E /* RecordType.swift */,
+				B6FC51B624859E97004F4A3E /* DAO.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -306,6 +322,7 @@
 			children = (
 				B6A4E015246F2114009A78AC /* PresetsMarketplace */,
 				B6A4E014246F2114009A78AC /* Products */,
+				C086B71324856CBB00F88580 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -320,6 +337,7 @@
 		B6A4E015246F2114009A78AC /* PresetsMarketplace */ = {
 			isa = PBXGroup;
 			children = (
+				C086B71224856CB300F88580 /* PREMA.entitlements */,
 				B6C2F21B247C6C7E009A1C8B /* DNGs */,
 				B67E410024786B0F003DE748 /* DataSources */,
 				B67E40FF24786B06003DE748 /* Delegates */,
@@ -381,6 +399,14 @@
 				B6E76501247701B7000B5778 /* OthersPresetsCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C086B71324856CBB00F88580 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C086B71424856CBB00F88580 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,11 +499,13 @@
 				B6E76502247701B7000B5778 /* OthersPresetsCollectionViewCell.swift in Sources */,
 				B659287424748D1500F4B4C8 /* Preset.swift in Sources */,
 				B654DE3B24759EB800027C23 /* PresetInfoTableViewDataSource.swift in Sources */,
+				B6FC51B724859E97004F4A3E /* DAO.swift in Sources */,
 				B654DE3F2475A17200027C23 /* PresetInfoTableViewViewController.swift in Sources */,
 				B67E410224786B2D003DE748 /* DynamicCollectionViewDataSource.swift in Sources */,
 				B65928482474598600F4B4C8 /* CloseButton.swift in Sources */,
 				B6E764FD2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift in Sources */,
 				B6A4E017246F2114009A78AC /* AppDelegate.swift in Sources */,
+				B6FC51B5248599E5004F4A3E /* RecordType.swift in Sources */,
 				B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */,
 				B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */,
 				B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */,
@@ -506,10 +534,12 @@
 				B659287E2474993E00F4B4C8 /* PresetImageViewController.swift in Sources */,
 				B664BB93247DB58F0099951D /* RoundedView.swift in Sources */,
 				B6E764FF2476FF4F000B5778 /* OthersPresetsCollectionViewDataSource.swift in Sources */,
+				B6FC51B3248599C2004F4A3E /* Database.swift in Sources */,
 				B659285D24746FC100F4B4C8 /* CircleImageView.swift in Sources */,
 				C0802F7424759EF2006267F7 /* DynamicCollectionView.swift in Sources */,
 				C0802F7A2475BF85006267F7 /* CollectionViewCellEnum.swift in Sources */,
 				B6A4E019246F2114009A78AC /* SceneDelegate.swift in Sources */,
+				B6FC51B12485994F004F4A3E /* CloudKitManager.swift in Sources */,
 				A7B96C81247877BD000A695A /* TransitionAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,8 +676,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PresetsMarketplace/PREMA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87G2Y58K9U;
+				DEVELOPMENT_TEAM = Q9Y63W6Q4X;
 				INFOPLIST_FILE = PresetsMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -665,8 +696,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PresetsMarketplace/PREMA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87G2Y58K9U;
+				DEVELOPMENT_TEAM = Q9Y63W6Q4X;
 				INFOPLIST_FILE = PresetsMarketplace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
