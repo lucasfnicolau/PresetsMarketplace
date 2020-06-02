@@ -19,6 +19,10 @@ class DAO: NSObject {
         cloudKitManager = CloudKitManager()
     }
 
+    func saveUser(withId id: String) {
+        
+    }
+
     func getUser(withId id: String) {
         cloudKitManager.fetch(recordID: CKRecord.ID(recordName: id), on: .publicDB) { result in
             switch result {
