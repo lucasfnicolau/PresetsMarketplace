@@ -20,15 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                print(credentialState)
                 switch credentialState {
                 case .authorized:
+                    DAO.shared.getUser(withId: KeychainItem.currentUserIdentifier)
                     break
                 case .revoked:
+                    print("revoked")
                     break
                 case .notFound:
+                    print("notFound")
                     break
                 case .transferred:
+                    print("transferred")
                     break
                 @unknown default:
                     break

@@ -18,8 +18,6 @@ class FeedViewController: BaseViewController {
         navigationItem.title = Screen.feed
         
         setupCollectionView()
-
-        DAO.shared.getUser(withId: "1EBFF0B4-D28D-9DAD-A7F9-15E25F093D43")
     }
     
     override func viewDidAppear(_ animated: Bool) {
