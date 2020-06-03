@@ -107,9 +107,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             break
         }
 
-        if !userID.isEmpty {
-            print(userID)
-        }
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

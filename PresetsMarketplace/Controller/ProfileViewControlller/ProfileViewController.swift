@@ -23,20 +23,19 @@ class ProfileViewController: BaseViewController {
         navigationItem.title = Screen.profile
         setupViews()
 
-        let vc = LoginViewController()
-        vc.modalPresentationStyle = .custom
-        self.present(vc, animated: true, completion: nil)
+        checkIfUserIsLoggedIn()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
 
-        if !Mock.shared.user.acquiredPresets.isEmpty {
-            noPresetsAcquiredLabel.isHidden = true
+    func checkIfUserIsLoggedIn() {
+        if !DAO.shared.isLoggedIn {
+            let loginViewController = LoginViewController()
+            loginViewController.modalPresentationStyle = .custom
+            self.present(loginViewController, animated: true, completion: nil)
         }
-
-        presetsCollectionView?.dao = DynamicCollectionViewDAO(with: Mock.shared.user.acquiredPresets)
-        presetsCollectionView?.reloadData()
     }
 
     func setupViews() {
@@ -98,5 +97,27 @@ class ProfileViewController: BaseViewController {
             presetsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             presetsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+
+    override func configureObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(loadAcquiredPresets), name: NotificationName.userCreated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.profileDataFetched, object: nil)
+
+        loadAcquiredPresets()
+    }
+
+    @objc override func dataFetched(_ notif: Notification) {
+        guard let user = DAO.shared.user else { return }
+        let dao = DynamicCollectionViewDAO(with: user.acquiredPresets)
+        presetsCollectionView?.dao = dao
+
+        DispatchQueue.main.async { [weak self] in
+            self?.noPresetsAcquiredLabel.isHidden = true
+            self?.presetsCollectionView?.reloadData()
+        }
+    }
+
+    @objc func loadAcquiredPresets() {
+        DAO.shared.loadAcquiredPresets()
     }
 }

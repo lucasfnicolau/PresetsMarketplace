@@ -38,6 +38,8 @@
 		B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F12247326B6003B0EF5 /* FeedViewController.swift */; };
 		B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */; };
 		B68A4F17247327A4003B0EF5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A4F16247327A4003B0EF5 /* ProfileViewController.swift */; };
+		B68E401524881592009C99A0 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68E401424881592009C99A0 /* NotificationName.swift */; };
+		B68E40172488163A009C99A0 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68E40162488163A009C99A0 /* DataFetcher.swift */; };
 		B6A19771247870DE00C93302 /* DynamicCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A19770247870DE00C93302 /* DynamicCollectionViewDelegate.swift */; };
 		B6A19773247873F600C93302 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A19772247873F600C93302 /* Mock.swift */; };
 		B6A4E017246F2114009A78AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A4E016246F2114009A78AC /* AppDelegate.swift */; };
@@ -122,6 +124,8 @@
 		B68A4F12247326B6003B0EF5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B68A4F142473279B003B0EF5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		B68A4F16247327A4003B0EF5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B68E401424881592009C99A0 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		B68E40162488163A009C99A0 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataFetcher.swift; path = PresetsMarketplace/Helpers/DataFetcher.swift; sourceTree = SOURCE_ROOT; };
 		B6A19770247870DE00C93302 /* DynamicCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		B6A19772247873F600C93302 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		B6A4E013246F2114009A78AC /* PREMA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PREMA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +203,7 @@
 		B65928382473343900F4B4C8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				B68E40162488163A009C99A0 /* DataFetcher.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 				B6FC51B4248599E5004F4A3E /* RecordType.swift */,
 				B6FC51B624859E97004F4A3E /* DAO.swift */,
 				B6A87CE32486C93E001BA8BC /* KeychainInfo.swift */,
+				B68E401424881592009C99A0 /* NotificationName.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -528,6 +534,7 @@
 				B6A4E017246F2114009A78AC /* AppDelegate.swift in Sources */,
 				B6FC51B5248599E5004F4A3E /* RecordType.swift in Sources */,
 				B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */,
+				B68E40172488163A009C99A0 /* DataFetcher.swift in Sources */,
 				B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */,
 				B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */,
 				B664BB91247DB17C0099951D /* Screen.swift in Sources */,
@@ -551,6 +558,7 @@
 				B6A19773247873F600C93302 /* Mock.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
 				B6A87CE42486C93E001BA8BC /* KeychainInfo.swift in Sources */,
+				B68E401524881592009C99A0 /* NotificationName.swift in Sources */,
 				B6A19771247870DE00C93302 /* DynamicCollectionViewDelegate.swift in Sources */,
 				B6FC51BA2485CAA2004F4A3E /* LoginViewController.swift in Sources */,
 				D90E48C5247C5277002F4A74 /* PublicProfileViewController.swift in Sources */,

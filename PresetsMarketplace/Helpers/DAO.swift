@@ -13,6 +13,9 @@ import AuthenticationServices
 class DAO: NSObject {
     private let cloudKitManager: CloudKitManager
     private(set) var user: User?
+    private(set) var presets: [Preset] = []
+    private(set) var userRecord: CKRecord?
+    var isLoggedIn = false
 
     static let shared = DAO()
 
@@ -44,8 +47,9 @@ class DAO: NSObject {
     }
 
     func getUser(withId id: String) {
-        fetchRecord(usingRecordID: CKRecord.ID(recordName: id)) { record in
-            guard let record = record else { return }
+        fetchRecord(usingRecordID: CKRecord.ID(recordName: id)) { [weak self] record in
+            guard let self = self, let record = record else { return }
+            self.userRecord = record
             self.instantiateUser(usingRecord: record)
         }
     }
@@ -67,16 +71,8 @@ class DAO: NSObject {
             profileImageLink = guardedProfileImage.fileURL?.absoluteString ?? ""
         }
 
-        // MARK:- TODO: Terminar de instanciar todas informações do User
-
-        var acquiredPresetsReferences = [CKRecord.Reference]()
-        if let guardedAcquiredPresetsReferences = record["acquiredPresets"] as? [CKRecord.Reference] {
-            acquiredPresetsReferences = guardedAcquiredPresetsReferences
-        }
-
         var followingArtists = [Artist]()
         var presetsReferencesForFollowingArtists = [CKRecord.Reference]()
-        var acquiredPresets = [Preset]()
 
         fetchRecords(usingRecordsID: followingArtistsReferences.map { $0.recordID }) { records in
             records.forEach { [weak self] in
@@ -88,12 +84,11 @@ class DAO: NSObject {
                 }
 
                 self.getPresetsReferencesForFollowingArtists(usingReferences: presetsReferencesForFollowingArtists) { records in
-                    records.forEach { [weak self] in
-                        guard let self = self,
-                            let preset = self.instantiatePreset(usingRecord: $0, andArtist: artist) else { return }
-                        artist.presets.append(preset)
+                    for index in records.indices {
+                        guard let preset = self.instantiatePreset(usingRecord: records[index], andArtist: followingArtists[index]) else { return }
+                        followingArtists[index].presets.append(preset)
+                        NotificationCenter.default.post(name: NotificationName.feedDataFetched, object: nil, userInfo: ["item": index])
                     }
-                    
                 }
 
                 followingArtists.append(artist)
@@ -103,7 +98,7 @@ class DAO: NSObject {
                              name: name,
                              profileImageLink: profileImageLink,
                              following: followingArtists)
-
+            NotificationCenter.default.post(name: NotificationName.userCreated, object: nil)
         }
     }
 
@@ -127,8 +122,30 @@ class DAO: NSObject {
         return artist
     }
 
+    func loadAcquiredPresets() {
+        guard let userRecord = userRecord else { return }
+
+        if let acquiredPresetsReferences = userRecord["acquiredPresets"] as? [CKRecord.Reference] {
+
+            fetchRecords(usingRecordsID: acquiredPresetsReferences.map { $0.recordID }) { [weak self] records in
+                guard let self = self else { return }
+
+                records.forEach {
+                    guard let artistReference = $0["artist"] as? CKRecord.Reference else { return }
+                    self.createPreset(usingRecord: $0, withArtistReference: artistReference) { preset in
+                        guard let preset = preset else { return }
+                        self.user?.addPreset(preset)
+                        NotificationCenter.default.post(name: NotificationName.profileDataFetched, object: nil)
+                    }
+                }
+            }
+        }
+    }
+
     private func getPresetsReferencesForFollowingArtists(usingReferences references: [CKRecord.Reference], completion: @escaping ([CKRecord]) -> Void) {
-        fetchRecords(usingRecordsID: references.map { $0.recordID }) { records in
+
+        let ids = references.map { $0.recordID }
+        fetchRecords(usingRecordsID: ids) { records in
             completion(records)
         }
     }
@@ -188,6 +205,70 @@ class DAO: NSObject {
             case .failure(let error):
                 print(error.localizedDescription)
                 completion([])
+                break
+            }
+        }
+    }
+}
+
+// MARK:- DiscoverViewController DAO
+extension DAO {
+    func loadAllPresets() {
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: RecordType.preset.rawValue, predicate: predicate)
+
+        cloudKitManager.query(using: query, on: .publicDB) { [weak self] result in
+            switch result {
+            case .success(let records):
+                guard let self = self else { return }
+                for index in records.indices {
+                    if let artistReference = records[index]["artist"] as? CKRecord.Reference {
+                        self.createPreset(usingRecord: records[index], withArtistReference: artistReference)
+                    }
+                }
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                break
+            }
+        }
+    }
+
+    private func createPreset(usingRecord record: CKRecord, withArtistReference reference: CKRecord.Reference) {
+        self.cloudKitManager.fetch(recordID: reference.recordID, on: .publicDB) { [weak self] result in
+            switch result {
+            case .success(let artistsRecords):
+                if !artistsRecords.isEmpty {
+                    guard let self = self,
+                        let artist = self.instantiateArtist(usingRecord: artistsRecords[0]),
+                        let preset = self.instantiatePreset(usingRecord: record, andArtist: artist) else { return }
+
+                    self.presets.append(preset)
+                    NotificationCenter.default.post(name: NotificationName.discoverDataFetched, object: nil, userInfo: nil)
+                }
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                break
+            }
+        }
+    }
+
+    private func createPreset(usingRecord record: CKRecord, withArtistReference reference: CKRecord.Reference, completion: @escaping (Preset?) -> Void) {
+
+        self.cloudKitManager.fetch(recordID: reference.recordID, on: .publicDB) { [weak self] result in
+            switch result {
+            case .success(let artistsRecords):
+                if !artistsRecords.isEmpty {
+                    guard let self = self,
+                        let artist = self.instantiateArtist(usingRecord: artistsRecords[0]),
+                        let preset = self.instantiatePreset(usingRecord: record, andArtist: artist) else { return }
+                    completion(preset)
+                }
+                break
+            case .failure(let error):
+                completion(nil)
+                print(error.localizedDescription)
                 break
             }
         }

@@ -20,6 +20,10 @@ class Preset: Equatable {
     private(set) var viewsCount: Int = 0
     private(set) var soldCount: Int = 0
 
+    convenience init() {
+        self.init(name: "", artist: Artist(), dngPath: "")
+    }
+
     init(name: String, artist: Artist, description: String = "", dngPath: String, price: Double = 0, imagesLinks: [String] = []) {
         self.name = name
         self.artist = artist

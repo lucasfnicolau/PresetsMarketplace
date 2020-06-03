@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 switch credentialState {
                 case .authorized:
+                    DAO.shared.isLoggedIn = true
                     DAO.shared.getUser(withId: KeychainItem.currentUserIdentifier)
                     break
                 case .revoked:

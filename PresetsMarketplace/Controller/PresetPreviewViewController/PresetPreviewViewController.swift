@@ -164,7 +164,11 @@ class PresetPreviewViewController: UIViewController {
     }
 
     @IBAction func closeButtonTouched(_ sender: Any) {
-        
+        guard !imagesPageViewController.pages.isEmpty else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+
         if let presetImageViewController = imagesPageViewController.pages[0] as? PresetImageViewController {
             
             let imageView = presetImageViewController.imageView
