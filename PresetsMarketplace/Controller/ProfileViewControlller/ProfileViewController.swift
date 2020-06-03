@@ -16,7 +16,7 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var artistAboutLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var noPresetsAcquiredLabel: UILabel!
-    var profileImageLabel: UILabel!
+    var profileImageLabel: UILabel?
     var presetsCollectionView: DynamicCollectionView?
 
     override func viewDidLoad() {

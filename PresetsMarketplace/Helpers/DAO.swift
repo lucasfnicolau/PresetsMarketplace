@@ -98,6 +98,7 @@ class DAO: NSObject {
                              name: name,
                              profileImageLink: profileImageLink,
                              following: followingArtists)
+
             NotificationCenter.default.post(name: NotificationName.userCreated, object: nil)
         }
     }
@@ -170,7 +171,8 @@ class DAO: NSObject {
             }
         }
 
-        let preset = Preset(name: name,
+        let preset = Preset(id: record.recordID.recordName,
+                            name: name,
                             artist: artist,
                             description: description,
                             dngPath: dngPath,
@@ -205,6 +207,32 @@ class DAO: NSObject {
             case .failure(let error):
                 print(error.localizedDescription)
                 completion([])
+                break
+            }
+        }
+    }
+
+    func acquirePreset(_ preset: Preset) {
+        guard let userRecord = userRecord else { return }
+
+        let id = CKRecord.ID(recordName: preset.id)
+        let presetReference = CKRecord.Reference(recordID: id, action: .none)
+
+        var acquiredPresets = [CKRecord.Reference]()
+        if let guardedAcquiredPresets = userRecord["acquiredPresets"] as? [CKRecord.Reference] {
+            acquiredPresets.append(contentsOf: guardedAcquiredPresets)
+        }
+        acquiredPresets.append(presetReference)
+
+        userRecord["acquiredPresets"] = acquiredPresets
+
+        cloudKitManager.update(recordID: userRecord.recordID, with: userRecord, on: .publicDB) { result in
+            switch result {
+            case .success(let record):
+                print(record)
+                break
+            case .failure(let error):
+                print(error)
                 break
             }
         }

@@ -10,6 +10,7 @@ import Foundation
 
 class Preset: Equatable {
 
+    let id: String
     var name: String
     var artist: Artist
     var description: String = ""
@@ -24,7 +25,8 @@ class Preset: Equatable {
         self.init(name: "", artist: Artist(), dngPath: "")
     }
 
-    init(name: String, artist: Artist, description: String = "", dngPath: String, price: Double = 0, imagesLinks: [String] = []) {
+    init(id: String = "", name: String, artist: Artist, description: String = "", dngPath: String, price: Double = 0, imagesLinks: [String] = []) {
+        self.id = id.count > 0 ? id : UUID().uuidString
         self.name = name
         self.artist = artist
         self.description = description
