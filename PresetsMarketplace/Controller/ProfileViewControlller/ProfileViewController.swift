@@ -16,6 +16,7 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var artistAboutLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var noPresetsAcquiredLabel: UILabel!
+    var profileImageLabel: UILabel!
     var presetsCollectionView: DynamicCollectionView?
 
     override func viewDidLoad() {
@@ -39,7 +40,6 @@ class ProfileViewController: BaseViewController {
     }
 
     func setupViews() {
-        artistNameLabel.text = Mock.shared.user.name
         if let artist = Mock.shared.user as? Artist {
             artistAboutLabel.text = artist.about
         }
@@ -68,22 +68,21 @@ class ProfileViewController: BaseViewController {
     }
 
     func setupLabel() {
-        let label = UILabel()
-        label.font = label.font.withSize(75)
-        label.textAlignment = .center
-        label.textColor = .black
+        profileImageLabel = UILabel()
+        guard let profileImageLabel = profileImageLabel else { return }
+        profileImageLabel.font = profileImageLabel.font.withSize(75)
+        profileImageLabel.textAlignment = .center
+        profileImageLabel.textColor = .black
 
-        profileImageView.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.addSubview(profileImageLabel)
+        profileImageLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor),
-            label.topAnchor.constraint(equalTo: profileImageView.topAnchor),
-            label.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor)
+            profileImageLabel.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
+            profileImageLabel.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor),
+            profileImageLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            profileImageLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor)
         ])
-
-        label.text = String(Mock.shared.user.name.prefix(1)).uppercased()
     }
 
     func setupCollectionViewConstraints() {
@@ -118,6 +117,11 @@ class ProfileViewController: BaseViewController {
     }
 
     @objc func loadAcquiredPresets() {
+        DispatchQueue.main.async {
+            self.artistNameLabel.text = DAO.shared.user?.name ?? Mock.shared.user.name
+            let letter = DAO.shared.user?.name.prefix(1) ?? Mock.shared.user.name.prefix(1)
+            self.profileImageLabel?.text = String(letter).uppercased()
+        }
         DAO.shared.loadAcquiredPresets()
     }
 }
