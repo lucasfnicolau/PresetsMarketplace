@@ -12,7 +12,7 @@ import AuthenticationServices
 
 class DAO: NSObject {
     private let cloudKitManager: CloudKitManager
-    var user: User?
+    private(set) var user: User?
 
     static let shared = DAO()
 
@@ -75,30 +75,43 @@ class DAO: NSObject {
         }
 
         var followingArtists = [Artist]()
+        var presetsReferencesForFollowingArtists = [CKRecord.Reference]()
         var acquiredPresets = [Preset]()
 
         fetchRecords(usingRecordsID: followingArtistsReferences.map { $0.recordID }) { records in
             records.forEach { [weak self] in
-                guard let self = self else { return }
-                self.instantiateArtist(usingRecord: $0) { artist in
-                    guard let artist = artist else { return }
-                    followingArtists.append(artist)
+                guard let self = self,
+                    let artist = self.instantiateArtist(usingRecord: $0) else { return }
+
+                if let presets = $0["presets"] as? [CKRecord.Reference] {
+                    presetsReferencesForFollowingArtists = presets
                 }
+
+                self.getPresetsReferencesForFollowingArtists(usingReferences: presetsReferencesForFollowingArtists) { records in
+                    records.forEach { [weak self] in
+                        guard let self = self,
+                            let preset = self.instantiatePreset(usingRecord: $0, andArtist: artist) else { return }
+                        artist.presets.append(preset)
+                    }
+                    
+                }
+
+                followingArtists.append(artist)
             }
 
             self.user = User(id: record.recordID.recordName,
                              name: name,
                              profileImageLink: profileImageLink,
                              following: followingArtists)
+
         }
     }
 
-    private func instantiateArtist(usingRecord record: CKRecord, completion: @escaping (Artist?) -> Void) {
+    private func instantiateArtist(usingRecord record: CKRecord) -> Artist? {
         guard let name = record["name"] as? String,
             let about = record["about"] as? String else {
                 print("Error when instantiating an Artist")
-                completion(nil)
-                return
+                return nil
         }
 
         var profileImageLink = ""
@@ -111,29 +124,21 @@ class DAO: NSObject {
                             about: about,
                             profileImageLink: profileImageLink)
 
-        if let presetsReference = record["presets"] as? [CKRecord.Reference] {
-            fetchRecords(usingRecordsID: presetsReference.map { $0.recordID }) { records in
-                records.forEach { [weak self] in
-                    guard let self = self else { return }
-                    self.instantiatePreset(usingRecord: $0) { preset in
-                        guard let preset = preset else { return }
-                        artist.addPreset(preset)
-                    }
-                }
-                completion(artist)
-            }
-        } else {
-            completion(artist)
+        return artist
+    }
+
+    private func getPresetsReferencesForFollowingArtists(usingReferences references: [CKRecord.Reference], completion: @escaping ([CKRecord]) -> Void) {
+        fetchRecords(usingRecordsID: references.map { $0.recordID }) { records in
+            completion(records)
         }
     }
 
-    private func instantiatePreset(usingRecord record: CKRecord, completion: @escaping (Preset?) -> Void) {
+    private func instantiatePreset(usingRecord record: CKRecord, andArtist artist: Artist) -> Preset? {
         guard let name = record["name"] as? String,
             let description = record["description"] as? String,
             let price = record["price"] as? Double else {
                 print("Error when instantiating a Preset")
-                completion(nil)
-                return
+                return nil
         }
 
         var dngPath = ""
@@ -148,21 +153,14 @@ class DAO: NSObject {
             }
         }
 
-        if let artistReference = record["artist"] as? CKRecord.Reference {
-            fetchRecord(usingRecordID: artistReference.recordID) { record in
-                guard let record = record else { return }
-                self.instantiateArtist(usingRecord: record) { artist in
-                    guard let artist = artist else { return }
-                    let preset = Preset(name: name,
-                                        artist: artist,
-                                        description: description,
-                                        dngPath: dngPath,
-                                        price: price,
-                                        imagesLinks: imagesLinks)
-                    completion(preset)
-                }
-            }
-        }
+        let preset = Preset(name: name,
+                            artist: artist,
+                            description: description,
+                            dngPath: dngPath,
+                            price: price,
+                            imagesLinks: imagesLinks)
+
+        return preset
     }
 
     private func fetchRecord(usingRecordID recordID: CKRecord.ID, completion: @escaping (CKRecord?) -> Void) {
