@@ -304,8 +304,16 @@
 			isa = PBXGroup;
 			children = (
 				D960AB9C24896BC30096F850 /* CoreData+Helpers */,
-				D960AB9A24896B800096F850 /* UIHelpers */,
-				D960AB9924896B570096F850 /* CloudKit+Helpers */,
+				B6FC51B624859E97004F4A3E /* DAO.swift */,
+				B6FC51B2248599C2004F4A3E /* Database.swift */,
+				B6FC51B4248599E5004F4A3E /* RecordType.swift */,
+				B6FC51B02485994F004F4A3E /* CloudKitManager.swift */,
+				C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */,
+				D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */,
+				B6C2F219247C56C7009A1C8B /* DynamicCollectionViewDAO.swift */,
+				B60F3D732475A6E0009CBE10 /* Storyboard.swift */,
+				B664BB90247DB17C0099951D /* Screen.swift */,
+				B6A19772247873F600C93302 /* Mock.swift */,
 				B65928792474946800F4B4C8 /* URLManager.swift */,
 				B654DE3C24759F7500027C23 /* Identifier.swift */,
 			);
@@ -411,30 +419,6 @@
 				C086B71424856CBB00F88580 /* CloudKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D960AB9924896B570096F850 /* CloudKit+Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				B6FC51B624859E97004F4A3E /* DAO.swift */,
-				B6FC51B2248599C2004F4A3E /* Database.swift */,
-				B6FC51B4248599E5004F4A3E /* RecordType.swift */,
-				B6FC51B02485994F004F4A3E /* CloudKitManager.swift */,
-			);
-			path = "CloudKit+Helpers";
-			sourceTree = "<group>";
-		};
-		D960AB9A24896B800096F850 /* UIHelpers */ = {
-			isa = PBXGroup;
-			children = (
-				C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */,
-				D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */,
-				B6C2F219247C56C7009A1C8B /* DynamicCollectionViewDAO.swift */,
-				B60F3D732475A6E0009CBE10 /* Storyboard.swift */,
-				B664BB90247DB17C0099951D /* Screen.swift */,
-				B6A19772247873F600C93302 /* Mock.swift */,
-			);
-			path = UIHelpers;
 			sourceTree = "<group>";
 		};
 		D960AB9B24896BB60096F850 /* CoreData */ = {
