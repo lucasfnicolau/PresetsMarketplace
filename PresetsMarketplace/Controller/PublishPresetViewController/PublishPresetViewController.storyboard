@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EUm-0a-BC9">
+            <objects>
+                <viewController id="H7n-SG-iZV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6d7-N1-hdm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghW-v6-jQe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gXO-uT-Rh2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfH-5c-72t">
+                                            <rect key="frame" x="0.0" y="400" width="414" height="496"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="496" id="GaO-TR-mjX"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <gestureRecognizers/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="gfH-5c-72t" secondAttribute="bottom" id="UMd-DD-Bjc"/>
+                                        <constraint firstAttribute="trailing" secondItem="gfH-5c-72t" secondAttribute="trailing" id="aJ4-kA-JEd"/>
+                                        <constraint firstItem="gfH-5c-72t" firstAttribute="top" secondItem="gXO-uT-Rh2" secondAttribute="top" constant="400" id="afL-f9-T71"/>
+                                        <constraint firstItem="gfH-5c-72t" firstAttribute="leading" secondItem="gXO-uT-Rh2" secondAttribute="leading" id="x59-O5-CES"/>
+                                    </constraints>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="cXr-Wr-0xv" appends="YES" id="2Pg-mj-Vk8"/>
+                                    </connections>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ghW-v6-jQe" firstAttribute="trailing" secondItem="lHZ-4K-Ol4" secondAttribute="trailing" id="7lj-vy-s3V"/>
+                            <constraint firstAttribute="bottom" secondItem="ghW-v6-jQe" secondAttribute="bottom" id="9Mn-KH-Au3"/>
+                            <constraint firstItem="ghW-v6-jQe" firstAttribute="leading" secondItem="lHZ-4K-Ol4" secondAttribute="leading" id="H44-sD-a3k"/>
+                            <constraint firstItem="ghW-v6-jQe" firstAttribute="top" secondItem="6d7-N1-hdm" secondAttribute="top" id="oVq-3C-p3y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lHZ-4K-Ol4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cci-ej-eP7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cXr-Wr-0xv"/>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="95.758928571428569"/>
+        </scene>
+    </scenes>
+</document>
