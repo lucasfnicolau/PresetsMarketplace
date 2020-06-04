@@ -71,6 +71,11 @@
 		C086B71524856CBB00F88580 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C086B71424856CBB00F88580 /* CloudKit.framework */; };
 		D90E48C5247C5277002F4A74 /* PublicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90E48C4247C5277002F4A74 /* PublicProfileViewController.swift */; };
 		D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */; };
+		D960AB9724896B3E0096F850 /* CDPreset+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960AB9524896B3E0096F850 /* CDPreset+CoreDataClass.swift */; };
+		D960AB9824896B3E0096F850 /* CDPreset+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960AB9624896B3E0096F850 /* CDPreset+CoreDataProperties.swift */; };
+		D960AB9E24896BE40096F850 /* CoreData+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960AB9D24896BE40096F850 /* CoreData+Helpers.swift */; };
+		D960ABA024896BF10096F850 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960AB9F24896BF10096F850 /* CoreDataManager.swift */; };
+		D960ABA224896BFC0096F850 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABA124896BFC0096F850 /* CoreDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -154,6 +159,11 @@
 		C086B71424856CBB00F88580 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D90E48C4247C5277002F4A74 /* PublicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicProfileViewController.swift; sourceTree = "<group>"; };
 		D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewLayout.swift; sourceTree = "<group>"; };
+		D960AB9524896B3E0096F850 /* CDPreset+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPreset+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D960AB9624896B3E0096F850 /* CDPreset+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPreset+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D960AB9D24896BE40096F850 /* CoreData+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Helpers.swift"; sourceTree = "<group>"; };
+		D960AB9F24896BF10096F850 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D960ABA124896BFC0096F850 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +292,7 @@
 		B68A4F0B247325FA003B0EF5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D960AB9B24896BB60096F850 /* CoreData */,
 				B659286D2474824300F4B4C8 /* User.swift */,
 				B659287324748D1500F4B4C8 /* Preset.swift */,
 				B659287724748D8E00F4B4C8 /* Artist.swift */,
@@ -292,18 +303,11 @@
 		B68A4F0C247325FF003B0EF5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D960AB9C24896BC30096F850 /* CoreData+Helpers */,
+				D960AB9A24896B800096F850 /* UIHelpers */,
+				D960AB9924896B570096F850 /* CloudKit+Helpers */,
 				B65928792474946800F4B4C8 /* URLManager.swift */,
 				B654DE3C24759F7500027C23 /* Identifier.swift */,
-				B60F3D732475A6E0009CBE10 /* Storyboard.swift */,
-				D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */,
-				C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */,
-				B6A19772247873F600C93302 /* Mock.swift */,
-				B6C2F219247C56C7009A1C8B /* DynamicCollectionViewDAO.swift */,
-				B664BB90247DB17C0099951D /* Screen.swift */,
-				B6FC51B02485994F004F4A3E /* CloudKitManager.swift */,
-				B6FC51B2248599C2004F4A3E /* Database.swift */,
-				B6FC51B4248599E5004F4A3E /* RecordType.swift */,
-				B6FC51B624859E97004F4A3E /* DAO.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -409,6 +413,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D960AB9924896B570096F850 /* CloudKit+Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B6FC51B624859E97004F4A3E /* DAO.swift */,
+				B6FC51B2248599C2004F4A3E /* Database.swift */,
+				B6FC51B4248599E5004F4A3E /* RecordType.swift */,
+				B6FC51B02485994F004F4A3E /* CloudKitManager.swift */,
+			);
+			path = "CloudKit+Helpers";
+			sourceTree = "<group>";
+		};
+		D960AB9A24896B800096F850 /* UIHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				C0802F792475BF85006267F7 /* CollectionViewCellEnum.swift */,
+				D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */,
+				B6C2F219247C56C7009A1C8B /* DynamicCollectionViewDAO.swift */,
+				B60F3D732475A6E0009CBE10 /* Storyboard.swift */,
+				B664BB90247DB17C0099951D /* Screen.swift */,
+				B6A19772247873F600C93302 /* Mock.swift */,
+			);
+			path = UIHelpers;
+			sourceTree = "<group>";
+		};
+		D960AB9B24896BB60096F850 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D960AB9524896B3E0096F850 /* CDPreset+CoreDataClass.swift */,
+				D960AB9624896B3E0096F850 /* CDPreset+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		D960AB9C24896BC30096F850 /* CoreData+Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D960AB9D24896BE40096F850 /* CoreData+Helpers.swift */,
+				D960AB9F24896BF10096F850 /* CoreDataManager.swift */,
+				D960ABA124896BFC0096F850 /* CoreDataController.swift */,
+			);
+			path = "CoreData+Helpers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -492,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D960ABA024896BF10096F850 /* CoreDataManager.swift in Sources */,
 				D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */,
 				A7B96C82247877BD000A695A /* TransitionDelegate.swift in Sources */,
 				B659286424747D8E00F4B4C8 /* AboutPresetTableViewCell.swift in Sources */,
@@ -507,6 +555,7 @@
 				B6A4E017246F2114009A78AC /* AppDelegate.swift in Sources */,
 				B6FC51B5248599E5004F4A3E /* RecordType.swift in Sources */,
 				B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */,
+				D960AB9724896B3E0096F850 /* CDPreset+CoreDataClass.swift in Sources */,
 				B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */,
 				B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */,
 				B664BB91247DB17C0099951D /* Screen.swift in Sources */,
@@ -521,6 +570,8 @@
 				B68A4F17247327A4003B0EF5 /* ProfileViewController.swift in Sources */,
 				B659283F247335F100F4B4C8 /* BaseViewController.swift in Sources */,
 				B659286824747DB300F4B4C8 /* OthersPresetsTableViewCell.swift in Sources */,
+				D960AB9824896B3E0096F850 /* CDPreset+CoreDataProperties.swift in Sources */,
+				D960ABA224896BFC0096F850 /* CoreDataController.swift in Sources */,
 				B6A4E021246F2114009A78AC /* PresetsMarketplace.xcdatamodeld in Sources */,
 				B65928702474844D00F4B4C8 /* UIImageView.swift in Sources */,
 				B659284A24745F7F00F4B4C8 /* RoundedBluredView.swift in Sources */,
@@ -528,6 +579,7 @@
 				B6C2F21A247C56C7009A1C8B /* DynamicCollectionViewDAO.swift in Sources */,
 				C0802F762475A109006267F7 /* DynamicCollectionViewCell.swift in Sources */,
 				B6A19773247873F600C93302 /* Mock.swift in Sources */,
+				D960AB9E24896BE40096F850 /* CoreData+Helpers.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
 				B6A19771247870DE00C93302 /* DynamicCollectionViewDelegate.swift in Sources */,
 				D90E48C5247C5277002F4A74 /* PublicProfileViewController.swift in Sources */,
