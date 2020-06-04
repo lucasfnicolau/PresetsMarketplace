@@ -77,6 +77,11 @@
 		C086B71524856CBB00F88580 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C086B71424856CBB00F88580 /* CloudKit.framework */; };
 		D90E48C5247C5277002F4A74 /* PublicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90E48C4247C5277002F4A74 /* PublicProfileViewController.swift */; };
 		D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */; };
+		D960ABA5248977420096F850 /* CDPreset+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABA3248977420096F850 /* CDPreset+CoreDataClass.swift */; };
+		D960ABA6248977420096F850 /* CDPreset+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABA4248977420096F850 /* CDPreset+CoreDataProperties.swift */; };
+		D960ABB0248977B80096F850 /* CoreData+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABAF248977B80096F850 /* CoreData+Helpers.swift */; };
+		D960ABB2248977C30096F850 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABB1248977C30096F850 /* CloudKitManager.swift */; };
+		D960ABB4248977CE0096F850 /* CloudKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABB3248977CE0096F850 /* CloudKitController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -166,6 +171,11 @@
 		C086B71424856CBB00F88580 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D90E48C4247C5277002F4A74 /* PublicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicProfileViewController.swift; sourceTree = "<group>"; };
 		D947898024749C8200A536DF /* DynamicCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewLayout.swift; sourceTree = "<group>"; };
+		D960ABA3248977420096F850 /* CDPreset+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPreset+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D960ABA4248977420096F850 /* CDPreset+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPreset+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D960ABAF248977B80096F850 /* CoreData+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Helpers.swift"; sourceTree = "<group>"; };
+		D960ABB1248977C30096F850 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		D960ABB3248977CE0096F850 /* CloudKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +306,8 @@
 		B68A4F0B247325FA003B0EF5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D960ABA3248977420096F850 /* CDPreset+CoreDataClass.swift */,
+				D960ABA4248977420096F850 /* CDPreset+CoreDataProperties.swift */,
 				B659286D2474824300F4B4C8 /* User.swift */,
 				B659287324748D1500F4B4C8 /* Preset.swift */,
 				B659287724748D8E00F4B4C8 /* Artist.swift */,
@@ -306,6 +318,7 @@
 		B68A4F0C247325FF003B0EF5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D960ABA82489775D0096F850 /* CoreDataHelpers */,
 				B65928792474946800F4B4C8 /* URLManager.swift */,
 				B654DE3C24759F7500027C23 /* Identifier.swift */,
 				B60F3D732475A6E0009CBE10 /* Storyboard.swift */,
@@ -435,6 +448,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D960ABA82489775D0096F850 /* CoreDataHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				D960ABAF248977B80096F850 /* CoreData+Helpers.swift */,
+				D960ABB1248977C30096F850 /* CloudKitManager.swift */,
+				D960ABB3248977CE0096F850 /* CloudKitController.swift */,
+			);
+			path = CoreDataHelpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -522,8 +545,10 @@
 				D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */,
 				A7B96C82247877BD000A695A /* TransitionDelegate.swift in Sources */,
 				B659286424747D8E00F4B4C8 /* AboutPresetTableViewCell.swift in Sources */,
+				D960ABB4248977CE0096F850 /* CloudKitController.swift in Sources */,
 				B659286124747C5A00F4B4C8 /* PresetPreviewViewController.swift in Sources */,
 				B6E76502247701B7000B5778 /* OthersPresetsCollectionViewCell.swift in Sources */,
+				D960ABA5248977420096F850 /* CDPreset+CoreDataClass.swift in Sources */,
 				B659287424748D1500F4B4C8 /* Preset.swift in Sources */,
 				B654DE3B24759EB800027C23 /* PresetInfoTableViewDataSource.swift in Sources */,
 				B6FC51B724859E97004F4A3E /* DAO.swift in Sources */,
@@ -532,6 +557,7 @@
 				B65928482474598600F4B4C8 /* CloseButton.swift in Sources */,
 				B6E764FD2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift in Sources */,
 				B6A4E017246F2114009A78AC /* AppDelegate.swift in Sources */,
+				D960ABB2248977C30096F850 /* CloudKitManager.swift in Sources */,
 				B6FC51B5248599E5004F4A3E /* RecordType.swift in Sources */,
 				B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */,
 				B68E40172488163A009C99A0 /* DataFetcher.swift in Sources */,
@@ -545,6 +571,7 @@
 				B659287824748D8E00F4B4C8 /* Artist.swift in Sources */,
 				B659287C2474986700F4B4C8 /* ImagesPageViewController.swift in Sources */,
 				B654DE3D24759F7500027C23 /* Identifier.swift in Sources */,
+				D960ABA6248977420096F850 /* CDPreset+CoreDataProperties.swift in Sources */,
 				B659287A2474946800F4B4C8 /* URLManager.swift in Sources */,
 				B68A4F17247327A4003B0EF5 /* ProfileViewController.swift in Sources */,
 				B659283F247335F100F4B4C8 /* BaseViewController.swift in Sources */,
@@ -558,6 +585,7 @@
 				B6A19773247873F600C93302 /* Mock.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
 				B6A87CE42486C93E001BA8BC /* KeychainInfo.swift in Sources */,
+				D960ABB0248977B80096F850 /* CoreData+Helpers.swift in Sources */,
 				B68E401524881592009C99A0 /* NotificationName.swift in Sources */,
 				B6A19771247870DE00C93302 /* DynamicCollectionViewDelegate.swift in Sources */,
 				B6FC51BA2485CAA2004F4A3E /* LoginViewController.swift in Sources */,
