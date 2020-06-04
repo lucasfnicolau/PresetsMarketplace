@@ -11,6 +11,8 @@
 		A7B96C82247877BD000A695A /* TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B96C80247877BD000A695A /* TransitionDelegate.swift */; };
 		B6068DA02489659B00A709ED /* PublishPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6068D9F2489659B00A709ED /* PublishPresetViewController.swift */; };
 		B6068DA32489676C00A709ED /* PublishPresetViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6068DA22489676C00A709ED /* PublishPresetViewController.storyboard */; };
+		B6068DB124896B6E00A709ED /* RoundedModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6068DB024896B6E00A709ED /* RoundedModalView.swift */; };
+		B6068DB324896FC100A709ED /* UIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6068DB224896FC100A709ED /* UIView+Snapshot.swift */; };
 		B60F3D742475A6E0009CBE10 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F3D732475A6E0009CBE10 /* Storyboard.swift */; };
 		B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3824759EA100027C23 /* PresetInfoTableViewDelegate.swift */; };
 		B654DE3B24759EB800027C23 /* PresetInfoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3A24759EB800027C23 /* PresetInfoTableViewDataSource.swift */; };
@@ -99,6 +101,8 @@
 		A7B96C80247877BD000A695A /* TransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
 		B6068D9F2489659B00A709ED /* PublishPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPresetViewController.swift; sourceTree = "<group>"; };
 		B6068DA22489676C00A709ED /* PublishPresetViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PublishPresetViewController.storyboard; sourceTree = "<group>"; };
+		B6068DB024896B6E00A709ED /* RoundedModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedModalView.swift; sourceTree = "<group>"; };
+		B6068DB224896FC100A709ED /* UIView+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshot.swift"; sourceTree = "<group>"; };
 		B60F3D732475A6E0009CBE10 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		B654DE3824759EA100027C23 /* PresetInfoTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetInfoTableViewDelegate.swift; sourceTree = "<group>"; };
 		B654DE3A24759EB800027C23 /* PresetInfoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetInfoTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 			children = (
 				B659286F2474844D00F4B4C8 /* UIImageView.swift */,
 				B659287F24749E0700F4B4C8 /* UIViewController.swift */,
+				B6068DB224896FC100A709ED /* UIView+Snapshot.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				C0802F752475A109006267F7 /* DynamicCollectionViewCell.swift */,
 				C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */,
 				B664BB92247DB58F0099951D /* RoundedView.swift */,
+				B6068DB024896B6E00A709ED /* RoundedModalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 				B659287424748D1500F4B4C8 /* Preset.swift in Sources */,
 				B654DE3B24759EB800027C23 /* PresetInfoTableViewDataSource.swift in Sources */,
 				B6FC51B724859E97004F4A3E /* DAO.swift in Sources */,
+				B6068DB324896FC100A709ED /* UIView+Snapshot.swift in Sources */,
 				B654DE3F2475A17200027C23 /* PresetInfoTableViewViewController.swift in Sources */,
 				B67E410224786B2D003DE748 /* DynamicCollectionViewDataSource.swift in Sources */,
 				B65928482474598600F4B4C8 /* CloseButton.swift in Sources */,
@@ -568,6 +575,7 @@
 				B65928702474844D00F4B4C8 /* UIImageView.swift in Sources */,
 				B659284A24745F7F00F4B4C8 /* RoundedBluredView.swift in Sources */,
 				B659288024749E0700F4B4C8 /* UIViewController.swift in Sources */,
+				B6068DB124896B6E00A709ED /* RoundedModalView.swift in Sources */,
 				B6C2F21A247C56C7009A1C8B /* DynamicCollectionViewDAO.swift in Sources */,
 				C0802F762475A109006267F7 /* DynamicCollectionViewCell.swift in Sources */,
 				B6068DA02489659B00A709ED /* PublishPresetViewController.swift in Sources */,

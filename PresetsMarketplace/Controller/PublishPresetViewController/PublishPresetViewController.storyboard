@@ -7,25 +7,40 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Publish Preset View Controller-->
         <scene sceneID="EUm-0a-BC9">
             <objects>
-                <viewController id="H7n-SG-iZV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PublishPresetViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H7n-SG-iZV" customClass="PublishPresetViewController" customModule="PREMA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6d7-N1-hdm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bxp-qQ-IAl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghW-v6-jQe">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gXO-uT-Rh2">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfH-5c-72t">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfH-5c-72t" customClass="RoundedModalView" customModule="PREMA" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="400" width="414" height="496"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBL-cz-6Mo" customClass="RoundedView" customModule="PREMA" customModuleProvider="target">
+                                                    <rect key="frame" x="182" y="8" width="50" height="4"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="4" id="Z1k-Ze-5LJ"/>
+                                                        <constraint firstAttribute="width" constant="50" id="xZX-05-Bs7"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="496" id="GaO-TR-mjX"/>
+                                                <constraint firstItem="gBL-cz-6Mo" firstAttribute="top" secondItem="gfH-5c-72t" secondAttribute="top" constant="8" id="xMJ-cb-MeM"/>
+                                                <constraint firstItem="gBL-cz-6Mo" firstAttribute="centerX" secondItem="gfH-5c-72t" secondAttribute="centerX" id="xdM-ib-7x9"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -40,18 +55,25 @@
                                         <outletCollection property="gestureRecognizers" destination="cXr-Wr-0xv" appends="YES" id="2Pg-mj-Vk8"/>
                                     </connections>
                                 </view>
-                                <blurEffect style="regular"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Bxp-qQ-IAl" firstAttribute="top" secondItem="6d7-N1-hdm" secondAttribute="top" id="2KR-D0-Xso"/>
                             <constraint firstItem="ghW-v6-jQe" firstAttribute="trailing" secondItem="lHZ-4K-Ol4" secondAttribute="trailing" id="7lj-vy-s3V"/>
                             <constraint firstAttribute="bottom" secondItem="ghW-v6-jQe" secondAttribute="bottom" id="9Mn-KH-Au3"/>
+                            <constraint firstItem="Bxp-qQ-IAl" firstAttribute="leading" secondItem="lHZ-4K-Ol4" secondAttribute="leading" id="ADm-Mo-LZN"/>
                             <constraint firstItem="ghW-v6-jQe" firstAttribute="leading" secondItem="lHZ-4K-Ol4" secondAttribute="leading" id="H44-sD-a3k"/>
                             <constraint firstItem="ghW-v6-jQe" firstAttribute="top" secondItem="6d7-N1-hdm" secondAttribute="top" id="oVq-3C-p3y"/>
+                            <constraint firstAttribute="bottom" secondItem="Bxp-qQ-IAl" secondAttribute="bottom" id="yEE-Te-1N9"/>
+                            <constraint firstItem="Bxp-qQ-IAl" firstAttribute="trailing" secondItem="lHZ-4K-Ol4" secondAttribute="trailing" id="zkB-fe-tc1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lHZ-4K-Ol4"/>
                     </view>
+                    <connections>
+                        <outlet property="backingImageView" destination="Bxp-qQ-IAl" id="qwF-gI-8tt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cci-ej-eP7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="cXr-Wr-0xv"/>

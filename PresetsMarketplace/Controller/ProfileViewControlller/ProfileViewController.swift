@@ -29,14 +29,23 @@ class ProfileViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        if let vc = UIStoryboard(name: Storyboard.publishPresetViewController, bundle: nil).instantiateViewController(identifier: Identifier.publishPresetViewController) as? PublishPresetViewController {
+            vc.modalPresentationStyle = .fullScreen
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+                vc.backingImage = self.tabBarController?.view.asImage()
+                self.present(vc, animated: false, completion: nil)
+            })
+        }
     }
 
     func checkIfUserIsLoggedIn() {
-        if !DAO.shared.isLoggedIn {
-            let loginViewController = LoginViewController()
-            loginViewController.modalPresentationStyle = .custom
-            self.present(loginViewController, animated: true, completion: nil)
-        }
+//        if !DAO.shared.isLoggedIn {
+//            let loginViewController = LoginViewController()
+//            loginViewController.modalPresentationStyle = .custom
+//            self.present(loginViewController, animated: true, completion: nil)
+//        }
     }
 
     func setupViews() {

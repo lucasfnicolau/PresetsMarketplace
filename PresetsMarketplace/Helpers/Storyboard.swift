@@ -11,4 +11,5 @@ import Foundation
 enum Storyboard {
     static let presetPreviewViewController = "PresetPreviewViewController"
     static let profileViewController = "ProfileViewController"
+    static let publishPresetViewController = "PublishPresetViewController"
 }

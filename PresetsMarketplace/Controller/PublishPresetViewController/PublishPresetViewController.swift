@@ -10,12 +10,16 @@ import UIKit
 
 class PublishPresetViewController: UIViewController {
 
+    @IBOutlet weak var backingImageView: UIImageView!
+    @IBOutlet weak var blurView: UIVisualEffectView!
+
+    var backingImage: UIImage?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        backingImageView.image = backingImage
+        
     }
-    
 
     /*
     // MARK: - Navigation
