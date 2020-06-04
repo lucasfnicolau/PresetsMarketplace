@@ -80,8 +80,8 @@
 		D960ABA5248977420096F850 /* CDPreset+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABA3248977420096F850 /* CDPreset+CoreDataClass.swift */; };
 		D960ABA6248977420096F850 /* CDPreset+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABA4248977420096F850 /* CDPreset+CoreDataProperties.swift */; };
 		D960ABB0248977B80096F850 /* CoreData+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABAF248977B80096F850 /* CoreData+Helpers.swift */; };
-		D960ABB2248977C30096F850 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABB1248977C30096F850 /* CloudKitManager.swift */; };
-		D960ABB4248977CE0096F850 /* CloudKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABB3248977CE0096F850 /* CloudKitController.swift */; };
+		D960ABB2248977C30096F850 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABB1248977C30096F850 /* CoreDataManager.swift */; };
+		D960ABB4248977CE0096F850 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D960ABB3248977CE0096F850 /* CoreDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -174,8 +174,8 @@
 		D960ABA3248977420096F850 /* CDPreset+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPreset+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D960ABA4248977420096F850 /* CDPreset+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPreset+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D960ABAF248977B80096F850 /* CoreData+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Helpers.swift"; sourceTree = "<group>"; };
-		D960ABB1248977C30096F850 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
-		D960ABB3248977CE0096F850 /* CloudKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitController.swift; sourceTree = "<group>"; };
+		D960ABB1248977C30096F850 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D960ABB3248977CE0096F850 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -452,8 +452,8 @@
 			isa = PBXGroup;
 			children = (
 				D960ABAF248977B80096F850 /* CoreData+Helpers.swift */,
-				D960ABB1248977C30096F850 /* CloudKitManager.swift */,
-				D960ABB3248977CE0096F850 /* CloudKitController.swift */,
+				D960ABB1248977C30096F850 /* CoreDataManager.swift */,
+				D960ABB3248977CE0096F850 /* CoreDataController.swift */,
 			);
 			path = CoreDataHelpers;
 			sourceTree = "<group>";
@@ -545,7 +545,7 @@
 				D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */,
 				A7B96C82247877BD000A695A /* TransitionDelegate.swift in Sources */,
 				B659286424747D8E00F4B4C8 /* AboutPresetTableViewCell.swift in Sources */,
-				D960ABB4248977CE0096F850 /* CloudKitController.swift in Sources */,
+				D960ABB4248977CE0096F850 /* CoreDataController.swift in Sources */,
 				B659286124747C5A00F4B4C8 /* PresetPreviewViewController.swift in Sources */,
 				B6E76502247701B7000B5778 /* OthersPresetsCollectionViewCell.swift in Sources */,
 				D960ABA5248977420096F850 /* CDPreset+CoreDataClass.swift in Sources */,
@@ -557,7 +557,7 @@
 				B65928482474598600F4B4C8 /* CloseButton.swift in Sources */,
 				B6E764FD2476FF47000B5778 /* OthersPresetsCollectionViewDelegate.swift in Sources */,
 				B6A4E017246F2114009A78AC /* AppDelegate.swift in Sources */,
-				D960ABB2248977C30096F850 /* CloudKitManager.swift in Sources */,
+				D960ABB2248977C30096F850 /* CoreDataManager.swift in Sources */,
 				B6FC51B5248599E5004F4A3E /* RecordType.swift in Sources */,
 				B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */,
 				B68E40172488163A009C99A0 /* DataFetcher.swift in Sources */,
