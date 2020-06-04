@@ -42,11 +42,6 @@ class PresetPreviewViewController: UIViewController {
         setupFloatingSellingCard()
         setupGesturesRecognizer()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setButtonState()
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
       super.viewWillDisappear(animated)
@@ -74,8 +69,8 @@ class PresetPreviewViewController: UIViewController {
     }
 
     func setButtonState() {
-        guard let user = DAO.shared.user, let preset = preset else { return }
-        if user.hasPreset(preset) {
+        guard let preset = preset else { return }
+        if Mock.shared.user.hasPreset(preset) {
             UIView.animate(withDuration: 0.1) {
                 self.floatingBuyButtonView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.55)
                 self.floatingBuyButton.setTitleColor(.white, for: .normal)
@@ -124,6 +119,7 @@ class PresetPreviewViewController: UIViewController {
         floatingPresetNameLabel.text = preset.name
         floatingSoldLabel.text = "\(preset.soldCount)"
         floatingViewsLabel.text = "\(preset.viewsCount)"
+        setButtonState()
 
 //        let formatter = NumberFormatter()
 //        formatter.locale = Locale.current
@@ -143,10 +139,9 @@ class PresetPreviewViewController: UIViewController {
     }
 
     @IBAction func floatingBuyButtonTouched(_ sender: Any) {
-        guard let user = DAO.shared.user, let preset = preset else { return }
-        if !user.hasPreset(preset) {
-            user.addPreset(preset)
-            DAO.shared.acquirePreset(preset)
+        guard let preset = preset else { return }
+        if !Mock.shared.user.hasPreset(preset) {
+            Mock.shared.user.addPreset(preset)
             setButtonState()
 
         } else {
@@ -169,11 +164,7 @@ class PresetPreviewViewController: UIViewController {
     }
 
     @IBAction func closeButtonTouched(_ sender: Any) {
-        guard !imagesPageViewController.pages.isEmpty else {
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
-
+        
         if let presetImageViewController = imagesPageViewController.pages[0] as? PresetImageViewController {
             
             let imageView = presetImageViewController.imageView

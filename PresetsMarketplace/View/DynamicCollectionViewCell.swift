@@ -29,10 +29,8 @@ class DynamicCollectionViewCell: UICollectionViewCell {
     
     func setup(for preset: Preset) {
         preset.loadImagesData {
-            if !preset.imagesData.isEmpty {
-                DispatchQueue.main.async {
-                    self.cellImageView.image = UIImage(data: preset.imagesData[0])
-                }
+            DispatchQueue.main.async {
+                self.cellImageView.image = UIImage(data: preset.imagesData[0])
             }
         }
     }

@@ -8,12 +8,10 @@
 
 import UIKit
 
-class BaseViewController: UIViewController, DataFetcher {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureObserver()
         setupLayout()
     }
 
@@ -22,8 +20,4 @@ class BaseViewController: UIViewController, DataFetcher {
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-
-    func configureObserver() {}
-
-    func dataFetched(_ notif: Notification) {}
 }

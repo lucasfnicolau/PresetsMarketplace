@@ -16,8 +16,6 @@ class DiscoverViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = Screen.discover
 
-        DAO.shared.loadAllPresets()
-
         setupSearchController()
         setupCollectionView()
     }
@@ -27,10 +25,8 @@ class DiscoverViewController: BaseViewController {
     }
 
     func setupCollectionView() {
-        let presets = Array(repeating: Preset(), count: 4)
-        let dao = DynamicCollectionViewDAO(with: presets)
+        let dao = DynamicCollectionViewDAO(with: Mock.shared.presets)
         collectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
-        
         guard let collectionView = collectionView else { return }
         collectionView.reloadData()
         self.view.addSubview(collectionView)
@@ -55,19 +51,6 @@ class DiscoverViewController: BaseViewController {
         searchController.searchBar.placeholder = "Busque por artistas e presets"
         self.definesPresentationContext = true
         self.navigationItem.searchController = searchController
-    }
-
-    override func configureObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.discoverDataFetched, object: nil)
-    }
-
-    @objc override func dataFetched(_ notif: Notification) {
-        let dao = DynamicCollectionViewDAO(with: DAO.shared.presets)
-        collectionView?.dao = dao
-
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView?.reloadData()
-        }
     }
 }
 

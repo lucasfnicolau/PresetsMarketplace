@@ -37,8 +37,6 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
             print("Error when guarding viewController or navigationController or cell")
             return
         }
-
-        guard !dao.filteredPresets[indexPath.item].name.isEmpty else { return }
         
         if let destination = UIStoryboard(name: Storyboard.presetPreviewViewController, bundle: nil).instantiateViewController(identifier: Identifier.presetPreviewViewController) as? PresetPreviewViewController {
             

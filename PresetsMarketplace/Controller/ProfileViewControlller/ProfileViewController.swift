@@ -16,30 +16,27 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var artistAboutLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var noPresetsAcquiredLabel: UILabel!
-    var profileImageLabel: UILabel?
     var presetsCollectionView: DynamicCollectionView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Screen.profile
         setupViews()
-
-        checkIfUserIsLoggedIn()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    }
 
-    func checkIfUserIsLoggedIn() {
-        if !DAO.shared.isLoggedIn {
-            let loginViewController = LoginViewController()
-            loginViewController.modalPresentationStyle = .custom
-            self.present(loginViewController, animated: true, completion: nil)
+        if !Mock.shared.user.acquiredPresets.isEmpty {
+            noPresetsAcquiredLabel.isHidden = true
         }
+
+        presetsCollectionView?.dao = DynamicCollectionViewDAO(with: Mock.shared.user.acquiredPresets)
+        presetsCollectionView?.reloadData()
     }
 
     func setupViews() {
+        artistNameLabel.text = Mock.shared.user.name
         if let artist = Mock.shared.user as? Artist {
             artistAboutLabel.text = artist.about
         }
@@ -68,21 +65,22 @@ class ProfileViewController: BaseViewController {
     }
 
     func setupLabel() {
-        profileImageLabel = UILabel()
-        guard let profileImageLabel = profileImageLabel else { return }
-        profileImageLabel.font = profileImageLabel.font.withSize(75)
-        profileImageLabel.textAlignment = .center
-        profileImageLabel.textColor = .black
+        let label = UILabel()
+        label.font = label.font.withSize(75)
+        label.textAlignment = .center
+        label.textColor = .black
 
-        profileImageView.addSubview(profileImageLabel)
-        profileImageLabel.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            profileImageLabel.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
-            profileImageLabel.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor),
-            profileImageLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor),
-            profileImageLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor)
+            label.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor),
+            label.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            label.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor)
         ])
+
+        label.text = String(Mock.shared.user.name.prefix(1)).uppercased()
     }
 
     func setupCollectionViewConstraints() {
@@ -96,32 +94,5 @@ class ProfileViewController: BaseViewController {
             presetsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             presetsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-    }
-
-    override func configureObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(loadAcquiredPresets), name: NotificationName.userCreated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.profileDataFetched, object: nil)
-
-        loadAcquiredPresets()
-    }
-
-    @objc override func dataFetched(_ notif: Notification) {
-        guard let user = DAO.shared.user else { return }
-        let dao = DynamicCollectionViewDAO(with: user.acquiredPresets)
-        presetsCollectionView?.dao = dao
-
-        DispatchQueue.main.async { [weak self] in
-            self?.noPresetsAcquiredLabel.isHidden = true
-            self?.presetsCollectionView?.reloadData()
-        }
-    }
-
-    @objc func loadAcquiredPresets() {
-        DispatchQueue.main.async {
-            self.artistNameLabel.text = DAO.shared.user?.name ?? Mock.shared.user.name
-            let letter = DAO.shared.user?.name.prefix(1) ?? Mock.shared.user.name.prefix(1)
-            self.profileImageLabel?.text = String(letter).uppercased()
-        }
-        DAO.shared.loadAcquiredPresets()
     }
 }
