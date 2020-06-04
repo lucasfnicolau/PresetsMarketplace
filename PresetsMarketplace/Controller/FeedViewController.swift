@@ -18,15 +18,6 @@ class FeedViewController: BaseViewController {
         navigationItem.title = Screen.feed
         
         setupCollectionView()
-
-        DAO.shared.getUser(withId: "1EBFF0B4-D28D-9DAD-A7F9-15E25F093D43")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        let filteredPresets = getFollowingArtistsPresets()
-        let dao = DynamicCollectionViewDAO(with: filteredPresets)
-        collectionView?.dao = dao
-        collectionView?.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -37,6 +28,10 @@ class FeedViewController: BaseViewController {
         collectionView = DynamicCollectionView(collectionType: .user, in: self)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
+
+        let filteredPresets = Array(repeating: Preset(), count: 4)
+        let dao = DynamicCollectionViewDAO(with: filteredPresets)
+        collectionView.dao = dao
     }
     
     func setupCollectionViewConstraints() {
@@ -52,10 +47,29 @@ class FeedViewController: BaseViewController {
     }
     
     func getFollowingArtistsPresets() -> [Preset] {
+        guard let user = DAO.shared.user else { return [] }
         var filteredPresets: [Preset] = []
-        for artist in Mock.shared.user.following {
+        for artist in user.following {
             filteredPresets += artist.presets
         }
         return filteredPresets
+    }
+
+    override func configureObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.feedDataFetched, object: nil)
+    }
+
+    @objc override func dataFetched(_ notif: Notification) {
+        if let item = notif.userInfo?["item"] as? Int {
+            let filteredPresets = getFollowingArtistsPresets()
+            let dao = DynamicCollectionViewDAO(with: filteredPresets)
+            collectionView?.dao = dao
+
+            DispatchQueue.main.async { [weak self] in
+                let indexPath = IndexPath(row: item, section: 0)
+                self?.collectionView?.reloadData()
+                self?.collectionView?.insertItems(at: [indexPath])
+            }
+        }
     }
 }
