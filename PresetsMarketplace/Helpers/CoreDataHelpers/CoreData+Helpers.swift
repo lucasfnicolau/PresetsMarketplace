@@ -24,7 +24,7 @@ protocol GenericDAO {
     func read(of RecordType: CDRecordType) throws -> [T]
 }
 
-struct AcquiredPreset: Codable {
+struct AcquiredPreset: Codable, Equatable {
     let identifier: String
     let isAcquired: Bool   
 }

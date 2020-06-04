@@ -19,7 +19,7 @@ class CoreDataManager {
     
     lazy var persistentContainer: NSPersistentContainer = {
         
-        let container = NSPersistentContainer(name: "CoreDataDataModel")
+        let container = NSPersistentContainer(name: "PresetsMarketplace")
         
         guard let description = container.persistentStoreDescriptions.first else {
             fatalError("Could not retrieve a persistent store description.")

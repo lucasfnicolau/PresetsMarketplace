@@ -15,10 +15,9 @@ public class CoreDataController: GenericDAO {
 
     typealias T = AcquiredPreset
     
-    
-    //    typealias T = VisitedPlaces
-    
     let managedContext = CoreDataManager.shared.persistentContainer.viewContext
+    
+    
     private let entityName = "CDPreset"
     
     static let shared: CoreDataController = CoreDataController()
@@ -48,12 +47,7 @@ public class CoreDataController: GenericDAO {
         acquiredPreset.id = newRecord.identifier
         acquiredPreset.isAcquired = newRecord.isAcquired
         
-        do {
-            try managedContext.save()
-        } catch {
-            throw DAOError.internalError(description: "Problem to save Acquired Preset reference into managed context")
-        }
-        
+        CoreDataManager.shared.saveContext()
         
     }
     

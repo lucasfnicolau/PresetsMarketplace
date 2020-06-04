@@ -30,7 +30,7 @@ class PresetPreviewViewController: UIViewController {
     var transitionDelegate: TransitionDelegate?
     var origin: CGRect = .zero
     var viewController: UIViewController?
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -75,7 +75,18 @@ class PresetPreviewViewController: UIViewController {
 
     func setButtonState() {
         guard let user = DAO.shared.user, let preset = preset else { return }
-        if user.hasPreset(preset) {
+        
+        var acquiredPresets: [AcquiredPreset] = []
+        
+        do {
+            acquiredPresets = try CoreDataController.shared.read(of: .AcquiredPreset)
+        } catch {
+            print(DAOError.internalError(description: "Failed to fetch aquired presets"))
+        }
+        
+        let convertedPreset = AcquiredPreset(identifier: preset.id, isAcquired: true)
+        
+        if  (acquiredPresets.contains(convertedPreset) || user.hasPreset(preset)) {
             UIView.animate(withDuration: 0.1) {
                 self.floatingBuyButtonView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.55)
                 self.floatingBuyButton.setTitleColor(.white, for: .normal)
@@ -146,6 +157,13 @@ class PresetPreviewViewController: UIViewController {
         guard let user = DAO.shared.user, let preset = preset else { return }
         if !user.hasPreset(preset) {
             user.addPreset(preset)
+            let acquiredPreset =  AcquiredPreset(identifier: preset.id, isAcquired: true)
+            do {
+                try CoreDataController.shared.create(newRecord: acquiredPreset, of: .AcquiredPreset)
+            } catch {
+                print(DAOError.internalError(description: "Failed to create NSObject"))
+            }
+             
             DAO.shared.acquirePreset(preset)
             setButtonState()
 
