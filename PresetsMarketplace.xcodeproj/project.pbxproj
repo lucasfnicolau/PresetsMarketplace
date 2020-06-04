@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		A7B96C81247877BD000A695A /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B96C7F247877BD000A695A /* TransitionAnimator.swift */; };
 		A7B96C82247877BD000A695A /* TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B96C80247877BD000A695A /* TransitionDelegate.swift */; };
-		B6068DA02489659B00A709ED /* PublishPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6068D9F2489659B00A709ED /* PublishPresetViewController.swift */; };
-		B6068DA32489676C00A709ED /* PublishPresetViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6068DA22489676C00A709ED /* PublishPresetViewController.storyboard */; };
 		B60F3D742475A6E0009CBE10 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F3D732475A6E0009CBE10 /* Storyboard.swift */; };
 		B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3824759EA100027C23 /* PresetInfoTableViewDelegate.swift */; };
 		B654DE3B24759EB800027C23 /* PresetInfoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3A24759EB800027C23 /* PresetInfoTableViewDataSource.swift */; };
@@ -97,8 +95,6 @@
 /* Begin PBXFileReference section */
 		A7B96C7F247877BD000A695A /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		A7B96C80247877BD000A695A /* TransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
-		B6068D9F2489659B00A709ED /* PublishPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPresetViewController.swift; sourceTree = "<group>"; };
-		B6068DA22489676C00A709ED /* PublishPresetViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PublishPresetViewController.storyboard; sourceTree = "<group>"; };
 		B60F3D732475A6E0009CBE10 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		B654DE3824759EA100027C23 /* PresetInfoTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetInfoTableViewDelegate.swift; sourceTree = "<group>"; };
 		B654DE3A24759EB800027C23 /* PresetInfoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetInfoTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -193,15 +189,6 @@
 			path = Segue;
 			sourceTree = "<group>";
 		};
-		B6068DA1248965A300A709ED /* PublishPresetViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B6068D9F2489659B00A709ED /* PublishPresetViewController.swift */,
-				B6068DA22489676C00A709ED /* PublishPresetViewController.storyboard */,
-			);
-			path = PublishPresetViewController;
-			sourceTree = "<group>";
-		};
 		B654DE3724759E7C00027C23 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +267,6 @@
 		B68A4F09247325F1003B0EF5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B6068DA1248965A300A709ED /* PublishPresetViewController */,
 				B6FC51BC2485CAAA004F4A3E /* LoginViewController */,
 				B6E364B7247CA78D002A1E7F /* ProfileViewControlller */,
 				B6592846247458D800F4B4C8 /* PresetPreviewViewController */,
@@ -514,7 +500,6 @@
 				B6C2F22A247C6CDB009A1C8B /* Contrast.dng in Resources */,
 				B6C2F226247C6CDB009A1C8B /* Duotone.dng in Resources */,
 				B6FC51BB2485CAA2004F4A3E /* LoginViewController.xib in Resources */,
-				B6068DA32489676C00A709ED /* PublishPresetViewController.storyboard in Resources */,
 				B6C2F229247C6CDB009A1C8B /* Film.dng in Resources */,
 				B6A4E026246F2115009A78AC /* LaunchScreen.storyboard in Resources */,
 				B6C2F227247C6CDB009A1C8B /* Black-And-White.dng in Resources */,
@@ -570,7 +555,6 @@
 				B659288024749E0700F4B4C8 /* UIViewController.swift in Sources */,
 				B6C2F21A247C56C7009A1C8B /* DynamicCollectionViewDAO.swift in Sources */,
 				C0802F762475A109006267F7 /* DynamicCollectionViewCell.swift in Sources */,
-				B6068DA02489659B00A709ED /* PublishPresetViewController.swift in Sources */,
 				B6A19773247873F600C93302 /* Mock.swift in Sources */,
 				B659286E2474824300F4B4C8 /* User.swift in Sources */,
 				B6A87CE42486C93E001BA8BC /* KeychainInfo.swift in Sources */,
