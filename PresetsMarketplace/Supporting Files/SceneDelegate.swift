@@ -19,7 +19,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = TabBarController()
+        
+        let defaults = UserDefaults()
+        
+        let storyboard = UIStoryboard.init(name: "Onboarding", bundle: nil)
+        let onboarding = defaults.bool(forKey: "onboarding")
+        
+        let viewController: UIViewController
+        
+        if !onboarding {
+            viewController = storyboard.instantiateViewController(withIdentifier: "OnboardingStoryboard")
+        } else {
+            viewController = TabBarController()
+        }
+        
+        window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }
 

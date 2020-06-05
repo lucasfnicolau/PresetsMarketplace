@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A79C84E52489B27D003F6F7D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79C84E42489B27D003F6F7D /* StartViewController.swift */; };
+		A79C84E72489B966003F6F7D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79C84E62489B966003F6F7D /* RoundedButton.swift */; };
+		A79C84E92489C0ED003F6F7D /* ExploreOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79C84E82489C0ED003F6F7D /* ExploreOnboardingViewController.swift */; };
+		A79C84EB2489C11E003F6F7D /* FeedOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79C84EA2489C11E003F6F7D /* FeedOnboardingViewController.swift */; };
+		A7B5EA4D24899EEE00F013F0 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B5EA4C24899EEE00F013F0 /* OnboardingPageViewController.swift */; };
+		A7B5EA4F24899F2200F013F0 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B5EA4E24899F2200F013F0 /* Onboarding.storyboard */; };
 		A7B96C81247877BD000A695A /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B96C7F247877BD000A695A /* TransitionAnimator.swift */; };
 		A7B96C82247877BD000A695A /* TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B96C80247877BD000A695A /* TransitionDelegate.swift */; };
 		B6068DA02489659B00A709ED /* PublishPresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6068D9F2489659B00A709ED /* PublishPresetViewController.swift */; };
@@ -111,6 +117,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A79C84E42489B27D003F6F7D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		A79C84E62489B966003F6F7D /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		A79C84E82489C0ED003F6F7D /* ExploreOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreOnboardingViewController.swift; sourceTree = "<group>"; };
+		A79C84EA2489C11E003F6F7D /* FeedOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOnboardingViewController.swift; sourceTree = "<group>"; };
+		A7B5EA4C24899EEE00F013F0 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		A7B5EA4E24899F2200F013F0 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		A7B96C7F247877BD000A695A /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		A7B96C80247877BD000A695A /* TransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
 		B6068D9F2489659B00A709ED /* PublishPresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishPresetViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +228,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7B5EA4B24899EA200F013F0 /* OnboardingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7B5EA4C24899EEE00F013F0 /* OnboardingPageViewController.swift */,
+				A7B5EA4E24899F2200F013F0 /* Onboarding.storyboard */,
+				A79C84E82489C0ED003F6F7D /* ExploreOnboardingViewController.swift */,
+				A79C84EA2489C11E003F6F7D /* FeedOnboardingViewController.swift */,
+				A79C84E42489B27D003F6F7D /* StartViewController.swift */,
+			);
+			path = OnboardingViewController;
+			sourceTree = "<group>";
+		};
 		A7B96C7E247877A4000A695A /* Segue */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +340,7 @@
 		B68A4F09247325F1003B0EF5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A7B5EA4B24899EA200F013F0 /* OnboardingViewController */,
 				B6FC51BC2485CAAA004F4A3E /* LoginViewController */,
 				B6E364B7247CA78D002A1E7F /* ProfileViewControlller */,
 				B6592846247458D800F4B4C8 /* PresetPreviewViewController */,
@@ -339,6 +364,7 @@
 				C0802F772475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift */,
 				B664BB92247DB58F0099951D /* RoundedView.swift */,
 				B6068DB024896B6E00A709ED /* RoundedModalView.swift */,
+				A79C84E62489B966003F6F7D /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -597,6 +623,7 @@
 				B659285F2474770C00F4B4C8 /* PresetPreviewViewController.storyboard in Resources */,
 				B6A4E023246F2115009A78AC /* Assets.xcassets in Resources */,
 				B6C2F22F247C6CDB009A1C8B /* HDR.dng in Resources */,
+				A7B5EA4F24899F2200F013F0 /* Onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +636,7 @@
 			files = (
 				D947898124749C8200A536DF /* DynamicCollectionViewLayout.swift in Sources */,
 				A7B96C82247877BD000A695A /* TransitionDelegate.swift in Sources */,
+				A79C84EB2489C11E003F6F7D /* FeedOnboardingViewController.swift in Sources */,
 				B659286424747D8E00F4B4C8 /* AboutPresetTableViewCell.swift in Sources */,
 				D960ABB4248977CE0096F850 /* CoreDataController.swift in Sources */,
 				B659286124747C5A00F4B4C8 /* PresetPreviewViewController.swift in Sources */,
@@ -629,10 +657,13 @@
 				B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */,
 				B68E40172488163A009C99A0 /* DataFetcher.swift in Sources */,
 				B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */,
+				A79C84E52489B27D003F6F7D /* StartViewController.swift in Sources */,
 				B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */,
 				B664BB91247DB17C0099951D /* Screen.swift in Sources */,
 				B68A4F152473279B003B0EF5 /* DiscoverViewController.swift in Sources */,
 				B659286624747D9E00F4B4C8 /* ArtistPresetTableViewCell.swift in Sources */,
+				A79C84E72489B966003F6F7D /* RoundedButton.swift in Sources */,
+				A79C84E92489C0ED003F6F7D /* ExploreOnboardingViewController.swift in Sources */,
 				B60F3D742475A6E0009CBE10 /* Storyboard.swift in Sources */,
 				B6B89C3324898E08005A916C /* ImagesAddedCollectionViewDataSource.swift in Sources */,
 				C0802F782475A5F8006267F7 /* DynamicCollectionArtistViewCell.swift in Sources */,
@@ -649,6 +680,7 @@
 				B6B89C3624898FBB005A916C /* ImagesAddedCollectionViewDAO.swift in Sources */,
 				B65928702474844D00F4B4C8 /* UIImageView.swift in Sources */,
 				B699B1012489994300898D7B /* ImagesHandlerDelegate.swift in Sources */,
+				A7B5EA4D24899EEE00F013F0 /* OnboardingPageViewController.swift in Sources */,
 				B659284A24745F7F00F4B4C8 /* RoundedBluredView.swift in Sources */,
 				B659288024749E0700F4B4C8 /* UIViewController.swift in Sources */,
 				B6068DB124896B6E00A709ED /* RoundedModalView.swift in Sources */,

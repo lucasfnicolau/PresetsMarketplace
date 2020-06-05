@@ -1,18 +1,18 @@
 //
-//  LoginViewController.swift
+//  StartViewController.swift
 //  PresetsMarketplace
 //
-//  Created by Lucas Fernandez Nicolau on 01/06/20.
+//  Created by Leonardo Oliveira on 04/06/20.
 //  Copyright © 2020 Lucas Fernandez Nicolau. All rights reserved.
 //
 
 import UIKit
 import AuthenticationServices
 
-class LoginViewController: UIViewController {
-    
-    @IBOutlet weak var stackView: UIStackView!
+class StartViewController: UIViewController {
 
+    @IBOutlet weak var stackView: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -84,9 +84,24 @@ class LoginViewController: UIViewController {
             print("Unable to save userIdentifier to keychain.")
         }
     }
+    
+    @IBAction func exploreButtonPressed(_ sender: Any) {
+        presetNextViewController()
+    }
+    
+    func presetNextViewController() {
+        
+        let defaults = UserDefaults()
+        defaults.set(true, forKey: "onboarding")
+        
+        let tabBar = TabBarController()
+        tabBar.modalPresentationStyle = .fullScreen
+        present(tabBar, animated: false, completion: nil)
+    }
+    
 }
 
-extension LoginViewController: ASAuthorizationControllerDelegate {
+extension StartViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         // TODO
     }
@@ -108,14 +123,13 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             break
         }
 
-        self.dismiss(animated: true, completion: nil)
+        presetNextViewController()
     }
-
-    
 }
 
-extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+extension StartViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window ?? UIWindow()
     }
 }
+
