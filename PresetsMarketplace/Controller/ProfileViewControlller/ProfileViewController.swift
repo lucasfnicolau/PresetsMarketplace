@@ -22,33 +22,30 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Screen.profile
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(publishPreset))
+        navigationController?.navigationBar.tintColor = .black
+
         setupViews()
 
-        checkIfUserIsLoggedIn()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        if let vc = UIStoryboard(name: Storyboard.publishPresetViewController, bundle: nil).instantiateViewController(identifier: Identifier.publishPresetViewController) as? PublishPresetViewController {
-            vc.modalPresentationStyle = .fullScreen
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
-                vc.backingImage = self.tabBarController?.view.asImage()
-                self.present(vc, animated: false, completion: nil)
-            })
-        }
+//        checkIfUserIsLoggedIn()
     }
 
     func checkIfUserIsLoggedIn() {
-//        if !DAO.shared.isLoggedIn {
-//            let loginViewController = LoginViewController()
-//            loginViewController.modalPresentationStyle = .custom
-//            self.present(loginViewController, animated: true, completion: nil)
-//        }
+        if !DAO.shared.isLoggedIn {
+            let loginViewController = LoginViewController()
+            loginViewController.modalPresentationStyle = .custom
+            self.present(loginViewController, animated: true, completion: nil)
+        }
     }
 
-    func setupViews() {
+    @objc private func publishPreset() {
+        if let publishPresetTableViewController = UIStoryboard(name: Storyboard.publishPresetTableViewController, bundle: nil).instantiateViewController(identifier: Identifier.publishPresetTableViewController) as? PublishPresetTableViewController {
+
+            self.present(publishPresetTableViewController, animated: true, completion: nil)
+        }
+    }
+
+    private func setupViews() {
         if let artist = Mock.shared.user as? Artist {
             artistAboutLabel.text = artist.about
         }
@@ -76,7 +73,7 @@ class ProfileViewController: BaseViewController {
         setupCollectionViewConstraints()
     }
 
-    func setupLabel() {
+    private func setupLabel() {
         profileImageLabel = UILabel()
         guard let profileImageLabel = profileImageLabel else { return }
         profileImageLabel.font = profileImageLabel.font.withSize(75)
@@ -94,7 +91,7 @@ class ProfileViewController: BaseViewController {
         ])
     }
 
-    func setupCollectionViewConstraints() {
+    private func setupCollectionViewConstraints() {
         guard let presetsCollectionView = presetsCollectionView else { return }
         view.addSubview(presetsCollectionView)
         presetsCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -125,7 +122,7 @@ class ProfileViewController: BaseViewController {
         }
     }
 
-    @objc func loadAcquiredPresets() {
+    @objc private func loadAcquiredPresets() {
         DispatchQueue.main.async {
             self.artistNameLabel.text = DAO.shared.user?.name ?? Mock.shared.user.name
             let letter = DAO.shared.user?.name.prefix(1) ?? Mock.shared.user.name.prefix(1)

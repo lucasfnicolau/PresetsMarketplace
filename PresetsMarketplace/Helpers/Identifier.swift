@@ -20,10 +20,12 @@ enum Identifier {
     static let othersPresetsCollectionViewCell = "OthersPresetsCollectionViewCell"
     static let dynamicCollectionViewCell = "DynamicCollectionViewCell"
     static let dynamicCollectionArtistViewCell = "DynamicCollectionArtistViewCell"
+    static let imageAddedCollectionViewCell = "ImageAddedCollectionViewCell"
+    static let addImageCollectionViewCell = "AddImageCollectionViewCell"
 
     // MARK: - ViewController
     static let presetPreviewViewController = "PresetPreviewViewController"
     static let presetInfoTableViewViewController = "PresetInfoTableViewViewController"
     static let profileViewController = "ProfileViewController"
-    static let publishPresetViewController = "PublishPresetViewController"
+    static let publishPresetTableViewController = "PublishPresetTableViewController"
 }

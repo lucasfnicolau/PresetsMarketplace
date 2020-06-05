@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class RoundedModalView: UIView {
+/* @IBDesignable */ class RoundedModalView: UIView {
 
     @IBInspectable var cornerRadius: CGFloat = 20 {
         didSet {

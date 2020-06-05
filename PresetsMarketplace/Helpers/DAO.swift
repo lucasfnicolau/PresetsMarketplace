@@ -216,7 +216,7 @@ class DAO: NSObject {
         guard let userRecord = userRecord else { return }
 
         let id = CKRecord.ID(recordName: preset.id)
-        let presetReference = CKRecord.Reference(recordID: id, action: .none)
+        let presetReference = CKRecord.Reference(recordID: id, action: .deleteSelf)
 
         var acquiredPresets = [CKRecord.Reference]()
         if let guardedAcquiredPresets = userRecord["acquiredPresets"] as? [CKRecord.Reference] {
@@ -233,6 +233,39 @@ class DAO: NSObject {
                 break
             case .failure(let error):
                 print(error)
+                break
+            }
+        }
+    }
+
+    func publishPreset(_ preset: Preset, completion: @escaping (Bool) -> Void) {
+        let presetRecord = CKRecord(recordType: RecordType.preset.rawValue)
+        presetRecord["name"] = preset.name
+        presetRecord["description"] = preset.description
+        let id = CKRecord.ID(recordName: preset.artist.id)
+        presetRecord["artist"] = CKRecord.Reference(recordID: id, action: .deleteSelf)
+        presetRecord["price"] = preset.price
+
+        if let dngURL = URL(string: preset.dngPath) {
+            let dngAsset = CKAsset(fileURL: dngURL)
+            presetRecord["dng"] = dngAsset
+        }
+
+        var imagesAssets = [CKAsset]()
+        preset.imagesURLs.forEach {
+            guard let url = $0 else { return }
+            imagesAssets.append(CKAsset(fileURL: url))
+        }
+        presetRecord["images"] = imagesAssets
+
+        cloudKitManager.save(record: presetRecord, on: .publicDB) { result in
+            switch result {
+            case .success(let record):
+                completion(true)
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
                 break
             }
         }

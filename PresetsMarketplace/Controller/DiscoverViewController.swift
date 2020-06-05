@@ -62,7 +62,8 @@ class DiscoverViewController: BaseViewController {
     }
 
     @objc override func dataFetched(_ notif: Notification) {
-        let dao = DynamicCollectionViewDAO(with: DAO.shared.presets)
+        guard let user = DAO.shared.user else { return }
+        let dao = DynamicCollectionViewDAO(with: DAO.shared.presets.filter { $0.artist.id != user.id })
         collectionView?.dao = dao
 
         DispatchQueue.main.async { [weak self] in
