@@ -167,6 +167,7 @@ extension PublishPresetTableViewController: UIDocumentPickerDelegate {
                 if self?.feedBackAlertController.actions.isEmpty ?? false {
                     self?.feedBackAlertController.addAction(ok)
                 }
+                if success { DAO.shared.loadAllPresets() }
             }
         }
     }

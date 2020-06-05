@@ -18,6 +18,9 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var noPresetsAcquiredLabel: UILabel!
     var profileImageLabel: UILabel?
     var presetsCollectionView: DynamicCollectionView?
+    
+    var acquiredPresetsDAO: DynamicCollectionViewDAO?
+    var publishedPresetsDAO: DynamicCollectionViewDAO?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,9 @@ class ProfileViewController: BaseViewController {
         setupViews()
 
         checkIfUserIsLoggedIn()
+        
+        DAO.shared.loadAllPresets()
+        presetsCollectionView?.reloadData()
     }
 
     func checkIfUserIsLoggedIn() {
@@ -110,18 +116,25 @@ class ProfileViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(loadAcquiredPresets), name: NotificationName.userCreated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadPublishedPresets), name: NotificationName.userCreated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.profileDataFetched, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.discoverDataFetched, object: nil)
 
         loadAcquiredPresets()
     }
 
     @objc override func dataFetched(_ notif: Notification) {
         guard let user = DAO.shared.user else { return }
-        let dao = DynamicCollectionViewDAO(with: user.acquiredPresets)
-        presetsCollectionView?.dao = dao
-
+        
+        if notif.name == NotificationName.profileDataFetched {
+            acquiredPresetsDAO = DynamicCollectionViewDAO(with: user.acquiredPresets)
+        } else {
+            let filteredPresets = DAO.shared.presets.filter{
+                $0.artist.id == user.id
+            }
+            publishedPresetsDAO = DynamicCollectionViewDAO(with: filteredPresets)
+        }
         DispatchQueue.main.async { [weak self] in
             self?.noPresetsAcquiredLabel.isHidden = true
-            self?.presetsCollectionView?.reloadData()
+            self?.changeDAO(for: self?.segmentedControl.selectedSegmentIndex ?? 0)
         }
     }
 
@@ -135,28 +148,32 @@ class ProfileViewController: BaseViewController {
     }
     
     @objc private func loadPublishedPresets() {
-        DAO.shared.loadPublishedPresets()
+//        DAO.shared.loadPublishedPresets()
     }
     
     @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
+        changeDAO(for: sender.selectedSegmentIndex)
+    }
+    
+    private func changeDAO(for sectionIndex: Int) {
+        switch sectionIndex {
             case 0:
-                DAO.shared.loadAcquiredPresets()
+                guard let acquiredPresetsDAO = acquiredPresetsDAO else {
+                    print("Could not get Acquired Presets DAO")
+                    return
+                }
+                presetsCollectionView?.dao = acquiredPresetsDAO
                 
-                guard let user = DAO.shared.user else { return }
-                let acquiredDAO = DynamicCollectionViewDAO(with: user.acquiredPresets)
-                presetsCollectionView?.dao = acquiredDAO
-                presetsCollectionView?.reloadData()
             case 1:
-                DAO.shared.loadPublishedPresets()
-                
-                guard let user = DAO.shared.user else { return }
-                let publishedDAO = DynamicCollectionViewDAO(with: user.publishedPresets)
-                presetsCollectionView?.dao = publishedDAO
-                presetsCollectionView?.reloadData()
+                guard let publishedPresetsDAO = publishedPresetsDAO else {
+                    print("Could not get Acquired Presets DAO")
+                    return
+                }
+                presetsCollectionView?.dao = publishedPresetsDAO
             default:
                 break
         }
+        presetsCollectionView?.reloadData()
     }
     
     
