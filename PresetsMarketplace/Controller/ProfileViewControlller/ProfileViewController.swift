@@ -33,8 +33,13 @@ class ProfileViewController: BaseViewController {
 
         checkIfUserIsLoggedIn()
         
-        DAO.shared.loadAllPresets()
         presetsCollectionView?.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DAO.shared.loadAllPresets()
+        segmentedControl.selectedSegmentIndex = 0
+        changeDAO(for: 0)
     }
 
     func checkIfUserIsLoggedIn() {
@@ -160,22 +165,29 @@ class ProfileViewController: BaseViewController {
     }
     
     private func changeDAO(for sectionIndex: Int) {
+        guard let user = DAO.shared.user else { return }
+        
         switch sectionIndex {
             case 0:
-                guard let acquiredPresetsDAO = acquiredPresetsDAO else {
-                    print("Could not get Acquired Presets DAO")
-                    presetsCollectionView?.dao = DynamicCollectionViewDAO(with: [])
-                    return
-                }
-                presetsCollectionView?.dao = acquiredPresetsDAO
+//                guard let acquiredPresetsDAO = acquiredPresetsDAO else {
+//                    print("Could not get Acquired Presets DAO")
+//                    presetsCollectionView?.dao = DynamicCollectionViewDAO(with: [])
+//                    return
+//                }
+                presetsCollectionView?.dao = DynamicCollectionViewDAO(with: DAO.shared.presets.filter{
+                    user.acquiredPresets.contains($0)
+                })
+                
                 
             case 1:
-                guard let publishedPresetsDAO = publishedPresetsDAO else {
-                    print("Could not get Published Presets DAO")
-                    presetsCollectionView?.dao = DynamicCollectionViewDAO(with: [])
-                    return
-                }
-                presetsCollectionView?.dao = publishedPresetsDAO
+//                guard let publishedPresetsDAO = publishedPresetsDAO else {
+//                    print("Could not get Published Presets DAO")
+//                    presetsCollectionView?.dao = DynamicCollectionViewDAO(with: [])
+//                    return
+//                }
+                presetsCollectionView?.dao = DynamicCollectionViewDAO(with: DAO.shared.presets.filter{
+                    $0.artist.id == user.id
+                })
             default:
                 break
         }

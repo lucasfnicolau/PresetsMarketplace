@@ -30,12 +30,16 @@ class DAO: NSObject {
         let name = credential.fullName?.givenName ?? UIDevice.current.name
         let email = credential.email ?? ""
         let id = credential.user
+        let following = [CKRecord.Reference(recordID: CKRecord.ID(recordName: "001027.e58a8a5dbc854b22af1b31fefb26908a.1901"), action: .none),
+                         CKRecord.Reference(recordID: CKRecord.ID(recordName: "000435.b124e03015c54e4ea24b676c80d7246d.0116"), action: .none)
+        ]
 
         let user = CKRecord(recordType: RecordType.user.rawValue, recordID: CKRecord.ID(recordName: id))
         user.setValue(name, forKey: "name")
         user.setValue(email, forKey: "email")
         user.setValue("Fotógrafo se aventurando na criação de presets.", forKey: "about")
         user.setValue(0, forKey: "isArtist")
+        user.setValue(following, forKey: "followingArtists")
 
         cloudKitManager.save(record: user, on: .publicDB) { result in
             switch result {
@@ -277,7 +281,7 @@ class DAO: NSObject {
         presetRecord["name"] = preset.name
         presetRecord["description"] = preset.description
         let id = CKRecord.ID(recordName: preset.artist.id)
-        presetRecord["artist"] = CKRecord.Reference(recordID: id, action: .deleteSelf)
+        presetRecord["artist"] = CKRecord.Reference(recordID: id, action: .none)
         presetRecord["price"] = preset.price
 
         if let dngURL = URL(string: preset.dngPath) {
