@@ -110,9 +110,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oEa-qQ-B3t"/>
                     </view>
-                    <connections>
-                        <outlet property="imageView" destination="wL1-qa-apM" id="pPa-4y-Bcq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lvh-oF-IAg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,9 +230,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4lF-OS-sm0"/>
                     </view>
-                    <connections>
-                        <outlet property="imageView" destination="E3h-QG-drc" id="w0T-Cb-OOv"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xr7-Hm-f9M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

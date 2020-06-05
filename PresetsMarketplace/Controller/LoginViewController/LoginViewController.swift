@@ -110,6 +110,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 
         self.dismiss(animated: true, completion: nil)
     }
+
+    
 }
 
 extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
