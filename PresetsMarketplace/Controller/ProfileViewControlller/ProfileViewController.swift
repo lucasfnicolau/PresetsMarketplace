@@ -10,25 +10,30 @@ import UIKit
 
 class ProfileViewController: BaseViewController {
 
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var artistInfoStackView: UIStackView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var artistAboutLabel: UILabel!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var noPresetsAcquiredLabel: UILabel!
     var profileImageLabel: UILabel?
     var presetsCollectionView: DynamicCollectionView?
+    
+    var acquiredPresetsDAO: DynamicCollectionViewDAO?
+    var publishedPresetsDAO: DynamicCollectionViewDAO?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Screen.profile
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(publishPreset))
+        navigationController?.navigationBar.tintColor = .black
+
         setupViews()
 
         checkIfUserIsLoggedIn()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        
+        DAO.shared.loadAllPresets()
+        presetsCollectionView?.reloadData()
     }
 
     func checkIfUserIsLoggedIn() {
@@ -39,7 +44,14 @@ class ProfileViewController: BaseViewController {
         }
     }
 
-    func setupViews() {
+    @objc private func publishPreset() {
+        if let publishPresetTableViewController = UIStoryboard(name: Storyboard.publishPresetTableViewController, bundle: nil).instantiateViewController(identifier: Identifier.publishPresetTableViewController) as? PublishPresetTableViewController {
+
+            self.present(publishPresetTableViewController, animated: true, completion: nil)
+        }
+    }
+
+    private func setupViews() {
         if let artist = Mock.shared.user as? Artist {
             artistAboutLabel.text = artist.about
         }
@@ -61,13 +73,15 @@ class ProfileViewController: BaseViewController {
             self.profileImageView.widthAnchor.constraint(equalToConstant: size),
             self.profileImageView.heightAnchor.constraint(equalToConstant: size)
         ])
+        
+        guard let user = DAO.shared.user else { return }
 
-        let dao = DynamicCollectionViewDAO(with: Mock.shared.user.acquiredPresets)
-        presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
+        let acquiredDAO = DynamicCollectionViewDAO(with: user.acquiredPresets)
+        presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: acquiredDAO)
         setupCollectionViewConstraints()
     }
 
-    func setupLabel() {
+    private func setupLabel() {
         profileImageLabel = UILabel()
         guard let profileImageLabel = profileImageLabel else { return }
         profileImageLabel.font = profileImageLabel.font.withSize(75)
@@ -85,13 +99,13 @@ class ProfileViewController: BaseViewController {
         ])
     }
 
-    func setupCollectionViewConstraints() {
+    private func setupCollectionViewConstraints() {
         guard let presetsCollectionView = presetsCollectionView else { return }
         view.addSubview(presetsCollectionView)
         presetsCollectionView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            presetsCollectionView.topAnchor.constraint(equalTo: artistInfoStackView.bottomAnchor, constant: 30),
+            presetsCollectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
             presetsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             presetsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             presetsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -100,23 +114,31 @@ class ProfileViewController: BaseViewController {
 
     override func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(loadAcquiredPresets), name: NotificationName.userCreated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadPublishedPresets), name: NotificationName.userCreated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.profileDataFetched, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.discoverDataFetched, object: nil)
 
         loadAcquiredPresets()
     }
 
     @objc override func dataFetched(_ notif: Notification) {
         guard let user = DAO.shared.user else { return }
-        let dao = DynamicCollectionViewDAO(with: user.acquiredPresets)
-        presetsCollectionView?.dao = dao
-
+        
+        if notif.name == NotificationName.profileDataFetched {
+            acquiredPresetsDAO = DynamicCollectionViewDAO(with: user.acquiredPresets)
+        } else {
+            let filteredPresets = DAO.shared.presets.filter{
+                $0.artist.id == user.id
+            }
+            publishedPresetsDAO = DynamicCollectionViewDAO(with: filteredPresets)
+        }
         DispatchQueue.main.async { [weak self] in
             self?.noPresetsAcquiredLabel.isHidden = true
-            self?.presetsCollectionView?.reloadData()
+            self?.changeDAO(for: self?.segmentedControl.selectedSegmentIndex ?? 0)
         }
     }
 
-    @objc func loadAcquiredPresets() {
+    @objc private func loadAcquiredPresets() {
         DispatchQueue.main.async {
             self.artistNameLabel.text = DAO.shared.user?.name ?? Mock.shared.user.name
             let letter = DAO.shared.user?.name.prefix(1) ?? Mock.shared.user.name.prefix(1)
@@ -124,4 +146,35 @@ class ProfileViewController: BaseViewController {
         }
         DAO.shared.loadAcquiredPresets()
     }
+    
+    @objc private func loadPublishedPresets() {
+//        DAO.shared.loadPublishedPresets()
+    }
+    
+    @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
+        changeDAO(for: sender.selectedSegmentIndex)
+    }
+    
+    private func changeDAO(for sectionIndex: Int) {
+        switch sectionIndex {
+            case 0:
+                guard let acquiredPresetsDAO = acquiredPresetsDAO else {
+                    print("Could not get Acquired Presets DAO")
+                    return
+                }
+                presetsCollectionView?.dao = acquiredPresetsDAO
+                
+            case 1:
+                guard let publishedPresetsDAO = publishedPresetsDAO else {
+                    print("Could not get Acquired Presets DAO")
+                    return
+                }
+                presetsCollectionView?.dao = publishedPresetsDAO
+            default:
+                break
+        }
+        presetsCollectionView?.reloadData()
+    }
+    
+    
 }

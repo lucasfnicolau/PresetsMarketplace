@@ -15,7 +15,10 @@ class DAO: NSObject {
     private(set) var user: User?
     private(set) var presets: [Preset] = []
     private(set) var userRecord: CKRecord?
+    private var isLoading = false
+    
     var isLoggedIn = false
+    
 
     static let shared = DAO()
 
@@ -127,10 +130,12 @@ class DAO: NSObject {
         guard let userRecord = userRecord else { return }
 
         if let acquiredPresetsReferences = userRecord["acquiredPresets"] as? [CKRecord.Reference] {
+            
+            user?.resetAcquired()
 
             fetchRecords(usingRecordsID: acquiredPresetsReferences.map { $0.recordID }) { [weak self] records in
                 guard let self = self else { return }
-
+                
                 records.forEach {
                     guard let artistReference = $0["artist"] as? CKRecord.Reference else { return }
                     self.createPreset(usingRecord: $0, withArtistReference: artistReference) { preset in
@@ -142,6 +147,28 @@ class DAO: NSObject {
             }
         }
     }
+    
+//    func loadPublishedPresets() {
+//        guard let userRecord = userRecord else { return }
+//
+//        if let acquiredPresetsReferences = userRecord["presets"] as? [CKRecord.Reference] {
+//
+//            user?.resetPublished()
+//
+//            fetchRecords(usingRecordsID: acquiredPresetsReferences.map { $0.recordID }) { [weak self] records in
+//                guard let self = self else { return }
+//
+//                records.forEach {
+//                    guard let artistReference = $0["artist"] as? CKRecord.Reference else { return }
+//                    self.createPreset(usingRecord: $0, withArtistReference: artistReference) { preset in
+//                        guard let preset = preset else { return }
+//                        self.user?.addPreset(preset)
+//                        NotificationCenter.default.post(name: NotificationName.profileDataFetched, object: nil)
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     private func getPresetsReferencesForFollowingArtists(usingReferences references: [CKRecord.Reference], completion: @escaping ([CKRecord]) -> Void) {
 
@@ -216,7 +243,7 @@ class DAO: NSObject {
         guard let userRecord = userRecord else { return }
 
         let id = CKRecord.ID(recordName: preset.id)
-        let presetReference = CKRecord.Reference(recordID: id, action: .none)
+        let presetReference = CKRecord.Reference(recordID: id, action: .deleteSelf)
 
         var acquiredPresets = [CKRecord.Reference]()
         if let guardedAcquiredPresets = userRecord["acquiredPresets"] as? [CKRecord.Reference] {
@@ -237,11 +264,47 @@ class DAO: NSObject {
             }
         }
     }
+
+    func publishPreset(_ preset: Preset, completion: @escaping (Bool) -> Void) {
+        let presetRecord = CKRecord(recordType: RecordType.preset.rawValue)
+        presetRecord["name"] = preset.name
+        presetRecord["description"] = preset.description
+        let id = CKRecord.ID(recordName: preset.artist.id)
+        presetRecord["artist"] = CKRecord.Reference(recordID: id, action: .deleteSelf)
+        presetRecord["price"] = preset.price
+
+        if let dngURL = URL(string: preset.dngPath) {
+            let dngAsset = CKAsset(fileURL: dngURL)
+            presetRecord["dng"] = dngAsset
+        }
+
+        var imagesAssets = [CKAsset]()
+        preset.imagesURLs.forEach {
+            guard let url = $0 else { return }
+            imagesAssets.append(CKAsset(fileURL: url))
+        }
+        presetRecord["images"] = imagesAssets
+
+        cloudKitManager.save(record: presetRecord, on: .publicDB) { result in
+            switch result {
+            case .success(let record):
+                completion(true)
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+                break
+            }
+        }
+    }
 }
 
 // MARK:- DiscoverViewController DAO
 extension DAO {
     func loadAllPresets() {
+        if isLoading { return }
+        isLoading = true
+        
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: RecordType.preset.rawValue, predicate: predicate)
 
@@ -249,9 +312,20 @@ extension DAO {
             switch result {
             case .success(let records):
                 guard let self = self else { return }
+                
+                self.presets.removeAll()
+                
                 for index in records.indices {
                     if let artistReference = records[index]["artist"] as? CKRecord.Reference {
-                        self.createPreset(usingRecord: records[index], withArtistReference: artistReference)
+                        self.createPreset(usingRecord: records[index], withArtistReference: artistReference) { preset in
+                            guard let preset = preset else { return }
+                            self.presets.append(preset)
+                            if self.presets.count == records.count {
+                                self.isLoading = false
+                            }
+                            
+                            NotificationCenter.default.post(name: NotificationName.discoverDataFetched, object: nil, userInfo: nil)
+                        }
                     }
                 }
                 break
