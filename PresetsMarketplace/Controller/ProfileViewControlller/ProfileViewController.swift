@@ -26,6 +26,7 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = Screen.profile
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(publishPreset))
+        navigationItem.rightBarButtonItem?.isEnabled = false
         navigationController?.navigationBar.tintColor = .black
 
         setupViews()
@@ -41,6 +42,8 @@ class ProfileViewController: BaseViewController {
             let loginViewController = LoginViewController()
             loginViewController.modalPresentationStyle = .custom
             self.present(loginViewController, animated: true, completion: nil)
+        } else {
+            loadAcquiredPresets()
         }
     }
 
@@ -118,7 +121,7 @@ class ProfileViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.profileDataFetched, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.discoverDataFetched, object: nil)
 
-        loadAcquiredPresets()
+//        loadAcquiredPresets()
     }
 
     @objc override func dataFetched(_ notif: Notification) {
@@ -127,12 +130,13 @@ class ProfileViewController: BaseViewController {
         if notif.name == NotificationName.profileDataFetched {
             acquiredPresetsDAO = DynamicCollectionViewDAO(with: user.acquiredPresets)
         } else {
-            let filteredPresets = DAO.shared.presets.filter{
+            let filteredPresets = DAO.shared.presets.filter {
                 $0.artist.id == user.id
             }
             publishedPresetsDAO = DynamicCollectionViewDAO(with: filteredPresets)
         }
         DispatchQueue.main.async { [weak self] in
+            self?.navigationItem.rightBarButtonItem?.isEnabled = true
             self?.noPresetsAcquiredLabel.isHidden = true
             self?.changeDAO(for: self?.segmentedControl.selectedSegmentIndex ?? 0)
         }
@@ -160,13 +164,15 @@ class ProfileViewController: BaseViewController {
             case 0:
                 guard let acquiredPresetsDAO = acquiredPresetsDAO else {
                     print("Could not get Acquired Presets DAO")
+                    presetsCollectionView?.dao = DynamicCollectionViewDAO(with: [])
                     return
                 }
                 presetsCollectionView?.dao = acquiredPresetsDAO
                 
             case 1:
                 guard let publishedPresetsDAO = publishedPresetsDAO else {
-                    print("Could not get Acquired Presets DAO")
+                    print("Could not get Published Presets DAO")
+                    presetsCollectionView?.dao = DynamicCollectionViewDAO(with: [])
                     return
                 }
                 presetsCollectionView?.dao = publishedPresetsDAO

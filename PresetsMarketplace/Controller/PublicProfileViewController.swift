@@ -41,7 +41,7 @@ class PublicProfileViewController: UIViewController {
     func setupLabels() {
         guard let artist = artist else { return }
         profileNameLabel.text = artist.name
-        profileNameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        profileNameLabel.font = UIFont.preferredFont(forTextStyle: .title2)
         profileDescriptionLabel.text = artist.about
         profileDescriptionLabel.textColor = #colorLiteral(red: 0.4666666667, green: 0.4666666667, blue: 0.4666666667, alpha: 1)
         self.view.addSubview(profileNameLabel)
@@ -89,12 +89,12 @@ class PublicProfileViewController: UIViewController {
     }
     
     func setupFollowButton() {
-        guard let artist = artist else { return }
-        if !Mock.shared.user.following.contains(artist) {
+        guard let user = DAO.shared.user, let artist = artist else { return }
+        if !user.following.contains(artist) {
             let image = #imageLiteral(resourceName: "UnactiveFollowingBtn")
             followButton.setBackgroundImage(image, for: .normal)
             startFollowingButton()
-        } else if Mock.shared.user.following.contains(artist) {
+        } else if user.following.contains(artist) {
             let image = #imageLiteral(resourceName: "ActiveFollowingBtn")
             followButton.setBackgroundImage(image, for: .normal)
             stopFollowingButton()
@@ -175,16 +175,16 @@ class PublicProfileViewController: UIViewController {
     }
     
     @objc func startFollowing() {
-        guard let artist = artist else { return }
-        Mock.shared.user.startFollowing(artist: artist)
+        guard let user = DAO.shared.user, let artist = artist else { return }
+        user.startFollowing(artist: artist)
         let image = #imageLiteral(resourceName: "ActiveFollowingBtn")
         followButton.setBackgroundImage(image, for: .normal)
         stopFollowingButton()
     }
     
     @objc func stopFollowing() {
-        guard let artist = artist else { return }
-        Mock.shared.user.stopFollowing(artist: artist)
+        guard let user = DAO.shared.user, let artist = artist else { return }
+        user.stopFollowing(artist: artist)
         let image = #imageLiteral(resourceName: "UnactiveFollowingBtn")
         followButton.setBackgroundImage(image, for: .normal)
         startFollowingButton()

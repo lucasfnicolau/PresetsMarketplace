@@ -134,7 +134,8 @@ extension PublishPresetTableViewController: UIDocumentPickerDelegate {
     @IBAction func publishPreset() {
         guard let name = textFields[0].text?.trimmingCharacters(in: .whitespacesAndNewlines),
             let description = textFields[1].text?.trimmingCharacters(in: .whitespacesAndNewlines),
-            let dngPath = self.dngPath, dao.images.count > 0,
+            let dngPath = self.dngPath,
+            dao.images.count > 0,
             let imagesLinks = self.dao.imagesLinks as? [String],
             let user = DAO.shared.user else {
                 feedBackAlertController.title = "Preencha todos os campos para continuar"
@@ -163,12 +164,16 @@ extension PublishPresetTableViewController: UIDocumentPickerDelegate {
                 self?.dismiss(animated: true, completion: nil)
             }
             DispatchQueue.main.async {
+                if success { DAO.shared.loadAllPresets() }
                 self?.feedBackAlertController.title = success ? "Sucesso!" : "Algo deu errado :("
                 if self?.feedBackAlertController.actions.isEmpty ?? false {
                     self?.feedBackAlertController.addAction(ok)
                 }
-                if success { DAO.shared.loadAllPresets() }
             }
         }
+    }
+
+    @IBAction func cancelButtonTouched(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

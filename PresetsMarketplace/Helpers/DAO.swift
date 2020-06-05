@@ -34,13 +34,14 @@ class DAO: NSObject {
         let user = CKRecord(recordType: RecordType.user.rawValue, recordID: CKRecord.ID(recordName: id))
         user.setValue(name, forKey: "name")
         user.setValue(email, forKey: "email")
-        user.setValue("", forKey: "about")
+        user.setValue("Fotógrafo se aventurando na criação de presets.", forKey: "about")
         user.setValue(0, forKey: "isArtist")
 
         cloudKitManager.save(record: user, on: .publicDB) { result in
             switch result {
             case .success(let record):
                 print(record)
+                DAO.shared.getUser(withId: credential.user)
                 break
             case .failure(let error):
                 print(error.localizedDescription)
@@ -51,7 +52,10 @@ class DAO: NSObject {
 
     func getUser(withId id: String) {
         fetchRecord(usingRecordID: CKRecord.ID(recordName: id)) { [weak self] record in
-            guard let self = self, let record = record else { return }
+            guard let self = self, let record = record else {
+                KeychainItem.deleteUserIdentifierFromKeychain()
+                return
+            }
             self.userRecord = record
             self.instantiateUser(usingRecord: record)
         }
@@ -135,7 +139,7 @@ class DAO: NSObject {
 
             fetchRecords(usingRecordsID: acquiredPresetsReferences.map { $0.recordID }) { [weak self] records in
                 guard let self = self else { return }
-                
+
                 records.forEach {
                     guard let artistReference = $0["artist"] as? CKRecord.Reference else { return }
                     self.createPreset(usingRecord: $0, withArtistReference: artistReference) { preset in
@@ -145,6 +149,8 @@ class DAO: NSObject {
                     }
                 }
             }
+        } else {
+            NotificationCenter.default.post(name: NotificationName.profileDataFetched, object: nil)
         }
     }
     
@@ -243,7 +249,7 @@ class DAO: NSObject {
         guard let userRecord = userRecord else { return }
 
         let id = CKRecord.ID(recordName: preset.id)
-        let presetReference = CKRecord.Reference(recordID: id, action: .deleteSelf)
+        let presetReference = CKRecord.Reference(recordID: id, action: .none)
 
         var acquiredPresets = [CKRecord.Reference]()
         if let guardedAcquiredPresets = userRecord["acquiredPresets"] as? [CKRecord.Reference] {

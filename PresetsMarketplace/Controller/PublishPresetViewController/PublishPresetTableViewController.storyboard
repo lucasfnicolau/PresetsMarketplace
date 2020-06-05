@@ -11,7 +11,7 @@
         <!--Publish Preset View Controller-->
         <scene sceneID="EUm-0a-BC9">
             <objects>
-                <viewController storyboardIdentifier="PublishPresetViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H7n-SG-iZV" customClass="PublishPresetViewController" customModule="PREMA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PublishPresetViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H7n-SG-iZV" customClass="PublishPresetViewController" customModule="PREMAX" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6d7-N1-hdm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,10 +31,10 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfH-5c-72t" customClass="RoundedModalView" customModule="PREMA" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfH-5c-72t" customClass="RoundedModalView" customModule="PREMAX" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="74" width="414" height="822"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBL-cz-6Mo" customClass="RoundedView" customModule="PREMA" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBL-cz-6Mo" customClass="RoundedView" customModule="PREMAX" customModuleProvider="target">
                                         <rect key="frame" x="182" y="8" width="50" height="4"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -114,10 +114,10 @@
             </objects>
             <point key="canvasLocation" x="-12" y="96"/>
         </scene>
-        <!--Publish Preset Table View Controller-->
+        <!--Publicar-->
         <scene sceneID="Ahc-uc-fAf">
             <objects>
-                <tableViewController storyboardIdentifier="PublishPresetTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BCk-HA-mwu" customClass="PublishPresetTableViewController" customModule="PREMA" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PublishPresetTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BCk-HA-mwu" customClass="PublishPresetTableViewController" customModule="PREMAX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lrH-uT-a6P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,6 +331,13 @@
                             <outlet property="delegate" destination="BCk-HA-mwu" id="tsv-TE-4D5"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Publicar" id="7nI-zd-rHm">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VpP-P7-qXf">
+                            <connections>
+                                <action selector="cancelButtonTouched:" destination="BCk-HA-mwu" id="8Kb-tI-At3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addDNGButton" destination="7Lv-tC-weQ" id="6kg-ya-ESH"/>
                         <outlet property="imagesCollectionView" destination="KxP-tf-sF0" id="ghU-Df-OH9"/>
@@ -344,7 +351,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jhr-OR-zHx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924.63768115942037" y="95.758928571428569"/>
+            <point key="canvasLocation" x="1032" y="96"/>
         </scene>
     </scenes>
     <resources>

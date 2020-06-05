@@ -35,8 +35,38 @@ class ArtistPresetTableViewCell: UITableViewCell {
 
     func setLayout(for artist: Artist) {
         artistAboutDescriptionLabel.text = artist.about
-        profileImageView.load(url: artist.profileImageUrl)
+        if artist.profileImageUrl != nil {
+            profileImageView.load(url: artist.profileImageUrl)
+        } else {
+            self.profileImageView.image = UIImage(named: "profile_thumbnail_bg")
+            setupLabel()
+            let size: CGFloat = PROFILE_IMAGE_SIZE
+            self.profileImageView.layer.cornerRadius = size / 2
+            NSLayoutConstraint.activate([
+                self.profileImageView.widthAnchor.constraint(equalToConstant: size),
+                self.profileImageView.heightAnchor.constraint(equalToConstant: size)
+            ])
+        }
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = PROFILE_IMAGE_SIZE / 2
+    }
+
+    func setupLabel() {
+        let profileImageLabel = UILabel()
+        let letter = DAO.shared.user?.name.prefix(1) ?? Mock.shared.user.name.prefix(1)
+        profileImageLabel.text = String(letter.uppercased())
+        profileImageLabel.font = profileImageLabel.font.withSize(35)
+        profileImageLabel.textAlignment = .center
+        profileImageLabel.textColor = .black
+
+        profileImageView.addSubview(profileImageLabel)
+        profileImageLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            profileImageLabel.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
+            profileImageLabel.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor),
+            profileImageLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            profileImageLabel.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor)
+        ])
     }
 }
