@@ -28,7 +28,7 @@ class CoreDataManager {
         container.loadPersistentStores { (storeDescription, error) in            
             
             if let error = error as NSError? {
-                fatalError("Unresolved error \(String(describing: error)), \(String(describing: error.userInfo))")
+                print("Unresolved error \(String(describing: error)), \(String(describing: error.userInfo))")
             }
         }
         return container
