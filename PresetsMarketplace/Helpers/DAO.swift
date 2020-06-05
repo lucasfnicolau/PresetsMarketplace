@@ -142,6 +142,26 @@ class DAO: NSObject {
             }
         }
     }
+    
+    func loadPublishedPresets() {
+        guard let userRecord = userRecord else { return }
+        
+        if let acquiredPresetsReferences = userRecord["presets"] as? [CKRecord.Reference] {
+
+            fetchRecords(usingRecordsID: acquiredPresetsReferences.map { $0.recordID }) { [weak self] records in
+                guard let self = self else { return }
+
+                records.forEach {
+                    guard let artistReference = $0["artist"] as? CKRecord.Reference else { return }
+                    self.createPreset(usingRecord: $0, withArtistReference: artistReference) { preset in
+                        guard let preset = preset else { return }
+                        self.user?.addPreset(preset)
+                        NotificationCenter.default.post(name: NotificationName.profileDataFetched, object: nil)
+                    }
+                }
+            }
+        }
+    }
 
     private func getPresetsReferencesForFollowingArtists(usingReferences references: [CKRecord.Reference], completion: @escaping ([CKRecord]) -> Void) {
 

@@ -10,11 +10,11 @@ import UIKit
 
 class ProfileViewController: BaseViewController {
 
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var artistInfoStackView: UIStackView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var artistAboutLabel: UILabel!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var noPresetsAcquiredLabel: UILabel!
     var profileImageLabel: UILabel?
     var presetsCollectionView: DynamicCollectionView?
@@ -27,7 +27,7 @@ class ProfileViewController: BaseViewController {
 
         setupViews()
 
-//        checkIfUserIsLoggedIn()
+        checkIfUserIsLoggedIn()
     }
 
     func checkIfUserIsLoggedIn() {
@@ -67,9 +67,11 @@ class ProfileViewController: BaseViewController {
             self.profileImageView.widthAnchor.constraint(equalToConstant: size),
             self.profileImageView.heightAnchor.constraint(equalToConstant: size)
         ])
+        
+        guard let user = DAO.shared.user else { return }
 
-        let dao = DynamicCollectionViewDAO(with: Mock.shared.user.acquiredPresets)
-        presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
+        let acquiredDAO = DynamicCollectionViewDAO(with: user.acquiredPresets)
+        presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: acquiredDAO)
         setupCollectionViewConstraints()
     }
 
@@ -97,7 +99,7 @@ class ProfileViewController: BaseViewController {
         presetsCollectionView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            presetsCollectionView.topAnchor.constraint(equalTo: artistInfoStackView.bottomAnchor, constant: 30),
+            presetsCollectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
             presetsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             presetsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             presetsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -106,6 +108,7 @@ class ProfileViewController: BaseViewController {
 
     override func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(loadAcquiredPresets), name: NotificationName.userCreated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadPublishedPresets), name: NotificationName.userCreated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.profileDataFetched, object: nil)
 
         loadAcquiredPresets()
@@ -130,4 +133,31 @@ class ProfileViewController: BaseViewController {
         }
         DAO.shared.loadAcquiredPresets()
     }
+    
+    @objc private func loadPublishedPresets() {
+        DAO.shared.loadPublishedPresets()
+    }
+    
+    @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+            case 0:
+                DAO.shared.loadAcquiredPresets()
+                
+                guard let user = DAO.shared.user else { return }
+                let acquiredDAO = DynamicCollectionViewDAO(with: user.acquiredPresets)
+                presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: acquiredDAO)
+                presetsCollectionView?.reloadData()
+            case 1:
+                DAO.shared.loadPublishedPresets()
+                
+                guard let user = DAO.shared.user else { return }
+                let acquiredDAO = DynamicCollectionViewDAO(with: user.publishedPresets)
+                presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: acquiredDAO)
+                presetsCollectionView?.reloadData()
+            default:
+                break
+        }
+    }
+    
+    
 }
