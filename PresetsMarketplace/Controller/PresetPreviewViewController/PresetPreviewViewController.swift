@@ -150,7 +150,7 @@ class PresetPreviewViewController: UIViewController {
             setButtonState()
 
         } else {
-            guard let url = Bundle.main.url(forResource: preset.dngPath, withExtension: "dng") else {
+            guard let url = URL(string: preset.dngPath) else {
                 return
             }
             do {
