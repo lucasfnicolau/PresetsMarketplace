@@ -10,6 +10,7 @@ import UIKit
 import AuthenticationServices
 
 class LoginViewController: UIViewController {
+    
     @IBOutlet weak var stackView: UIStackView!
 
     override func viewDidLoad() {

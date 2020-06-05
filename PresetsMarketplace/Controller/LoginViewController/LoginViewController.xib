@@ -63,6 +63,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Intro" width="2931" height="4941"/>
+        <image name="Intro" width="257" height="433"/>
     </resources>
 </document>
