@@ -382,4 +382,64 @@ extension DAO {
             }
         }
     }
+
+    func startFollowing(artist: Artist) {
+        guard let userRecord = userRecord else { return }
+
+        var followingArtistsReferences = [CKRecord.Reference]()
+        if let guardedFollowingArtistsReferences = userRecord["followingArtists"] as? [CKRecord.Reference] {
+            followingArtistsReferences = guardedFollowingArtistsReferences
+        }
+
+        let artistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: artist.id), action: .none)
+
+        if !followingArtistsReferences.contains(artistReference) {
+            followingArtistsReferences.append(artistReference)
+            self.user?.startFollowing(artist: artist)
+        } else {
+            return
+        }
+
+        userRecord["followingArtists"] = followingArtistsReferences
+        cloudKitManager.save(record: userRecord, on: .publicDB) { result in
+            switch result {
+            case .success(_):
+                NotificationCenter.default.post(name: NotificationName.feedDataFetched, object: nil)
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                break
+            }
+        }
+    }
+
+    func stopFollowing(artist: Artist) {
+        guard let userRecord = userRecord else { return }
+
+        var followingArtistsReferences = [CKRecord.Reference]()
+        if let guardedFollowingArtistsReferences = userRecord["followingArtists"] as? [CKRecord.Reference] {
+            followingArtistsReferences = guardedFollowingArtistsReferences
+        }
+
+        let artistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: artist.id), action: .none)
+
+        if followingArtistsReferences.contains(artistReference) {
+            followingArtistsReferences.removeAll(where: { $0 == artistReference })
+            self.user?.stopFollowing(artist: artist)
+        } else {
+            return
+        }
+
+        userRecord["followingArtists"] = followingArtistsReferences
+        cloudKitManager.save(record: userRecord, on: .publicDB) { result in
+            switch result {
+            case .success(_):
+                NotificationCenter.default.post(name: NotificationName.feedDataFetched, object: nil)
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                break
+            }
+        }
+    }
 }

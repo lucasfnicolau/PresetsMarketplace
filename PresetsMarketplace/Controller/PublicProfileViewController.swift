@@ -155,7 +155,7 @@ class PublicProfileViewController: UIViewController {
     
     func setupCollectionView() {
         guard let artist = artist else { return }
-        let dao = DynamicCollectionViewDAO(with: artist.presets)
+        let dao = DynamicCollectionViewDAO(with: DAO.shared.presets.filter { $0.artist == artist })
         collectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
@@ -175,16 +175,16 @@ class PublicProfileViewController: UIViewController {
     }
     
     @objc func startFollowing() {
-        guard let user = DAO.shared.user, let artist = artist else { return }
-        user.startFollowing(artist: artist)
+        guard let artist = artist else { return }
+        DAO.shared.startFollowing(artist: artist)
         let image = #imageLiteral(resourceName: "ActiveFollowingBtn")
         followButton.setBackgroundImage(image, for: .normal)
         stopFollowingButton()
     }
     
     @objc func stopFollowing() {
-        guard let user = DAO.shared.user, let artist = artist else { return }
-        user.stopFollowing(artist: artist)
+        guard let artist = artist else { return }
+        DAO.shared.stopFollowing(artist: artist)
         let image = #imageLiteral(resourceName: "UnactiveFollowingBtn")
         followButton.setBackgroundImage(image, for: .normal)
         startFollowingButton()

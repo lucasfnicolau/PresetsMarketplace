@@ -39,7 +39,7 @@ class ArtistPresetTableViewCell: UITableViewCell {
             profileImageView.load(url: artist.profileImageUrl)
         } else {
             self.profileImageView.image = UIImage(named: "profile_thumbnail_bg")
-            setupLabel()
+            setupLabel(for: artist)
             let size: CGFloat = PROFILE_IMAGE_SIZE
             self.profileImageView.layer.cornerRadius = size / 2
             NSLayoutConstraint.activate([
@@ -51,9 +51,9 @@ class ArtistPresetTableViewCell: UITableViewCell {
         profileImageView.layer.cornerRadius = PROFILE_IMAGE_SIZE / 2
     }
 
-    func setupLabel() {
+    func setupLabel(for artist: Artist) {
         let profileImageLabel = UILabel()
-        let letter = DAO.shared.user?.name.prefix(1) ?? Mock.shared.user.name.prefix(1)
+        let letter = artist.name.prefix(1)
         profileImageLabel.text = String(letter.uppercased())
         profileImageLabel.font = profileImageLabel.font.withSize(35)
         profileImageLabel.textAlignment = .center
