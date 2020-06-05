@@ -66,10 +66,21 @@ class PublicProfileViewController: UIViewController {
     
     func setupImageView() {
         guard let artist = artist else { return }
-        guard let imageUrl = artist.profileImageUrl else {
-            return
+//        guard let imageUrl = artist.profileImageUrl else {
+//            return
+//        }
+        if artist.profileImageUrl != nil {
+            profilePhotoImageView.load(url: artist.profileImageUrl!)
+        } else {
+            self.profilePhotoImageView.image = UIImage(named: "profile_thumbnail_bg")
+            setupLabel(for: artist)
+            let size: CGFloat = self.view.frame.size.width * 0.328
+            self.profilePhotoImageView.layer.cornerRadius = size / 2
+            NSLayoutConstraint.activate([
+                self.profilePhotoImageView.widthAnchor.constraint(equalToConstant: size),
+                self.profilePhotoImageView.heightAnchor.constraint(equalToConstant: size)
+            ])
         }
-        profilePhotoImageView.load(url: imageUrl)
         profilePhotoImageView.contentMode = .scaleAspectFill
     }
     
@@ -134,6 +145,25 @@ class PublicProfileViewController: UIViewController {
             closeButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             closeButton.widthAnchor.constraint(equalToConstant: size),
             closeButton.heightAnchor.constraint(equalToConstant: size)
+        ])
+    }
+
+    func setupLabel(for artist: Artist) {
+        let profileImageLabel = UILabel()
+        let letter = artist.name.prefix(1)
+        profileImageLabel.text = String(letter.uppercased())
+        profileImageLabel.font = profileImageLabel.font.withSize(75)
+        profileImageLabel.textAlignment = .center
+        profileImageLabel.textColor = .black
+
+        profilePhotoImageView.addSubview(profileImageLabel)
+        profileImageLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            profileImageLabel.leadingAnchor.constraint(equalTo: profilePhotoImageView.leadingAnchor),
+            profileImageLabel.trailingAnchor.constraint(equalTo: profilePhotoImageView.trailingAnchor),
+            profileImageLabel.topAnchor.constraint(equalTo: profilePhotoImageView.topAnchor),
+            profileImageLabel.bottomAnchor.constraint(equalTo: profilePhotoImageView.bottomAnchor)
         ])
     }
     
