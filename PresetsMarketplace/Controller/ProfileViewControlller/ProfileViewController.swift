@@ -145,14 +145,14 @@ class ProfileViewController: BaseViewController {
                 
                 guard let user = DAO.shared.user else { return }
                 let acquiredDAO = DynamicCollectionViewDAO(with: user.acquiredPresets)
-                presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: acquiredDAO)
+                presetsCollectionView?.dao = acquiredDAO
                 presetsCollectionView?.reloadData()
             case 1:
                 DAO.shared.loadPublishedPresets()
                 
                 guard let user = DAO.shared.user else { return }
-                let acquiredDAO = DynamicCollectionViewDAO(with: user.publishedPresets)
-                presetsCollectionView = DynamicCollectionView(collectionType: .user, in: self, using: acquiredDAO)
+                let publishedDAO = DynamicCollectionViewDAO(with: user.publishedPresets)
+                presetsCollectionView?.dao = publishedDAO
                 presetsCollectionView?.reloadData()
             default:
                 break

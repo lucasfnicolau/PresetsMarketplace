@@ -127,10 +127,12 @@ class DAO: NSObject {
         guard let userRecord = userRecord else { return }
 
         if let acquiredPresetsReferences = userRecord["acquiredPresets"] as? [CKRecord.Reference] {
+            
+            user?.resetAcquired()
 
             fetchRecords(usingRecordsID: acquiredPresetsReferences.map { $0.recordID }) { [weak self] records in
                 guard let self = self else { return }
-
+                
                 records.forEach {
                     guard let artistReference = $0["artist"] as? CKRecord.Reference else { return }
                     self.createPreset(usingRecord: $0, withArtistReference: artistReference) { preset in
@@ -147,7 +149,9 @@ class DAO: NSObject {
         guard let userRecord = userRecord else { return }
         
         if let acquiredPresetsReferences = userRecord["presets"] as? [CKRecord.Reference] {
-
+            
+            user?.resetPublished()
+            
             fetchRecords(usingRecordsID: acquiredPresetsReferences.map { $0.recordID }) { [weak self] records in
                 guard let self = self else { return }
 

@@ -53,4 +53,12 @@ class User: Equatable {
     func hasPreset(_ preset: Preset) -> Bool {
         return acquiredPresets.contains(preset)
     }
+    
+    func resetAcquired() {
+        self.acquiredPresets.removeAll()
+    }
+    
+    func resetPublished() {
+        self.publishedPresets.removeAll()
+    }
 }
