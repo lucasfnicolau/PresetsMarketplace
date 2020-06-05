@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="-71.014492753623188" y="-28.125"/>
         </scene>
-        <!--Explore Onboarding-->
+        <!--View Controller-->
         <scene sceneID="wIg-7p-wp0">
             <objects>
-                <viewController storyboardIdentifier="Onboarding2" id="5R7-Yi-Bxe" customClass="ExploreOnboarding" customModule="PREMA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Onboarding2" id="5R7-Yi-Bxe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TuL-do-iLA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,19 +94,19 @@
                                     <constraint firstAttribute="height" constant="150" id="bdR-7h-b7D"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Discover-1" translatesAutoresizingMaskIntoConstraints="NO" id="wL1-qa-apM">
-                                <rect key="frame" x="0.0" y="234" width="414" height="548"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiscoverOnboarding" translatesAutoresizingMaskIntoConstraints="NO" id="wL1-qa-apM">
+                                <rect key="frame" x="20" y="274" width="374" height="508"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="sjq-8j-q3f" firstAttribute="top" secondItem="oEa-qQ-B3t" secondAttribute="top" constant="40" id="9Cb-qF-lC2"/>
-                            <constraint firstItem="wL1-qa-apM" firstAttribute="top" secondItem="sjq-8j-q3f" secondAttribute="bottom" id="P8c-rY-gxJ"/>
+                            <constraint firstItem="wL1-qa-apM" firstAttribute="top" secondItem="sjq-8j-q3f" secondAttribute="bottom" constant="40" id="P8c-rY-gxJ"/>
                             <constraint firstItem="sjq-8j-q3f" firstAttribute="leading" secondItem="oEa-qQ-B3t" secondAttribute="leading" constant="20" id="TlK-Wv-SeH"/>
                             <constraint firstAttribute="trailing" secondItem="sjq-8j-q3f" secondAttribute="trailing" constant="20" id="Ufy-dD-8z7"/>
                             <constraint firstItem="oEa-qQ-B3t" firstAttribute="bottom" secondItem="wL1-qa-apM" secondAttribute="bottom" constant="80" id="VM3-OS-IA2"/>
-                            <constraint firstItem="wL1-qa-apM" firstAttribute="leading" secondItem="oEa-qQ-B3t" secondAttribute="leading" id="fqH-A4-kXk"/>
-                            <constraint firstItem="oEa-qQ-B3t" firstAttribute="trailing" secondItem="wL1-qa-apM" secondAttribute="trailing" id="kQD-Ln-M3F"/>
+                            <constraint firstItem="wL1-qa-apM" firstAttribute="leading" secondItem="oEa-qQ-B3t" secondAttribute="leading" constant="20" id="fqH-A4-kXk"/>
+                            <constraint firstItem="oEa-qQ-B3t" firstAttribute="trailing" secondItem="wL1-qa-apM" secondAttribute="trailing" constant="20" id="kQD-Ln-M3F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oEa-qQ-B3t"/>
                     </view>
@@ -188,10 +188,10 @@
             </objects>
             <point key="canvasLocation" x="3337.68115942029" y="-28.125"/>
         </scene>
-        <!--Feed Onboarding View Controller-->
+        <!--View Controller-->
         <scene sceneID="Hcd-Ad-mab">
             <objects>
-                <viewController storyboardIdentifier="Onboarding3" id="DhS-pq-Sy2" customClass="FeedOnboardingViewController" customModule="PREMA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Onboarding3" id="DhS-pq-Sy2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SaX-fG-ceJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,14 +217,14 @@
                                     <constraint firstAttribute="height" constant="150" id="hgM-6J-6vy"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Feed-1" translatesAutoresizingMaskIntoConstraints="NO" id="E3h-QG-drc">
-                                <rect key="frame" x="20" y="264" width="374" height="498"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FeedOnboarding" translatesAutoresizingMaskIntoConstraints="NO" id="E3h-QG-drc">
+                                <rect key="frame" x="20" y="264" width="374" height="518"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="M3f-dq-hbc" firstAttribute="top" secondItem="4lF-OS-sm0" secondAttribute="top" constant="40" id="5q6-1K-csg"/>
-                            <constraint firstItem="4lF-OS-sm0" firstAttribute="bottom" secondItem="E3h-QG-drc" secondAttribute="bottom" constant="100" id="N14-wb-kY9"/>
+                            <constraint firstItem="4lF-OS-sm0" firstAttribute="bottom" secondItem="E3h-QG-drc" secondAttribute="bottom" constant="80" id="N14-wb-kY9"/>
                             <constraint firstItem="M3f-dq-hbc" firstAttribute="leading" secondItem="4lF-OS-sm0" secondAttribute="leading" constant="20" id="Xhk-Xz-7xT"/>
                             <constraint firstItem="4lF-OS-sm0" firstAttribute="trailing" secondItem="E3h-QG-drc" secondAttribute="trailing" constant="20" id="dbt-hV-Vaw"/>
                             <constraint firstItem="E3h-QG-drc" firstAttribute="top" secondItem="M3f-dq-hbc" secondAttribute="bottom" constant="30" id="fj7-N8-ey7"/>
@@ -272,12 +272,12 @@
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DNGImage" translatesAutoresizingMaskIntoConstraints="NO" id="rhJ-Ez-b6z">
-                                <rect key="frame" x="20" y="274" width="374" height="468"/>
+                                <rect key="frame" x="20" y="274" width="374" height="508"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="g5l-VF-Rqh" firstAttribute="bottom" secondItem="rhJ-Ez-b6z" secondAttribute="bottom" constant="120" id="1AQ-VX-6fI"/>
+                            <constraint firstItem="g5l-VF-Rqh" firstAttribute="bottom" secondItem="rhJ-Ez-b6z" secondAttribute="bottom" constant="80" id="1AQ-VX-6fI"/>
                             <constraint firstItem="rhJ-Ez-b6z" firstAttribute="leading" secondItem="g5l-VF-Rqh" secondAttribute="leading" constant="20" id="DI2-O1-as8"/>
                             <constraint firstItem="Qa8-UR-WP9" firstAttribute="top" secondItem="g5l-VF-Rqh" secondAttribute="top" constant="40" id="H8e-g4-BbX"/>
                             <constraint firstAttribute="trailing" secondItem="Qa8-UR-WP9" secondAttribute="trailing" constant="20" id="M4O-Sm-XtH"/>
@@ -322,17 +322,17 @@
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SellOnboarding" translatesAutoresizingMaskIntoConstraints="NO" id="5sX-WG-itg">
-                                <rect key="frame" x="20" y="254" width="374" height="508"/>
+                                <rect key="frame" x="20" y="264" width="374" height="518"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="e4T-x7-4e5" firstAttribute="bottom" secondItem="5sX-WG-itg" secondAttribute="bottom" constant="100" id="0w1-EI-WHQ"/>
+                            <constraint firstItem="e4T-x7-4e5" firstAttribute="bottom" secondItem="5sX-WG-itg" secondAttribute="bottom" constant="80" id="0w1-EI-WHQ"/>
                             <constraint firstItem="e4T-x7-4e5" firstAttribute="trailing" secondItem="5sX-WG-itg" secondAttribute="trailing" constant="20" id="5NP-YY-cDT"/>
                             <constraint firstItem="5sX-WG-itg" firstAttribute="leading" secondItem="e4T-x7-4e5" secondAttribute="leading" constant="20" id="8aw-Fn-jvt"/>
                             <constraint firstItem="cE1-OO-Vyf" firstAttribute="top" secondItem="e4T-x7-4e5" secondAttribute="top" constant="40" id="Erx-A3-Id2"/>
                             <constraint firstItem="cE1-OO-Vyf" firstAttribute="leading" secondItem="e4T-x7-4e5" secondAttribute="leading" constant="20" id="YpN-qn-lS5"/>
-                            <constraint firstItem="5sX-WG-itg" firstAttribute="top" secondItem="cE1-OO-Vyf" secondAttribute="bottom" constant="20" id="klu-jr-ZbT"/>
+                            <constraint firstItem="5sX-WG-itg" firstAttribute="top" secondItem="cE1-OO-Vyf" secondAttribute="bottom" constant="30" id="klu-jr-ZbT"/>
                             <constraint firstAttribute="trailing" secondItem="cE1-OO-Vyf" secondAttribute="trailing" constant="20" id="ybj-iF-dK3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e4T-x7-4e5"/>
@@ -345,8 +345,8 @@
     </scenes>
     <resources>
         <image name="DNGImage" width="414" height="896"/>
-        <image name="Discover-1" width="596" height="842"/>
-        <image name="Feed-1" width="596" height="842"/>
+        <image name="DiscoverOnboarding" width="828" height="1792"/>
+        <image name="FeedOnboarding" width="828" height="1792"/>
         <image name="Intro" width="257" height="433"/>
         <image name="SellOnboarding" width="630" height="1363"/>
     </resources>
