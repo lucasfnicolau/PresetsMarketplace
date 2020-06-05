@@ -41,7 +41,7 @@ class DAO: NSObject {
             switch result {
             case .success(let record):
                 print(record)
-                DAO.shared.getUser(withId: credential.user)
+                self.instantiateUser(usingRecord: record)
                 break
             case .failure(let error):
                 print(error.localizedDescription)
@@ -105,7 +105,8 @@ class DAO: NSObject {
                              name: name,
                              profileImageLink: profileImageLink,
                              following: followingArtists)
-
+            
+            self.isLoggedIn = true
             NotificationCenter.default.post(name: NotificationName.userCreated, object: nil)
         }
     }

@@ -98,7 +98,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         case let credential as ASAuthorizationAppleIDCredential:
             userID = credential.user
             self.saveUserInKeychain(userID)
-            DAO.shared.isLoggedIn = true
             DAO.shared.registerUser(withCredential: credential)
 
         case let credential as ASPasswordCredential:

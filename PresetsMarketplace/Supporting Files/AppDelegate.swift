@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     DAO.shared.getUser(withId: KeychainItem.currentUserIdentifier)
                     break
                 case .revoked:
-                    print("revoked")
+                    KeychainItem.deleteUserIdentifierFromKeychain()
                     break
                 case .notFound:
                     print("notFound")
