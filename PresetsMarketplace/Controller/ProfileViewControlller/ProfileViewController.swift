@@ -114,8 +114,8 @@ class ProfileViewController: BaseViewController {
 
         NSLayoutConstraint.activate([
             presetsCollectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
-            presetsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            presetsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            presetsCollectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            presetsCollectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             presetsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
