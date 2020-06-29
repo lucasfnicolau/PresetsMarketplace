@@ -15,7 +15,10 @@ class DAO: NSObject {
     private(set) var user: User?
     private(set) var presets: [Preset] = []
     private(set) var userRecord: CKRecord?
+    private var isLoading = false
+    
     var isLoggedIn = false
+    
 
     static let shared = DAO()
 
@@ -27,17 +30,22 @@ class DAO: NSObject {
         let name = credential.fullName?.givenName ?? UIDevice.current.name
         let email = credential.email ?? ""
         let id = credential.user
+        let following = [CKRecord.Reference(recordID: CKRecord.ID(recordName: "001027.e58a8a5dbc854b22af1b31fefb26908a.1901"), action: .none),
+                         CKRecord.Reference(recordID: CKRecord.ID(recordName: "000435.b124e03015c54e4ea24b676c80d7246d.0116"), action: .none)
+        ]
 
         let user = CKRecord(recordType: RecordType.user.rawValue, recordID: CKRecord.ID(recordName: id))
         user.setValue(name, forKey: "name")
         user.setValue(email, forKey: "email")
-        user.setValue("", forKey: "about")
+        user.setValue("Fotógrafo se aventurando na criação de presets.", forKey: "about")
         user.setValue(0, forKey: "isArtist")
+        user.setValue(following, forKey: "followingArtists")
 
         cloudKitManager.save(record: user, on: .publicDB) { result in
             switch result {
             case .success(let record):
                 print(record)
+                self.instantiateUser(usingRecord: record)
                 break
             case .failure(let error):
                 print(error.localizedDescription)
@@ -48,7 +56,10 @@ class DAO: NSObject {
 
     func getUser(withId id: String) {
         fetchRecord(usingRecordID: CKRecord.ID(recordName: id)) { [weak self] record in
-            guard let self = self, let record = record else { return }
+            guard let self = self, let record = record else {
+                KeychainItem.deleteUserIdentifierFromKeychain()
+                return
+            }
             self.userRecord = record
             self.instantiateUser(usingRecord: record)
         }
@@ -98,7 +109,8 @@ class DAO: NSObject {
                              name: name,
                              profileImageLink: profileImageLink,
                              following: followingArtists)
-
+            
+            self.isLoggedIn = true
             NotificationCenter.default.post(name: NotificationName.userCreated, object: nil)
         }
     }
@@ -127,6 +139,8 @@ class DAO: NSObject {
         guard let userRecord = userRecord else { return }
 
         if let acquiredPresetsReferences = userRecord["acquiredPresets"] as? [CKRecord.Reference] {
+            
+            user?.resetAcquired()
 
             fetchRecords(usingRecordsID: acquiredPresetsReferences.map { $0.recordID }) { [weak self] records in
                 guard let self = self else { return }
@@ -140,8 +154,32 @@ class DAO: NSObject {
                     }
                 }
             }
+        } else {
+            NotificationCenter.default.post(name: NotificationName.profileDataFetched, object: nil)
         }
     }
+    
+//    func loadPublishedPresets() {
+//        guard let userRecord = userRecord else { return }
+//
+//        if let acquiredPresetsReferences = userRecord["presets"] as? [CKRecord.Reference] {
+//
+//            user?.resetPublished()
+//
+//            fetchRecords(usingRecordsID: acquiredPresetsReferences.map { $0.recordID }) { [weak self] records in
+//                guard let self = self else { return }
+//
+//                records.forEach {
+//                    guard let artistReference = $0["artist"] as? CKRecord.Reference else { return }
+//                    self.createPreset(usingRecord: $0, withArtistReference: artistReference) { preset in
+//                        guard let preset = preset else { return }
+//                        self.user?.addPreset(preset)
+//                        NotificationCenter.default.post(name: NotificationName.profileDataFetched, object: nil)
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     private func getPresetsReferencesForFollowingArtists(usingReferences references: [CKRecord.Reference], completion: @escaping ([CKRecord]) -> Void) {
 
@@ -237,11 +275,47 @@ class DAO: NSObject {
             }
         }
     }
+
+    func publishPreset(_ preset: Preset, completion: @escaping (Bool) -> Void) {
+        let presetRecord = CKRecord(recordType: RecordType.preset.rawValue)
+        presetRecord["name"] = preset.name
+        presetRecord["description"] = preset.description
+        let id = CKRecord.ID(recordName: preset.artist.id)
+        presetRecord["artist"] = CKRecord.Reference(recordID: id, action: .none)
+        presetRecord["price"] = preset.price
+
+        if let dngURL = URL(string: preset.dngPath) {
+            let dngAsset = CKAsset(fileURL: dngURL)
+            presetRecord["dng"] = dngAsset
+        }
+
+        var imagesAssets = [CKAsset]()
+        preset.imagesURLs.forEach {
+            guard let url = $0 else { return }
+            imagesAssets.append(CKAsset(fileURL: url))
+        }
+        presetRecord["images"] = imagesAssets
+
+        cloudKitManager.save(record: presetRecord, on: .publicDB) { result in
+            switch result {
+            case .success(let record):
+                completion(true)
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+                break
+            }
+        }
+    }
 }
 
 // MARK:- DiscoverViewController DAO
 extension DAO {
     func loadAllPresets() {
+        if isLoading { return }
+        isLoading = true
+        
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: RecordType.preset.rawValue, predicate: predicate)
 
@@ -249,9 +323,20 @@ extension DAO {
             switch result {
             case .success(let records):
                 guard let self = self else { return }
+                
+                self.presets.removeAll()
+                
                 for index in records.indices {
                     if let artistReference = records[index]["artist"] as? CKRecord.Reference {
-                        self.createPreset(usingRecord: records[index], withArtistReference: artistReference)
+                        self.createPreset(usingRecord: records[index], withArtistReference: artistReference) { preset in
+                            guard let preset = preset else { return }
+                            self.presets.append(preset)
+                            if self.presets.count == records.count {
+                                self.isLoading = false
+                            }
+                            
+                            NotificationCenter.default.post(name: NotificationName.discoverDataFetched, object: nil, userInfo: nil)
+                        }
                     }
                 }
                 break
@@ -296,6 +381,66 @@ extension DAO {
                 break
             case .failure(let error):
                 completion(nil)
+                print(error.localizedDescription)
+                break
+            }
+        }
+    }
+
+    func startFollowing(artist: Artist) {
+        guard let userRecord = userRecord else { return }
+
+        var followingArtistsReferences = [CKRecord.Reference]()
+        if let guardedFollowingArtistsReferences = userRecord["followingArtists"] as? [CKRecord.Reference] {
+            followingArtistsReferences = guardedFollowingArtistsReferences
+        }
+
+        let artistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: artist.id), action: .none)
+
+        if !followingArtistsReferences.contains(artistReference) {
+            followingArtistsReferences.append(artistReference)
+            self.user?.startFollowing(artist: artist)
+        } else {
+            return
+        }
+
+        userRecord["followingArtists"] = followingArtistsReferences
+        cloudKitManager.save(record: userRecord, on: .publicDB) { result in
+            switch result {
+            case .success(_):
+                NotificationCenter.default.post(name: NotificationName.feedDataFetched, object: nil)
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                break
+            }
+        }
+    }
+
+    func stopFollowing(artist: Artist) {
+        guard let userRecord = userRecord else { return }
+
+        var followingArtistsReferences = [CKRecord.Reference]()
+        if let guardedFollowingArtistsReferences = userRecord["followingArtists"] as? [CKRecord.Reference] {
+            followingArtistsReferences = guardedFollowingArtistsReferences
+        }
+
+        let artistReference = CKRecord.Reference(recordID: CKRecord.ID(recordName: artist.id), action: .none)
+
+        if followingArtistsReferences.contains(artistReference) {
+            followingArtistsReferences.removeAll(where: { $0 == artistReference })
+            self.user?.stopFollowing(artist: artist)
+        } else {
+            return
+        }
+
+        userRecord["followingArtists"] = followingArtistsReferences
+        cloudKitManager.save(record: userRecord, on: .publicDB) { result in
+            switch result {
+            case .success(_):
+                NotificationCenter.default.post(name: NotificationName.feedDataFetched, object: nil)
+                break
+            case .failure(let error):
                 print(error.localizedDescription)
                 break
             }

@@ -75,6 +75,8 @@ class PresetPreviewViewController: UIViewController {
 
     func setButtonState() {
         guard let user = DAO.shared.user, let preset = preset else { return }
+
+        if preset.artist.id == user.id { floatingBuyButtonView.isHidden = true }
         
         var acquiredPresets: [AcquiredPreset] = []
         
@@ -86,7 +88,7 @@ class PresetPreviewViewController: UIViewController {
         
         let convertedPreset = AcquiredPreset(identifier: preset.id, isAcquired: true)
         
-        if  (acquiredPresets.contains(convertedPreset) || user.hasPreset(preset)) {
+        if (acquiredPresets.contains(convertedPreset) || user.hasPreset(preset)) {
             UIView.animate(withDuration: 0.1) {
                 self.floatingBuyButtonView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.55)
                 self.floatingBuyButton.setTitleColor(.white, for: .normal)
@@ -155,7 +157,16 @@ class PresetPreviewViewController: UIViewController {
 
     @IBAction func floatingBuyButtonTouched(_ sender: Any) {
         guard let user = DAO.shared.user, let preset = preset else { return }
-        if !user.hasPreset(preset) {
+
+        var acquiredPresets: [AcquiredPreset] = []
+        do {
+            acquiredPresets = try CoreDataController.shared.read(of: .AcquiredPreset)
+        } catch {
+            print(DAOError.internalError(description: "Failed to fetch aquired presets"))
+        }
+        let convertedPreset = AcquiredPreset(identifier: preset.id, isAcquired: true)
+
+        if (!acquiredPresets.contains(convertedPreset) && !user.hasPreset(preset)) {
             user.addPreset(preset)
             let acquiredPreset =  AcquiredPreset(identifier: preset.id, isAcquired: true)
             do {
@@ -168,7 +179,7 @@ class PresetPreviewViewController: UIViewController {
             setButtonState()
 
         } else {
-            guard let url = Bundle.main.url(forResource: preset.dngPath, withExtension: "dng") else {
+            guard let url = URL(string: preset.dngPath) else {
                 return
             }
             do {

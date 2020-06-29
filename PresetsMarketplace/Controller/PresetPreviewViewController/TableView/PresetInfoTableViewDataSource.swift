@@ -14,11 +14,14 @@ class PresetInfoTableViewDataSource: NSObject, UITableViewDataSource {
     let viewController: UIViewController
     var othersPresetsCollectionViewDelegate: OthersPresetsCollectionViewDelegate?
     var othersPresetsCollectionViewDataSource: OthersPresetsCollectionViewDataSource?
+    let presets: [Preset]
 
     init(for tableView: UITableView, with preset: Preset, fromViewController viewController: UIViewController) {
         self.tableView = tableView
         self.preset = preset
         self.viewController = viewController
+
+        presets = DAO.shared.presets.filter { $0.artist == preset.artist }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,7 +36,7 @@ class PresetInfoTableViewDataSource: NSObject, UITableViewDataSource {
         case 2:
             return getArtistPresetTableViewCell()
         case 3:
-            return preset.artist.presets.count > 1 ? getOthersPresetsTableViewCell() : getEmptyCell()
+            return presets.count > 1 ? getOthersPresetsTableViewCell() : getEmptyCell()
         default:
             return getEmptyCell()
         }
@@ -77,7 +80,7 @@ extension PresetInfoTableViewDataSource {
     }
 
     func configureOthersPresetsCollectionView(for cell: OthersPresetsTableViewCell) {
-        let othersPresets = preset.artist.presets.filter { $0 != preset }
+        let othersPresets = presets.filter { $0 != preset }
         othersPresetsCollectionViewDelegate = OthersPresetsCollectionViewDelegate(with: othersPresets, fromViewController: viewController)
         othersPresetsCollectionViewDataSource = OthersPresetsCollectionViewDataSource(with: othersPresets)
 

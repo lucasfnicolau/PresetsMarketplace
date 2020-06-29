@@ -41,7 +41,7 @@ class PublicProfileViewController: UIViewController {
     func setupLabels() {
         guard let artist = artist else { return }
         profileNameLabel.text = artist.name
-        profileNameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        profileNameLabel.font = UIFont.preferredFont(forTextStyle: .title2)
         profileDescriptionLabel.text = artist.about
         profileDescriptionLabel.textColor = #colorLiteral(red: 0.4666666667, green: 0.4666666667, blue: 0.4666666667, alpha: 1)
         self.view.addSubview(profileNameLabel)
@@ -66,10 +66,21 @@ class PublicProfileViewController: UIViewController {
     
     func setupImageView() {
         guard let artist = artist else { return }
-        guard let imageUrl = artist.profileImageUrl else {
-            return
+//        guard let imageUrl = artist.profileImageUrl else {
+//            return
+//        }
+        if artist.profileImageUrl != nil {
+            profilePhotoImageView.load(url: artist.profileImageUrl!)
+        } else {
+            self.profilePhotoImageView.image = UIImage(named: "profile_thumbnail_bg")
+            setupLabel(for: artist)
+            let size: CGFloat = self.view.frame.size.width * 0.328
+            self.profilePhotoImageView.layer.cornerRadius = size / 2
+            NSLayoutConstraint.activate([
+                self.profilePhotoImageView.widthAnchor.constraint(equalToConstant: size),
+                self.profilePhotoImageView.heightAnchor.constraint(equalToConstant: size)
+            ])
         }
-        profilePhotoImageView.load(url: imageUrl)
         profilePhotoImageView.contentMode = .scaleAspectFill
     }
     
@@ -89,12 +100,12 @@ class PublicProfileViewController: UIViewController {
     }
     
     func setupFollowButton() {
-        guard let artist = artist else { return }
-        if !Mock.shared.user.following.contains(artist) {
+        guard let user = DAO.shared.user, let artist = artist else { return }
+        if !user.following.contains(artist) {
             let image = #imageLiteral(resourceName: "UnactiveFollowingBtn")
             followButton.setBackgroundImage(image, for: .normal)
             startFollowingButton()
-        } else if Mock.shared.user.following.contains(artist) {
+        } else if user.following.contains(artist) {
             let image = #imageLiteral(resourceName: "ActiveFollowingBtn")
             followButton.setBackgroundImage(image, for: .normal)
             stopFollowingButton()
@@ -136,6 +147,25 @@ class PublicProfileViewController: UIViewController {
             closeButton.heightAnchor.constraint(equalToConstant: size)
         ])
     }
+
+    func setupLabel(for artist: Artist) {
+        let profileImageLabel = UILabel()
+        let letter = artist.name.prefix(1)
+        profileImageLabel.text = String(letter.uppercased())
+        profileImageLabel.font = profileImageLabel.font.withSize(75)
+        profileImageLabel.textAlignment = .center
+        profileImageLabel.textColor = .black
+
+        profilePhotoImageView.addSubview(profileImageLabel)
+        profileImageLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            profileImageLabel.leadingAnchor.constraint(equalTo: profilePhotoImageView.leadingAnchor),
+            profileImageLabel.trailingAnchor.constraint(equalTo: profilePhotoImageView.trailingAnchor),
+            profileImageLabel.topAnchor.constraint(equalTo: profilePhotoImageView.topAnchor),
+            profileImageLabel.bottomAnchor.constraint(equalTo: profilePhotoImageView.bottomAnchor)
+        ])
+    }
     
     func startFollowingButton() {
         if followButton.target(forAction: #selector(stopFollowing), withSender: (Any).self) != nil {
@@ -155,7 +185,7 @@ class PublicProfileViewController: UIViewController {
     
     func setupCollectionView() {
         guard let artist = artist else { return }
-        let dao = DynamicCollectionViewDAO(with: artist.presets)
+        let dao = DynamicCollectionViewDAO(with: DAO.shared.presets.filter { $0.artist == artist })
         collectionView = DynamicCollectionView(collectionType: .user, in: self, using: dao)
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
@@ -176,7 +206,7 @@ class PublicProfileViewController: UIViewController {
     
     @objc func startFollowing() {
         guard let artist = artist else { return }
-        Mock.shared.user.startFollowing(artist: artist)
+        DAO.shared.startFollowing(artist: artist)
         let image = #imageLiteral(resourceName: "ActiveFollowingBtn")
         followButton.setBackgroundImage(image, for: .normal)
         stopFollowingButton()
@@ -184,7 +214,7 @@ class PublicProfileViewController: UIViewController {
     
     @objc func stopFollowing() {
         guard let artist = artist else { return }
-        Mock.shared.user.stopFollowing(artist: artist)
+        DAO.shared.stopFollowing(artist: artist)
         let image = #imageLiteral(resourceName: "UnactiveFollowingBtn")
         followButton.setBackgroundImage(image, for: .normal)
         startFollowingButton()

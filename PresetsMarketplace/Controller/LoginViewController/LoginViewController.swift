@@ -10,6 +10,7 @@ import UIKit
 import AuthenticationServices
 
 class LoginViewController: UIViewController {
+    
     @IBOutlet weak var stackView: UIStackView!
 
     override func viewDidLoad() {
@@ -109,6 +110,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 
         self.dismiss(animated: true, completion: nil)
     }
+
+    
 }
 
 extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {

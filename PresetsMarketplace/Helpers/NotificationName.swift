@@ -10,6 +10,7 @@ import Foundation
 
 enum NotificationName {
     static let userCreated: NSNotification.Name = NSNotification.Name("userCreated")
+    static let userUpdated: NSNotification.Name = NSNotification.Name("userUpdated")
     static let feedDataFetched: NSNotification.Name = NSNotification.Name("feedDataFetched")
     static let discoverDataFetched: NSNotification.Name = NSNotification.Name("discoverDataFetched")
     static let profileDataFetched: NSNotification.Name = NSNotification.Name("profileDataFetched")

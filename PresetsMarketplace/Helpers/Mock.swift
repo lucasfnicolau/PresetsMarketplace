@@ -15,7 +15,7 @@ class Mock {
     private(set) lazy var user: User = {
         var name = UIDevice.current.name.replacingOccurrences(of: "iPhone de ", with: "")
         name = name.replacingOccurrences(of: "'s iPhone", with: "")
-        let user = User(name: name, profileImageLink: "")
+        let user = User(id: "001027.e58a8a5dbc854b22af1b31fefb26908a.1901", name: name, profileImageLink: "")
         return user
     }()
     private(set) var presets: [Preset] = []

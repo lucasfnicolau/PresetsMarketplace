@@ -43,8 +43,8 @@ class DiscoverViewController: BaseViewController {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0)
+            collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
         ])
     }
 
@@ -62,7 +62,8 @@ class DiscoverViewController: BaseViewController {
     }
 
     @objc override func dataFetched(_ notif: Notification) {
-        let dao = DynamicCollectionViewDAO(with: DAO.shared.presets)
+        guard let user = DAO.shared.user else { return }
+        let dao = DynamicCollectionViewDAO(with: DAO.shared.presets.filter { $0.artist.id != user.id })
         collectionView?.dao = dao
 
         DispatchQueue.main.async { [weak self] in

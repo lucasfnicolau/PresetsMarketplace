@@ -16,6 +16,8 @@ class FeedViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = Screen.feed
+
+        DAO.shared.loadAllPresets()
         
         setupCollectionView()
     }
@@ -41,8 +43,8 @@ class FeedViewController: BaseViewController {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0)
+            collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
         ])
     }
     
@@ -50,26 +52,27 @@ class FeedViewController: BaseViewController {
         guard let user = DAO.shared.user else { return [] }
         var filteredPresets: [Preset] = []
         for artist in user.following {
-            filteredPresets += artist.presets
+            filteredPresets.append(contentsOf: DAO.shared.presets.filter { $0.artist == artist })
         }
         return filteredPresets
     }
 
     override func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.feedDataFetched, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataFetched(_:)), name: NotificationName.discoverDataFetched, object: nil)
     }
 
     @objc override func dataFetched(_ notif: Notification) {
-        if let item = notif.userInfo?["item"] as? Int {
+//        if let item = notif.userInfo?["item"] as? Int {
             let filteredPresets = getFollowingArtistsPresets()
             let dao = DynamicCollectionViewDAO(with: filteredPresets)
             collectionView?.dao = dao
 
             DispatchQueue.main.async { [weak self] in
-                let indexPath = IndexPath(row: item, section: 0)
+//                let indexPath = IndexPath(row: item, section: 0)
                 self?.collectionView?.reloadData()
-                self?.collectionView?.insertItems(at: [indexPath])
+//                self?.collectionView?.insertItems(at: [indexPath])
             }
-        }
+//        }
     }
 }
