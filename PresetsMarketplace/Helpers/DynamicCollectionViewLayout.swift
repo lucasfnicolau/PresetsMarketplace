@@ -37,6 +37,7 @@ class DynamicCollectionViewLayout: UICollectionViewLayout {
     
     override func prepare() {
         guard
+            collectionView?.numberOfSections ?? 0 > 0,
             let collectionView = collectionView,
             cache.count < collectionView.numberOfItems(inSection: 0)
             else {

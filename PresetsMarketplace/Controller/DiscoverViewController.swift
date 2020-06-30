@@ -11,6 +11,7 @@ import UIKit
 class DiscoverViewController: BaseViewController {
 
     var collectionView: DynamicCollectionView?
+    var dataSource: UICollectionViewDiffableDataSource<Section, Preset>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,22 @@ class DiscoverViewController: BaseViewController {
         guard let collectionView = collectionView else { return }
         collectionView.reloadData()
         self.view.addSubview(collectionView)
+
+        setupCollectionViewDataSource()
+    }
+
+    func setupCollectionViewDataSource() {
+        guard let collectionView = collectionView else { return }
+
+        dataSource = UICollectionViewDiffableDataSource<Section, Preset>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, preset) -> UICollectionViewCell? in
+
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.dynamicCollectionViewCell, for: indexPath) as? DynamicCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+
+            cell.setup(for: preset)
+            return cell
+        })
     }
 
     func setupCollectionViewConstraints() {
@@ -66,8 +83,16 @@ class DiscoverViewController: BaseViewController {
         let dao = DynamicCollectionViewDAO(with: DAO.shared.presets.filter { $0.artist.id != user.id })
         collectionView?.dao = dao
 
+        updateData(with: dao.filteredPresets)
+    }
+
+    private func updateData(with items: [Preset])  {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Preset>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items)
+
         DispatchQueue.main.async { [weak self] in
-            self?.collectionView?.reloadData()
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }
 }
@@ -78,6 +103,7 @@ extension DiscoverViewController: UISearchResultsUpdating {
 
         let query = searchController.searchBar.text ?? ""
         collectionView.dao.filterPresets(withQuery: query)
-        collectionView.reloadData()
+
+        updateData(with: collectionView.dao.filteredPresets)
     }
 }

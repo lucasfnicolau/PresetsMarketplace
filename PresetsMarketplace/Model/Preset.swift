@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Preset: Equatable {
+class Preset: Equatable, Hashable {
 
     let id: String
     var name: String
@@ -23,6 +23,10 @@ class Preset: Equatable {
 
     convenience init() {
         self.init(name: "", artist: Artist(), dngPath: "")
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 
     init(id: String = "", name: String, artist: Artist, description: String = "", dngPath: String, price: Double = 0, imagesLinks: [String] = []) {
