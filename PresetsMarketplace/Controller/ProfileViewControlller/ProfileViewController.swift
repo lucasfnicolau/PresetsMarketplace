@@ -18,6 +18,7 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var noPresetsAcquiredLabel: UILabel!
     var profileImageLabel: UILabel?
     var presetsCollectionView: DynamicCollectionView?
+    var dataSource: UICollectionViewDiffableDataSource<Section, Preset>?
     
     var acquiredPresetsDAO: DynamicCollectionViewDAO?
     var publishedPresetsDAO: DynamicCollectionViewDAO?
@@ -33,13 +34,11 @@ class ProfileViewController: BaseViewController {
 
         checkIfUserIsLoggedIn()
         
-        presetsCollectionView?.reloadData()
+        setupCollectionViewDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         DAO.shared.loadAllPresets()
-        segmentedControl.selectedSegmentIndex = 0
-        changeDAO(for: 0)
     }
 
     func checkIfUserIsLoggedIn() {
@@ -120,6 +119,20 @@ class ProfileViewController: BaseViewController {
         ])
     }
 
+    func setupCollectionViewDataSource() {
+        guard let collectionView = presetsCollectionView else { return }
+
+        dataSource = UICollectionViewDiffableDataSource<Section, Preset>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, preset) -> UICollectionViewCell? in
+
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.dynamicCollectionViewCell, for: indexPath) as? DynamicCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+
+            cell.setup(for: preset)
+            return cell
+        })
+    }
+
     override func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(loadAcquiredPresets), name: NotificationName.userCreated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadPublishedPresets), name: NotificationName.userCreated, object: nil)
@@ -177,7 +190,9 @@ class ProfileViewController: BaseViewController {
                 presetsCollectionView?.dao = DynamicCollectionViewDAO(with: DAO.shared.presets.filter{
                     user.acquiredPresets.contains($0)
                 })
-                
+                updateData(with: DAO.shared.presets.filter{
+                    user.acquiredPresets.contains($0)
+                })
                 
             case 1:
 //                guard let publishedPresetsDAO = publishedPresetsDAO else {
@@ -188,11 +203,22 @@ class ProfileViewController: BaseViewController {
                 presetsCollectionView?.dao = DynamicCollectionViewDAO(with: DAO.shared.presets.filter{
                     $0.artist.id == user.id
                 })
+                updateData(with: DAO.shared.presets.filter{
+                    $0.artist.id == user.id
+                })
+
             default:
                 break
         }
-        presetsCollectionView?.reloadData()
     }
     
-    
+    private func updateData(with items: [Preset])  {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Preset>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items)
+
+        DispatchQueue.main.async { [weak self] in
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
+        }
+    }
 }
