@@ -17,6 +17,7 @@
 		A7B96C82247877BD000A695A /* TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B96C80247877BD000A695A /* TransitionDelegate.swift */; };
 		B6068DB124896B6E00A709ED /* RoundedModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6068DB024896B6E00A709ED /* RoundedModalView.swift */; };
 		B6068DB324896FC100A709ED /* UIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6068DB224896FC100A709ED /* UIView+Snapshot.swift */; };
+		B607D44224AAADF50057BA33 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = B607D44124AAADF50057BA33 /* Section.swift */; };
 		B60F3D742475A6E0009CBE10 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60F3D732475A6E0009CBE10 /* Storyboard.swift */; };
 		B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3824759EA100027C23 /* PresetInfoTableViewDelegate.swift */; };
 		B654DE3B24759EB800027C23 /* PresetInfoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654DE3A24759EB800027C23 /* PresetInfoTableViewDataSource.swift */; };
@@ -129,6 +130,7 @@
 		B6068DA22489676C00A709ED /* PublishPresetTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PublishPresetTableViewController.storyboard; sourceTree = "<group>"; };
 		B6068DB024896B6E00A709ED /* RoundedModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedModalView.swift; sourceTree = "<group>"; };
 		B6068DB224896FC100A709ED /* UIView+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshot.swift"; sourceTree = "<group>"; };
+		B607D44124AAADF50057BA33 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		B60F3D732475A6E0009CBE10 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		B654DE3824759EA100027C23 /* PresetInfoTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetInfoTableViewDelegate.swift; sourceTree = "<group>"; };
 		B654DE3A24759EB800027C23 /* PresetInfoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetInfoTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				B6FC51B624859E97004F4A3E /* DAO.swift */,
 				B6A87CE32486C93E001BA8BC /* KeychainInfo.swift */,
 				B68E401424881592009C99A0 /* NotificationName.swift */,
+				B607D44124AAADF50057BA33 /* Section.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				B6FC51B5248599E5004F4A3E /* RecordType.swift in Sources */,
 				B68A4F1124732674003B0EF5 /* TabBarController.swift in Sources */,
 				B68E40172488163A009C99A0 /* DataFetcher.swift in Sources */,
+				B607D44224AAADF50057BA33 /* Section.swift in Sources */,
 				B654DE3924759EA100027C23 /* PresetInfoTableViewDelegate.swift in Sources */,
 				A79C84E52489B27D003F6F7D /* StartViewController.swift in Sources */,
 				B68A4F13247326B6003B0EF5 /* FeedViewController.swift in Sources */,

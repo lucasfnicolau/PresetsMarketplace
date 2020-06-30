@@ -16,6 +16,7 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
         }
     }
     weak var viewController: UIViewController?
+    var heights = [CGFloat]()
 
     init(for collectionView: DynamicCollectionView, from viewController: UIViewController? = nil) {
         self.viewController = viewController
@@ -24,7 +25,6 @@ class DynamicCollectionViewDelegate: NSObject, UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         presentPresetPreview(from: collectionView, fromSelectedItemAt: indexPath)
     }
     

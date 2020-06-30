@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User: Equatable {
+class User: Equatable, Hashable {
     var id: String
     var name: String
     var profileImageUrl: URL?
@@ -28,6 +28,10 @@ class User: Equatable {
         self.following = following
         self.acquiredPresets = acquiredPresets
         self.publishedPresets = publishedPresets
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 
     static func ==(lhs: User, rhs: User) -> Bool {

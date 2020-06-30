@@ -12,6 +12,7 @@ class FeedViewController: BaseViewController {
 
     let transition = TransitionAnimator()
     var collectionView: DynamicCollectionView?
+    var dataSource: UICollectionViewDiffableDataSource<Section, Preset>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,22 @@ class FeedViewController: BaseViewController {
         let filteredPresets = Array(repeating: Preset(), count: 4)
         let dao = DynamicCollectionViewDAO(with: filteredPresets)
         collectionView.dao = dao
+
+        setupCollectionViewDataSource()
+    }
+
+    func setupCollectionViewDataSource() {
+        guard let collectionView = collectionView else { return }
+
+        dataSource = UICollectionViewDiffableDataSource<Section, Preset>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, preset) -> UICollectionViewCell? in
+
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.dynamicCollectionViewCell, for: indexPath) as? DynamicCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+
+            cell.setup(for: preset)
+            return cell
+        })
     }
     
     func setupCollectionViewConstraints() {
@@ -63,16 +80,15 @@ class FeedViewController: BaseViewController {
     }
 
     @objc override func dataFetched(_ notif: Notification) {
-//        if let item = notif.userInfo?["item"] as? Int {
-            let filteredPresets = getFollowingArtistsPresets()
-            let dao = DynamicCollectionViewDAO(with: filteredPresets)
-            collectionView?.dao = dao
+        let filteredPresets = getFollowingArtistsPresets()
+        let dao = DynamicCollectionViewDAO(with: filteredPresets)
+        collectionView?.dao = dao
 
-            DispatchQueue.main.async { [weak self] in
-//                let indexPath = IndexPath(row: item, section: 0)
-                self?.collectionView?.reloadData()
-//                self?.collectionView?.insertItems(at: [indexPath])
-            }
-//        }
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Preset>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(filteredPresets)
+        DispatchQueue.main.async { [weak self] in
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
+        }
     }
 }
