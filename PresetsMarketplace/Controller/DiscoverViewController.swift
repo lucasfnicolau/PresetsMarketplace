@@ -37,6 +37,12 @@ class DiscoverViewController: BaseViewController {
         self.view.addSubview(collectionView)
 
         setupCollectionViewDataSource()
+
+        var filteredPresets = [Preset]()
+        for _ in 0 ..< 4 {
+            filteredPresets.append(Preset())
+        }
+        updateData(with: filteredPresets)
     }
 
     func setupCollectionViewDataSource() {

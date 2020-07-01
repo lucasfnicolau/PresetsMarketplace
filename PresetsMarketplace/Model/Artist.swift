@@ -16,7 +16,7 @@ class Artist: User {
         self.init(name: "", about: "", profileImageLink: "")
     }
 
-    init(id: String = "", name: String, about: String, profileImageLink: String) {
+    init(id: String = UUID().uuidString, name: String, about: String, profileImageLink: String) {
         self.about = about
         super.init(id: id, name: name, profileImageLink: profileImageLink)
     }

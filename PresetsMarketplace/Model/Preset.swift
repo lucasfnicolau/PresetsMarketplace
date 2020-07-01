@@ -29,8 +29,8 @@ class Preset: Equatable, Hashable {
         hasher.combine(id)
     }
 
-    init(id: String = "", name: String, artist: Artist, description: String = "", dngPath: String, price: Double = 0, imagesLinks: [String] = []) {
-        self.id = id.count > 0 ? id : UUID().uuidString
+    init(id: String = UUID().uuidString, name: String, artist: Artist, description: String = "", dngPath: String, price: Double = 0, imagesLinks: [String] = []) {
+        self.id = id
         self.name = name
         self.artist = artist
         self.description = description
@@ -80,7 +80,7 @@ class Preset: Equatable, Hashable {
         self.viewsCount += 1
     }
 
-    static func == (lhs: Preset, rhs: Preset) -> Bool {
+    static func ==(lhs: Preset, rhs: Preset) -> Bool {
         return lhs.name == rhs.name && lhs.artist == rhs.artist
     }
 }
