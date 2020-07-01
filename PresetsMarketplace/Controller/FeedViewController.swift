@@ -13,6 +13,7 @@ class FeedViewController: BaseViewController {
     let transition = TransitionAnimator()
     var collectionView: DynamicCollectionView?
     var dataSource: UICollectionViewDiffableDataSource<Section, Preset>?
+    var isLoading = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,14 @@ class FeedViewController: BaseViewController {
         DAO.shared.loadAllPresets()
         
         setupCollectionView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if isLoading {
+            presentLoadingScreen()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -32,11 +41,18 @@ class FeedViewController: BaseViewController {
         guard let collectionView = collectionView else { return }
         self.view.addSubview(collectionView)
 
-        let filteredPresets = Array(repeating: Preset(), count: 4)
-        let dao = DynamicCollectionViewDAO(with: filteredPresets)
-        collectionView.dao = dao
-
         setupCollectionViewDataSource()
+
+        var filteredPresets = [Preset]()
+        for _ in 0 ..< 4 {
+            filteredPresets.append(Preset())
+        }
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Preset>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(filteredPresets)
+        DispatchQueue.main.async { [weak self] in
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
+        }
     }
 
     func setupCollectionViewDataSource() {
@@ -80,6 +96,11 @@ class FeedViewController: BaseViewController {
     }
 
     @objc override func dataFetched(_ notif: Notification) {
+        if isLoading {
+            isLoading = false
+            DispatchQueue.main.async { [weak self] in self?.dismiss(animated: true) }
+        }
+
         let filteredPresets = getFollowingArtistsPresets()
         let dao = DynamicCollectionViewDAO(with: filteredPresets)
         collectionView?.dao = dao

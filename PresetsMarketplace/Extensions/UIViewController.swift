@@ -10,6 +10,25 @@ import UIKit
 
 extension UIViewController {
 
+    func presentLoadingScreen() {
+        let loadingScreen = UIViewController()
+        loadingScreen.modalPresentationStyle = .overFullScreen
+        loadingScreen.modalTransitionStyle = .crossDissolve
+        loadingScreen.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.75)
+
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        loadingScreen.view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: loadingScreen.view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: loadingScreen.view.centerYAnchor)
+        ])
+        activityIndicator.startAnimating()
+        activityIndicator.tintColor = .black
+
+        DispatchQueue.main.async { [weak self] in self?.present(loadingScreen, animated: true)}
+    }
+
     func add(_ child: UIViewController) {
         addChild(child)
         view.addSubview(child.view)

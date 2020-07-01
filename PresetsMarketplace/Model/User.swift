@@ -16,13 +16,13 @@ class User: Equatable, Hashable {
     private(set) var acquiredPresets: [Preset]
     private(set) var publishedPresets: [Preset]
 
-    init(id: String = "",
+    init(id: String = UUID().uuidString,
          name: String,
          profileImageLink: String,
          following: [Artist] = [],
          acquiredPresets: [Preset] = [],
          publishedPresets: [Preset] = []) {
-        self.id = id.count > 0 ? id : UUID().uuidString
+        self.id = id
         self.name = name
         self.profileImageUrl = URL(string: profileImageLink)
         self.following = following
