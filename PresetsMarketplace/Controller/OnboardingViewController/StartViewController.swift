@@ -103,7 +103,13 @@ class StartViewController: UIViewController {
 
 extension StartViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // TODO
+        let errorAlertController = UIAlertController(title: "Algo deu errado", message: "Verifique sua conexão com a internet e tente novamente.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "OK", style: .cancel)
+        errorAlertController.addAction(dismissAction)
+
+        DispatchQueue.main.async { [weak self] in
+            self?.present(errorAlertController, animated: true)
+        }
     }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
